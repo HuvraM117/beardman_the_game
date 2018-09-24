@@ -49,7 +49,6 @@ public class MovingPlatform : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.Log(goingUp);
         var pos = startPlatform.transform.position;
         if (goingUp)
         {
