@@ -8,7 +8,15 @@ public class BeardAttacks : MonoBehaviour {
 	public static Vector3 mousePosition;
 	public float maxDis = 2f;
 
-	void FixedUpdate ()
+    private BeardAnimationController beardAnimator;
+
+
+    private void Awake()
+    {
+        beardAnimator = gameObject.GetComponentInChildren<BeardAnimationController>();
+    }
+
+    void FixedUpdate ()
 	{
 		//Uses mouse location for constant tracking of beard end location
 		Vector3 old = particle.transform.position;
@@ -23,7 +31,7 @@ public class BeardAttacks : MonoBehaviour {
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			//Placeholder for attacking
+            UseBeard();
 		}
 		//Controls beard length
 		if (Input.GetKey ("e"))
@@ -43,5 +51,37 @@ public class BeardAttacks : MonoBehaviour {
 		if (maxDis > 1f)
 			maxDis = maxDis - 0.02f;
 	}
+
+    public void UseBeard()
+    {
+        Vector2 targetPosition = particle.transform.position;
+        RaycastHit2D targetHit = Physics2D.Raycast(targetPosition, Vector2.zero);
+        GameObject targetObject = targetHit ? targetHit.collider.gameObject : null;
+
+        // TODO: here I assume that all enemies/grappleable objects will have an associated component, we can change this later based on the actual components' names/different critereon
+        if(targetObject && targetObject.GetComponent<GrapplePoint>() != null)
+        {
+            GrappleBeard(targetObject);
+        }
+        else
+        {
+            WhipBeard(particle);
+        }
+    }
+
+    // assuming the target is in range, not range-limited
+    private void WhipBeard(GameObject targetObject)
+    {
+        beardAnimator.WhipBeard(targetObject.transform);
+        Debug.Log("whip");
+    }
+
+    // assuming the target is in range, not range-limited
+    private void GrappleBeard(GameObject grappleObject)
+    {
+        beardAnimator.GrappleBeard(grappleObject.transform);
+        Debug.Log("grapple");
+    }
+
 }
 
