@@ -78,7 +78,6 @@ public class BeardAnimationController : MonoBehaviour {
                 break;
         }
         UpdateCurrentBeardSegments();
-        Debug.Log(currentAnimationState);
     }
 
     private void UpdateCurrentBeardSegments()
