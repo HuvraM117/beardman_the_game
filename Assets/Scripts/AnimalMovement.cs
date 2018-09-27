@@ -31,6 +31,6 @@ public class AnimalMovement : MonoBehaviour {
 			//else 
 			movingRight = -movingRight;
 		//else
-		transform.Translate (Vector2.right * speed * Time.deltaTime * speedModifier); //moves animal
+		//transform.Translate (Vector2.right * speed * Time.deltaTime * speedModifier); //moves animal
 	}
 }
