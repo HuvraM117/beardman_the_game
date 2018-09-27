@@ -8,7 +8,7 @@ public class BaseEnemy : MonoBehaviour {
     public float Damage { get; set; }
     public float MoveSpeed { get; set; }
 
-    // The player's Game Object we wish to track
+    // The player's Game Object we wish to track (as a barber enemy)
     public GameObject playerObject;
 
     public BaseEnemy()
@@ -24,7 +24,7 @@ public class BaseEnemy : MonoBehaviour {
     }
 
     // These methods are virtual and can be overriden in child classes
-    public virtual void Attack()
+    public virtual void OnCollisionWithPlayer()
     {
 
     }
