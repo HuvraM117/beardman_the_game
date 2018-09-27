@@ -6,7 +6,7 @@ public class BeardAttacks : MonoBehaviour {
 	public GameObject particle;
 	public GameObject character;
 	public static Vector3 mousePosition;
-	public float maxDis = 2f;
+	public static float maxDis = 2f;
 
     private BeardAnimationController beardAnimator;
 
@@ -50,6 +50,11 @@ public class BeardAttacks : MonoBehaviour {
 	public void shrinkBeard() {
 		if (maxDis > 1f)
 			maxDis = maxDis - 0.02f;
+	}
+
+	//Returns current beard size
+	public static float getBeard() {
+		return maxDis;
 	}
 
     public void UseBeard()

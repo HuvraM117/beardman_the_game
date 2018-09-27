@@ -8,7 +8,7 @@ public class BeardAnimationController : MonoBehaviour {
     private enum BeardAnimationState { IDLE, EXTENDING, RETRACTING, PULLING };
     private BeardAnimationState currentAnimationState = BeardAnimationState.IDLE;
 
-    private const int HARDMAXSEGMENTS = 20; // the max number of beard segments that can ever exist (max of max beard length)
+    private const int HARDMAXSEGMENTS = 30; // the max number of beard segments that can ever exist (max of max beard length)
     private const float SEGMENTDISTANCE = .1f; // how far apart the segments are
     [SerializeField] private GameObject beardSegmentPrefab;
     private GameObject[] segments = new GameObject[HARDMAXSEGMENTS]; // segments of the beard
