@@ -20,13 +20,18 @@ public class MovementController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         isCrouching = Input.GetButton("Crouch");
-        UpdateMovement();
+        m_rigidbody.velocity = UpdateMovement();
 	}
 
     // TODO: fix bug where it sticks to walls
-    private void UpdateMovement()
+    private Vector2 UpdateMovement()
     {
         Vector2 moveInput = m_rigidbody.velocity;
+
+        if(PlayerState.CurrentBeardState == BeardState.PULLING)
+        {
+            return moveInput;
+        }
 
         if(!isCrouching)
         {
@@ -42,7 +47,7 @@ public class MovementController : MonoBehaviour {
             isGrounded = false;
         }
 
-        m_rigidbody.velocity = moveInput;
+        return moveInput;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
