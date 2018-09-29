@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class BeardAnimationController : MonoBehaviour {
 
-    private enum BeardAnimationState { IDLE, EXTENDING, RETRACTING, PULLING };
-    private BeardAnimationState currentAnimationState = BeardAnimationState.IDLE;
+
 
     private const int HARDMAXSEGMENTS = 30; // the max number of beard segments that can ever exist (max of max beard length)
     private const float SEGMENTDISTANCE = .1f; // how far apart the segments are
@@ -20,7 +19,7 @@ public class BeardAnimationController : MonoBehaviour {
     private Vector3 beardPath;
     private Vector3 beardOrigin;
 
-    private BeardAnimationState nextState = BeardAnimationState.IDLE; // which state to transition to next after the current one
+    private BeardState nextState = BeardState.IDLE; // which state to transition to next after the current one
 
 	// Use this for initialization
 	void Start () {
@@ -36,15 +35,15 @@ public class BeardAnimationController : MonoBehaviour {
 
     public void WhipBeard(Transform targetTransform)
     {
-        if(currentAnimationState != BeardAnimationState.IDLE) { return; }
-        nextState = BeardAnimationState.RETRACTING;
+        if(PlayerState.CurrentBeardState != BeardState.IDLE) { return; }
+        nextState = BeardState.RETRACTING;
         ExtendBeard(targetTransform);
     }
 
     public void GrappleBeard(Transform targetTransform)
     {
-        if (currentAnimationState != BeardAnimationState.IDLE) { return; }
-        nextState = BeardAnimationState.PULLING;
+        if (PlayerState.CurrentBeardState != BeardState.IDLE) { return; }
+        nextState = BeardState.PULLING;
         ExtendBeard(targetTransform);
     }
 
@@ -53,24 +52,24 @@ public class BeardAnimationController : MonoBehaviour {
     {
         target = targetTransform;
         maxSegments = (int)((target.position - beardOrigin).magnitude / SEGMENTDISTANCE); // can't use beardPath here as it hasn't been updated yet
-        currentAnimationState = BeardAnimationState.EXTENDING;
+        PlayerState.CurrentBeardState = BeardState.EXTENDING;
     }
 
     private void FixedUpdate()
     {
         beardOrigin = transform.position;
         beardPath = target.position - beardOrigin;
-        switch (currentAnimationState)
+        switch (PlayerState.CurrentBeardState)
         {
-            case BeardAnimationState.EXTENDING:
+            case BeardState.EXTENDING:
                 AddBeardSegment();
                 break;
-            case BeardAnimationState.RETRACTING:
+            case BeardState.RETRACTING:
                 RemoveBeardSegment();
                 break;
-            case BeardAnimationState.IDLE:
+            case BeardState.IDLE:
                 break;
-            case BeardAnimationState.PULLING:
+            case BeardState.PULLING:
                 RemoveTrailingBeardSegments();
                 break;
             default:
@@ -107,7 +106,7 @@ public class BeardAnimationController : MonoBehaviour {
         {
             visibleSegments = 0;
             trailingSegments = 0;
-            currentAnimationState = BeardAnimationState.IDLE;
+            PlayerState.CurrentBeardState = BeardState.IDLE;
         }
     }
 
@@ -116,7 +115,7 @@ public class BeardAnimationController : MonoBehaviour {
         // if we've reached max length, transition to the next state, otherwise, lengthen the beard
         if (visibleSegments >= maxSegments)
         {
-            currentAnimationState = nextState;
+            PlayerState.CurrentBeardState = nextState;
         }
         else
         {
@@ -130,7 +129,7 @@ public class BeardAnimationController : MonoBehaviour {
         // if we've retracted fully, transition to idle state, otherwize, shorten the beard
         if(visibleSegments == 0)
         {
-            currentAnimationState = BeardAnimationState.IDLE;
+            PlayerState.CurrentBeardState = BeardState.IDLE;
         }
         else
         {
