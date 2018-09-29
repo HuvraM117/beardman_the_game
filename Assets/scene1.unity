@@ -558,8 +558,8 @@ GameObject:
   - component: {fileID: 1787613654}
   - component: {fileID: 1787613659}
   - component: {fileID: 1787613657}
-  - component: {fileID: 1787613660}
   - component: {fileID: 1787613661}
+  - component: {fileID: 1787613662}
   m_Layer: 0
   m_Name: Beard Man
   m_TagString: Untagged
@@ -696,20 +696,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.12819394, y: 0.13644353}
   m_EdgeRadius: 0
---- !u!114 &1787613660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1787613653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001bc23711f544d29a5f989dfa394056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particle: {fileID: 1078567856286056, guid: 1808af0af0b1541539315a01a98f9098, type: 2}
-  character: {fileID: 0}
-  maxDis: 2
 --- !u!114 &1787613661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +709,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle: {fileID: 1970095775}
   character: {fileID: 1787613653}
-  maxDis: 2
+--- !u!114 &1787613662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1787613653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e71cf891b3c9b4d8853c19b9fc7247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1884768606
 Prefab:
   m_ObjectHideFlags: 0
