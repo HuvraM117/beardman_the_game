@@ -50,7 +50,7 @@ public class PlayerState : MonoBehaviour {
     {
         if (BeardLength < 3f && health - BEARDGROWTHRATE > 0)
             BeardLength = BeardLength + BEARDGROWTHRATE;
-        Debug.Log(vitality);
+        Debug.Log("health: " + health + "length: " + beardLength + "vitality: " + vitality);
     }
 
     //Shrinks the maximum attack range
