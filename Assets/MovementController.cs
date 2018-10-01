@@ -9,7 +9,7 @@ public class MovementController : MonoBehaviour {
     private bool isGrounded = true;
     private bool isCrouching = false;
     private const float MOVESPEED = 3f;
-    private const float JUMPFORCE = 6f;
+    private const float JUMPFORCE = 12f;
 
 	// Use this for initialization
 	void Start () {
