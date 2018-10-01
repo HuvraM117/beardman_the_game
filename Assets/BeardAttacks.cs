@@ -6,7 +6,6 @@ public class BeardAttacks : MonoBehaviour {
 	public GameObject particle;
 	public GameObject character;
 	public static Vector3 mousePosition;
-	public static float maxDis = 2f;
 
     private BeardAnimationController beardAnimator;
 
@@ -24,7 +23,7 @@ public class BeardAttacks : MonoBehaviour {
 		pos = Camera.main.ScreenToWorldPoint(pos) + new Vector3 (0, 0, 9);
 
 		float distance = Vector3.Distance(character.transform.position, pos);
-		if (distance > maxDis)
+		if (distance > PlayerState.BeardLength)
 			particle.transform.position = old;
 		else
 			particle.transform.position = pos;
@@ -33,28 +32,6 @@ public class BeardAttacks : MonoBehaviour {
 		{
             UseBeard();
 		}
-		//Controls beard length
-		if (Input.GetKey ("e"))
-			growBeard ();
-		if (Input.GetKey ("q"))
-			shrinkBeard ();
-	}
-
-	//Increases the maximum attack range
-	public void growBeard() {
-		if (maxDis < 3f)
-			maxDis = maxDis + 0.02f;
-	}
-
-	//Shrinks the maximum attack range
-	public void shrinkBeard() {
-		if (maxDis > 1f)
-			maxDis = maxDis - 0.02f;
-	}
-
-	//Returns current beard size
-	public static float getBeard() {
-		return maxDis;
 	}
 
     public void UseBeard()
