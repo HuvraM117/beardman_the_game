@@ -9,7 +9,6 @@ public class AnimalMovement : MonoBehaviour {
 
 	private int movingRight; // 1 if animal is moving right, -1 if moving left
 	private int speed; //determines speed of animal 
-	private double speedModifier; //used to scale speed of all animals
 	private double jumpProbability; // determines % of time enemy will jump if at end of platform
 									// e.g. jumpProbability = 0 means it will never jump
 									// 		jumpProbability = .5 means it will jump half the time
@@ -23,7 +22,7 @@ public class AnimalMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Moves animal
-		Vector2 vector = new Vector2(1 * movingRight, 0) * speed * speedModifier;
+		Vector2 vector = new Vector2(1f * movingRight, 0f) * speed;
 		m_rigidbody.AddForce(vector);
 	}
 
@@ -38,6 +37,7 @@ public class AnimalMovement : MonoBehaviour {
 
 	private IEnumerator jump() {
 		//TODO JUMP
+		return null;
 	}
 
 }
