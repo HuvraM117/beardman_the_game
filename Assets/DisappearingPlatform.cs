@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestructiblePlatform : MonoBehaviour {
+public class DisappearingPlatform : MonoBehaviour {
 
     private static BoxCollider2D boxCol;
     private int timesHit;
