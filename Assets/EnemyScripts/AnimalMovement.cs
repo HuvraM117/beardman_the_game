@@ -7,30 +7,37 @@ using UnityEngine;
 
 public class AnimalMovement : MonoBehaviour {
 
-	//TODO: make these editable in screen/not hardcoded
 	private int movingRight; // 1 if animal is moving right, -1 if moving left
 	private int speed; //determines speed of animal 
-	private double speedModifier = 1; //used to scale speed of all animals
+	private double speedModifier; //used to scale speed of all animals
 	private double jumpProbability; // determines % of time enemy will jump if at end of platform
 									// e.g. jumpProbability = 0 means it will never jump
 									// 		jumpProbability = .5 means it will jump half the time
+	private Rigidbody2D m_rigidbody;
 
 	// Use this for initialization
 	void Start () {
-		//assign all variables
-		//make sure it's on a platform
+		m_rigidbody = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//TODO: determine way to check for playform edges 
-		//if at the edge of a platform
-			//if jumps 
-				//start jump subroutine
-				//TODO: code jumps
-			//else 
-			movingRight = -movingRight;
-		//else
-		//transform.Translate (Vector2.right * speed * Time.deltaTime * speedModifier); //moves animal
+		//Moves animal
+		Vector2 vector = new Vector2(1 * movingRight, 0) * speed * speedModifier;
+		m_rigidbody.AddForce(vector);
 	}
+
+	void reachEndOfPlatform() {
+		double doIJump = Random.Range(0f, 1f);
+		if (doIJump < jumpProbability) {
+			StartCoroutine(jump);
+		} else {
+			movingRight = -movingRight;
+		}
+	}
+
+	private IEnumerator jump() {
+		//TODO JUMP
+	}
+
 }
