@@ -14,7 +14,10 @@ public class DisappearingPlatform : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        timesHit++;
+        if(collision.gameObject.GetComponent<PlayerState>() != null)
+        {
+            timesHit++;
+        }
     }
 
     private void shakePlatform()
