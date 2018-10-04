@@ -5,7 +5,7 @@ using UnityEngine;
 public class BarberToolMovement : MonoBehaviour {
 
 	public int speed;
-	public int followRange;
+	public int followRange; //NOTE: Only is concerned with X distance
 	private int movingRight;
 	private bool following;
 	public GameObject player;
