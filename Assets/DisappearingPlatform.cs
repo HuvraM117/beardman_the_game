@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestructiblePlatform : MonoBehaviour {
+public class DisappearingPlatform : MonoBehaviour {
 
     private static BoxCollider2D boxCol;
     private int timesHit;
@@ -14,7 +14,10 @@ public class DestructiblePlatform : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        timesHit++;
+        if(collision.gameObject.GetComponent<PlayerState>() != null)
+        {
+            timesHit++;
+        }
     }
 
     private void shakePlatform()
