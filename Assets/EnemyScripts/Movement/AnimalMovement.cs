@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Caitlin
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +10,8 @@ using UnityEngine;
 public class AnimalMovement : MonoBehaviour {
 
 	private int movingRight; // 1 if animal is moving right, -1 if moving left
-	private int speed; //determines speed of animal 
-	private double jumpProbability; // determines % of time enemy will jump if at end of platform
+	public int speed; //determines speed of animal 
+	public double jumpProbability; // determines % of time enemy will jump if at end of platform
 									// e.g. jumpProbability = 0 means it will never jump
 									// 		jumpProbability = .5 means it will jump half the time
 	private Rigidbody2D m_rigidbody;
@@ -17,6 +19,7 @@ public class AnimalMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		m_rigidbody = GetComponent<Rigidbody2D>();
+		movingRight = 1;
 	}
 	
 	// Update is called once per frame
