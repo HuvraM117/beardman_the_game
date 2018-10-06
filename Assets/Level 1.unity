@@ -423,6 +423,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beardSegmentPrefab: {fileID: 1445031378707720, guid: 99e41ff2d5d967449adf82c91200dd31,
     type: 2}
+  beardTipPrefab: {fileID: 1863146338731996, guid: f7a9fa71524fdcb4b88bd206dc4258d0,
+    type: 2}
 --- !u!1001 &763813138
 Prefab:
   m_ObjectHideFlags: 0
@@ -25889,6 +25891,31 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
+--- !u!1 &1478733995 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1866543607845252, guid: d606b326acb29a94799fcc4e9b7e68ce,
+    type: 2}
+  m_PrefabInternal: {fileID: 1259710430}
+--- !u!50 &1478734000
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1478733995}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1485989863
 Prefab:
   m_ObjectHideFlags: 0
