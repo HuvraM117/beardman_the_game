@@ -32,7 +32,7 @@ public class AnimalMovement : MonoBehaviour {
 	void reachEndOfPlatform() {
 		double doIJump = Random.Range(0f, 1f);
 		if (doIJump < jumpProbability) {
-			StartCoroutine(jump);
+			StartCoroutine(jump());
 		} else {
 			movingRight = -movingRight;
 		}
