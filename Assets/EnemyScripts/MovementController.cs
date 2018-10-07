@@ -11,8 +11,8 @@ public class MovementController : MonoBehaviour {
         get { return groundedState.IsGrounded; }
     }
     private bool isCrouching = false;
-    private const float MOVESPEED = 3f;
-    private const float JUMPFORCE = 12f;
+    [SerializeField] private float MOVESPEED = 5f;
+    [SerializeField] private float JUMPFORCE = 12f;
 
 	// Use this for initialization
 	void Start () {
@@ -21,12 +21,11 @@ public class MovementController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         isCrouching = Input.GetButton("Crouch");
         m_rigidbody.velocity = UpdateMovement();
 	}
 
-    // TODO: fix bug where it sticks to walls
     private Vector2 UpdateMovement()
     {
         Vector2 moveInput = m_rigidbody.velocity;
