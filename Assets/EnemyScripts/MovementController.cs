@@ -6,10 +6,13 @@ public class MovementController : MonoBehaviour {
 
     private Rigidbody2D m_rigidbody;
     private Collider2D footCollider;
-    private bool isGrounded = true;
+    [SerializeField] private FootController groundedState;
+    private bool IsGrounded {
+        get { return groundedState.IsGrounded; }
+    }
     private bool isCrouching = false;
     private const float MOVESPEED = 3f;
-    private const float JUMPFORCE = 6f;
+    private const float JUMPFORCE = 12f;
 
 	// Use this for initialization
 	void Start () {
@@ -20,43 +23,38 @@ public class MovementController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         isCrouching = Input.GetButton("Crouch");
-        UpdateMovement();
+        m_rigidbody.velocity = UpdateMovement();
 	}
 
     // TODO: fix bug where it sticks to walls
-    private void UpdateMovement()
+    private Vector2 UpdateMovement()
     {
         Vector2 moveInput = m_rigidbody.velocity;
+
+        if(PlayerState.CurrentBeardState == BeardState.PULLING)
+        {
+            return moveInput;
+        }
 
         if(!isCrouching)
         {
             moveInput.x = Input.GetAxis("Horizontal") * MOVESPEED;
         }
-        else if (isGrounded)
+        else if (IsGrounded)
         {
             moveInput.x = 0;
         }
 
-        if(isGrounded && Input.GetButtonDown("Jump")) {
+        if(IsGrounded && Input.GetButtonDown("Jump")) {
             moveInput.y = JUMPFORCE;
-            isGrounded = false;
+            // isGrounded = false;
         }
 
-        m_rigidbody.velocity = moveInput;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        isGrounded = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isGrounded = false;
+        return moveInput;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision");
+        //Debug.Log("collision");
     }
 }
