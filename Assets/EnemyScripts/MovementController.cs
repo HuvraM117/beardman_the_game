@@ -54,6 +54,6 @@ public class MovementController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision");
+        //Debug.Log("collision");
     }
 }
