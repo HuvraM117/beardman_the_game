@@ -11,24 +11,35 @@ public class MovementController : MonoBehaviour {
     private const float MOVESPEED = 3f;
     private const float JUMPFORCE = 6f;
 
+    //The input values calculated from update every frame.
+    private float horizontal;
+    private bool jump;
+
+    //Field which indicates whether or not the character is on the ground. If set, the player can jump.
+    private bool grounded;
+
+    Vector2 velocity;
+
+    private BeardController beardController;
 	// Use this for initialization
 	void Start () {
         m_rigidbody = GetComponent<Rigidbody2D>();
         footCollider = GetComponent<CircleCollider2D>();
+        beardController = GameObject.Find("Beard").GetComponent<BeardController>();
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+    
+    void FixedUpdate()
+    {
         isCrouching = Input.GetButton("Crouch");
         UpdateMovement();
-	}
+    }
 
     // TODO: fix bug where it sticks to walls
     private void UpdateMovement()
     {
         Vector2 moveInput = m_rigidbody.velocity;
 
-        if(!isCrouching)
+        if (!isCrouching)
         {
             moveInput.x = Input.GetAxis("Horizontal") * MOVESPEED;
         }
@@ -37,16 +48,19 @@ public class MovementController : MonoBehaviour {
             moveInput.x = 0;
         }
 
-        if(isGrounded && Input.GetButtonDown("Jump")) {
+        if (isGrounded && Input.GetButtonDown("Jump"))
+        {
             moveInput.y = JUMPFORCE;
             isGrounded = false;
         }
 
-        m_rigidbody.velocity = moveInput;
+        if (!beardController.isGrappling)
+            m_rigidbody.velocity = moveInput;
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.tag == "Floor")
         isGrounded = true;
     }
 
@@ -58,5 +72,10 @@ public class MovementController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log("collision");
+    }
+
+    public void setGrounded(bool isGround)
+    {
+        isGrounded = isGround;
     }
 }

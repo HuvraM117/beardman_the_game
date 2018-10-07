@@ -7,8 +7,13 @@ public class BeardController : MonoBehaviour {
     public float followDistance = 0f;
     public bool isLimitedByDistance = true;
     public Rigidbody2D beardman;
+    private MovementController movementController;
 
+    public bool canGrapple = false;
     public bool isGrappling = false;
+    public float grappleForce = 3f;
+    private float grappleStrength = 0f;
+    private Vector2 grapplePoint;
     Camera mainCamera;
 	// Use this for initialization
 	void Start () {
@@ -17,10 +22,11 @@ public class BeardController : MonoBehaviour {
             beardman = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         }
         mainCamera = Camera.main;
+        movementController = beardman.GetComponent<MovementController>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if (isLimitedByDistance)
         {
             Vector2 mousePos = Input.mousePosition;
@@ -37,32 +43,41 @@ public class BeardController : MonoBehaviour {
             if (followDistance > 0.25)
             followDistance -= 0.25f;
         }
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if(canGrapple && grapplePoint != null)
+            {
+                Grapple();
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.name == "GrappleLatch")
         {
-            isGrappling = true;
-            Vector2 distance = (Vector2) collision.transform.position - beardman.position;
-            if(distance.magnitude <= followDistance)
-                Grapple(distance);
+            canGrapple = true;
+            grapplePoint = (Vector2) collision.transform.position;
         }
     }
-
-    private void Grapple(Vector2 distance)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        //Adds force in current direction 
-        var dir = distance;
-        float force = 3f;
+        canGrapple = false;
+    }
 
-        Debug.Log(distance * force);
+    private void Grapple()
+    {
+        isGrappling = true;
+        if (grapplePoint.magnitude <= followDistance)
+        {
+            //Adds force in current direction 
+            var dir = grapplePoint - beardman.position;
 
-        beardman.AddForce(dir * force, ForceMode2D.Impulse);
-        //if (distance.x > 0)
-        //    beardman.AddForce(Vector2.right * force, ForceMode2D.Impulse);
-        //else if (distance.x < 0)
-        //    beardman.AddForce(Vector2.left * force, ForceMode2D.Impulse);
-
+            beardman.AddForce(dir * grappleForce, ForceMode2D.Impulse);
+            
+        }
         isGrappling = false;
     }
 

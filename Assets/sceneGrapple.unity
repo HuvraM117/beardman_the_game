@@ -662,7 +662,6 @@ GameObject:
   - component: {fileID: 1979875768}
   - component: {fileID: 1979875771}
   - component: {fileID: 1979875772}
-  - component: {fileID: 1979875773}
   m_Layer: 0
   m_Name: Beard
   m_TagString: Untagged
@@ -684,7 +683,9 @@ MonoBehaviour:
   followDistance: 4
   isLimitedByDistance: 1
   beardman: {fileID: 1787613658}
+  canGrapple: 0
   isGrappling: 0
+  grappleForce: 3
 --- !u!212 &1979875769
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -777,21 +778,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!232 &1979875773
-DistanceJoint2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1979875767}
-  m_Enabled: 0
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 1787613658}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.3478261, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 0.005
-  m_MaxDistanceOnly: 0
