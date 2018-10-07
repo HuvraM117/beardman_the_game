@@ -159,6 +159,88 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &482023935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 482023936}
+  - component: {fileID: 482023938}
+  - component: {fileID: 482023937}
+  - component: {fileID: 482023939}
+  m_Layer: 2
+  m_Name: Feet
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &482023936
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 482023935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 675649040}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &482023937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 482023935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01fbeeb4a52a2c419264fc02b978696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &482023938
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 482023935}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.06464274}
+  serializedVersion: 2
+  m_Radius: 0.020846903
+--- !u!61 &482023939
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 482023935}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0001867339, y: -0.072679654}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.14064743, y: 0.0111655295}
+  m_EdgeRadius: 0
 --- !u!1001 &651168473
 Prefab:
   m_ObjectHideFlags: 0
@@ -217,12 +299,11 @@ GameObject:
   - component: {fileID: 675649038}
   - component: {fileID: 675649037}
   - component: {fileID: 675649036}
-  - component: {fileID: 675649035}
   - component: {fileID: 675649034}
   - component: {fileID: 675649033}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Beard Man
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,21 +332,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle: {fileID: 1097631706}
   character: {fileID: 675649032}
---- !u!58 &675649035
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 675649032}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05782071}
-  serializedVersion: 2
-  m_Radius: 0.02217929
 --- !u!61 &675649036
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -302,6 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d808b3362e1a64cbc846838b22c6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundedState: {fileID: 482023937}
 --- !u!50 &675649038
 Rigidbody2D:
   serializedVersion: 4
@@ -378,6 +445,7 @@ Transform:
   m_Children:
   - {fileID: 754822331}
   - {fileID: 1755581583}
+  - {fileID: 482023936}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -390,9 +458,9 @@ GameObject:
   m_Component:
   - component: {fileID: 754822331}
   - component: {fileID: 754822332}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Beard
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26065,7 +26133,7 @@ GameObject:
   - component: {fileID: 1755581582}
   - component: {fileID: 1755581581}
   - component: {fileID: 1755581580}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
