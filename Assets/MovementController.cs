@@ -21,12 +21,11 @@ public class MovementController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         isCrouching = Input.GetButton("Crouch");
         m_rigidbody.velocity = UpdateMovement();
 	}
 
-    // TODO: fix bug where it sticks to walls
     private Vector2 UpdateMovement()
     {
         Vector2 moveInput = m_rigidbody.velocity;
