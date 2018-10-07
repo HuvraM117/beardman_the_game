@@ -11,8 +11,8 @@ public class MovementController : MonoBehaviour {
         get { return groundedState.IsGrounded; }
     }
     private bool isCrouching = false;
-    private const float MOVESPEED = 3f;
-    private const float JUMPFORCE = 12f;
+    [SerializeField] private float MOVESPEED = 5f;
+    [SerializeField] private float JUMPFORCE = 12f;
 
 	// Use this for initialization
 	void Start () {
