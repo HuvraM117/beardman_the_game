@@ -6,7 +6,10 @@ public class MovementController : MonoBehaviour {
 
     private Rigidbody2D m_rigidbody;
     private Collider2D footCollider;
-    private bool isGrounded = true;
+    [SerializeField] private FootController groundedState;
+    private bool IsGrounded {
+        get { return groundedState.IsGrounded; }
+    }
     private bool isCrouching = false;
     private const float MOVESPEED = 3f;
     private const float JUMPFORCE = 12f;
@@ -37,31 +40,21 @@ public class MovementController : MonoBehaviour {
         {
             moveInput.x = Input.GetAxis("Horizontal") * MOVESPEED;
         }
-        else if (isGrounded)
+        else if (IsGrounded)
         {
             moveInput.x = 0;
         }
 
-        if(isGrounded && Input.GetButtonDown("Jump")) {
+        if(IsGrounded && Input.GetButtonDown("Jump")) {
             moveInput.y = JUMPFORCE;
-            isGrounded = false;
+            // isGrounded = false;
         }
 
         return moveInput;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        isGrounded = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isGrounded = false;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision");
+        //Debug.Log("collision");
     }
 }
