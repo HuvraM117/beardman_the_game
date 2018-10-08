@@ -6,6 +6,7 @@ public class MovementController : MonoBehaviour {
 
     private Rigidbody2D m_rigidbody;
     private Collider2D footCollider;
+	public Animator playerAnimator;
     [SerializeField] private FootController groundedState;
     private bool IsGrounded {
         get { return groundedState.IsGrounded; }
@@ -29,6 +30,9 @@ public class MovementController : MonoBehaviour {
 	void Update () {
         isCrouching = Input.GetButton("Crouch");
         m_rigidbody.velocity = UpdateMovement();
+		playerAnimator.SetFloat("Speed",m_rigidbody.velocity.magnitude);
+		playerAnimator.SetBool ("Grounded", IsGrounded);
+
 	}
 
     private Vector2 UpdateMovement()
