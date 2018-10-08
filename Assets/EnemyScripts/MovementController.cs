@@ -13,11 +13,16 @@ public class MovementController : MonoBehaviour {
     private bool isCrouching = false;
     [SerializeField] private float MOVESPEED = 5f;
     [SerializeField] private float JUMPFORCE = 12f;
+	private Vector3 crouchSize;
+	private Vector3 fullSize;
 
 	// Use this for initialization
 	void Start () {
         m_rigidbody = GetComponent<Rigidbody2D>();
         footCollider = GetComponent<CircleCollider2D>();
+		fullSize = new Vector3 (m_rigidbody.transform.localScale.x, 
+			m_rigidbody.transform.localScale.y, m_rigidbody.transform.localScale.z);
+		crouchSize = Vector3.Scale (fullSize, new Vector3 (1f, 0.5f, 1f));
 	}
 	
 	// Update is called once per frame
@@ -38,10 +43,12 @@ public class MovementController : MonoBehaviour {
         if(!isCrouching)
         {
             moveInput.x = Input.GetAxis("Horizontal") * MOVESPEED;
+			m_rigidbody.transform.localScale = fullSize;
         }
         else if (IsGrounded)
         {
-            moveInput.x = 0;
+			moveInput.x = Input.GetAxis("Horizontal") * 1.5f;
+			m_rigidbody.transform.localScale = crouchSize;
         }
 
         if(IsGrounded && Input.GetButtonDown("Jump")) {
