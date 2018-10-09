@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1873155417617968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.43, y: -0, z: -0.6524556}
-  m_LocalScale: {x: -1.3952192, y: 1.5354482, z: 0.8891264}
+  m_LocalScale: {x: -1.3952191, y: 1.5354481, z: 0.8891264}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -143,4 +143,4 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
