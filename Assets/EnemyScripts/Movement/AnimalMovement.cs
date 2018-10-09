@@ -36,13 +36,11 @@ public class AnimalMovement : MonoBehaviour {
 	}
 
 	void reachEndOfPlatform() {
-		if (!jumping) {
-			double doIJump = Random.Range(0f, 1f);
-			if (doIJump < jumpProbability) {
-				StartCoroutine(jump());
-			} else {
-				movingRight = -movingRight;
-			}
+		double doIJump = Random.Range(0f, 1f);
+		if (doIJump < jumpProbability) {
+			StartCoroutine(jump());
+		} else {
+			movingRight = -movingRight;
 		}
 	}
 
@@ -50,7 +48,7 @@ public class AnimalMovement : MonoBehaviour {
 		jumping = true;
 		float amountToMove = speed * Time.deltaTime;
 		Vector2 movement = new Vector2(movingRight * amountToMove, amountToMove);
-		m_rigidbody.AddForce(movement, ForceMode.Force);
+		//m_rigidbody.AddForce(movement, ForceMode.Force);
 
 		jumping = false;
 		return null;
