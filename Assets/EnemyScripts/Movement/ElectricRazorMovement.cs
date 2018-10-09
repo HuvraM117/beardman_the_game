@@ -10,6 +10,9 @@ using UnityEngine;
 public class ElectricRazorMovement : MonoBehaviour {
 
 	private int movingRight; // 1 if moving right, -1 if moving left
+	private bool following;
+
+	public int followRange;
 	public int speed;
 
 	// Use this for initialization
