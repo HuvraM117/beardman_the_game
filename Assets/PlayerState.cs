@@ -61,6 +61,16 @@ public class PlayerState : MonoBehaviour {
         Debug.Log(vitality);
     }
 
+	public void TakeDamage (int amount){
+		if (currentHealth <= 0){
+			currentHealth = 0; 
+			gameObject.SetActive(false); 
+			/* despawn need to add in some kind of animation with it */
+		}
+		currentHealth -= amount; 
+	}
+		
+
     private void FixedUpdate()
     {
         //Controls beard length
