@@ -159,26 +159,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &428536138 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1314171303530192, guid: c484befcede4d42b5ad201485afa0ce0,
-    type: 2}
-  m_PrefabInternal: {fileID: 1586684336}
---- !u!58 &428536139
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 428536138}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.07050213, y: 0.048130315}
-  serializedVersion: 2
-  m_Radius: 0.25811517
 --- !u!1 &482023935
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e71cf891b3c9b4d8853c19b9fc7247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 10
 --- !u!114 &675649034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,65 +505,41 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4192892613286652, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
+    - target: {fileID: 4737114319278692, guid: 68f1bb15593544781a09eddc85110583, type: 2}
       propertyPath: m_LocalPosition.x
       value: 22.45
       objectReference: {fileID: 0}
-    - target: {fileID: 4192892613286652, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
+    - target: {fileID: 4737114319278692, guid: 68f1bb15593544781a09eddc85110583, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0.74
       objectReference: {fileID: 0}
-    - target: {fileID: 4192892613286652, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
+    - target: {fileID: 4737114319278692, guid: 68f1bb15593544781a09eddc85110583, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4192892613286652, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
+    - target: {fileID: 4737114319278692, guid: 68f1bb15593544781a09eddc85110583, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4192892613286652, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
+    - target: {fileID: 4737114319278692, guid: 68f1bb15593544781a09eddc85110583, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4192892613286652, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
+    - target: {fileID: 4737114319278692, guid: 68f1bb15593544781a09eddc85110583, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4192892613286652, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
+    - target: {fileID: 4737114319278692, guid: 68f1bb15593544781a09eddc85110583, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4192892613286652, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
+    - target: {fileID: 4737114319278692, guid: 68f1bb15593544781a09eddc85110583, type: 2}
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1314171303530192, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
-      propertyPath: m_Name
-      value: Grapple Point
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 68f1bb15593544781a09eddc85110583, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &763813139 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1314171303530192, guid: c484befcede4d42b5ad201485afa0ce0,
-    type: 2}
-  m_PrefabInternal: {fileID: 763813138}
---- !u!58 &763813140
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 763813139}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.07050213, y: 0.048130315}
-  serializedVersion: 2
-  m_Radius: 0.25811517
 --- !u!1 &782488414
 GameObject:
   m_ObjectHideFlags: 0
@@ -26201,14 +26158,6 @@ Prefab:
     - target: {fileID: 1314171303530192, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
       propertyPath: m_Name
       value: Grapple Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 4192892613286652, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.99421257
-      objectReference: {fileID: 0}
-    - target: {fileID: 4192892613286652, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.8495235
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}

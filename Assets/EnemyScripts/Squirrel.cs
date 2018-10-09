@@ -28,7 +28,7 @@ public class Squirrel : BaseEnemy
     {
         MoveLeft();
     }
-    void MoveLeft()
+    public override void MoveLeft()
     {
         // The vector to move left
         var leftVector = new Vector2(-5, 0) * MoveSpeed;
