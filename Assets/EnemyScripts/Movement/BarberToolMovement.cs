@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿//Caitlin 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarberToolMovement : MonoBehaviour {
+public class BarberToolMovementWalking : MonoBehaviour {
 
 	public int speed;
 	public int followRange; //NOTE: Only is concerned with X distance
