@@ -6,6 +6,7 @@ public class MovingPlatform : MonoBehaviour {
 
     [SerializeField] GameObject startPlatform;
     [SerializeField] GameObject destinationPlatform;
+    [SerializeField] float speed;
 
     Vector3 startingPos;
     Vector3 endPos;
@@ -52,12 +53,12 @@ public class MovingPlatform : MonoBehaviour {
         var pos = startPlatform.transform.position;
         if (goingUp)
         {
-            float changedX = pos.x + 0.001f;
+            float changedX = pos.x + (speed * .0001f);
             float changedY = (changedX * scale) + b;
             startPlatform.transform.position = new Vector3(changedX, changedY, pos.z);
         }
         else{
-            float changedX = pos.x - 0.001f;
+            float changedX = pos.x - (speed * .0001f);
             float changedY = (changedX * scale) + b;
             startPlatform.transform.position = new Vector3(changedX, changedY, pos.z);
         }
