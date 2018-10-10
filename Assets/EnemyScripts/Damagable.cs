@@ -5,13 +5,13 @@ using UnityEngine;
 public class Damagable : MonoBehaviour {
 
 	public int max_health = 1; //one for squirrel + bird 
-	public int current_health = 0;
+	public int currentHealth = 0;
 	public bool alive = true; 
 
 	// Use this for initialization
 	void Start () {
 		alive = true; 
-		current_health = max_health;
+		currentHealth = max_health;
 	}
 
 	public void TakeDamage(int amount){
@@ -19,13 +19,13 @@ public class Damagable : MonoBehaviour {
 			return; 
 		}
 
-		if (current_health <= 0){
-			current_health = 0; 
+		if (currentHealth <= 0){
+			currentHealth = 0; 
 			alive = false; 
 			gameObject.SetActive(false); 
 			/* despawn need to add in some kind of animation with it */
 		}
-		current_health -= amount; 
+		currentHealth -= amount; 
 	}
 
 	// Update is called once per frame
