@@ -34,8 +34,6 @@ public class DoesDamage : MonoBehaviour {
 
 	void Attack ()
 	{
-		// Reset the timer.
-		timer = 0f;
 
 		if(playerHealth.currentHealth > 0)
 		{
@@ -43,7 +41,7 @@ public class DoesDamage : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerExit2D(Collider2D collider)
+	void OnCollisionExit2D(Collider2D collider)
 	{
 		
 	}
