@@ -21,14 +21,14 @@ public class DoesDamage : MonoBehaviour {
 		enemyhealth = player.GetComponent <Damagable> ();
 	}
 
-	void OnTriggerEnter2D (Collider2D other)
+	void OnCollisionEnter2D (Collision2D other)
 	{
 		timer += Time.deltaTime;
 
-		if(timer >= timeBetweenAttacks && enemyhealth.currentHealth > 0){
-			if (other.gameObject == player) {
-				Attack ();
-			}
+		Debug.Log("I hit the player!");
+
+		if (other.gameObject == player) {
+			Attack ();
 		}
 	}
 
