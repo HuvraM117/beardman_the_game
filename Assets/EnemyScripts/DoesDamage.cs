@@ -18,16 +18,22 @@ public class DoesDamage : MonoBehaviour {
 	void Start () {
 		playerHealth = player.GetComponent <PlayerState> ();
 		enemyhealth = player.GetComponent <Damagable> ();
+		timer = timeBetweenAttacks; // makes so can immediatly attack without waiting cooldown period
+	}
+
+	void Update(){
+		timer += Time.deltaTime;
 	}
 
 	void OnCollisionEnter2D (Collision2D other)
 	{
-		timer += Time.deltaTime;
+		if (timer >= timeBetweenAttacks) {
+			timer = 0;
+			Debug.Log("I hit the player!");
 
-		Debug.Log("I hit the player!");
-
-		if (other.gameObject == player) {
-			StartCoroutine(Attack());
+			if (other.gameObject == player) {
+				StartCoroutine(Attack());
+			}
 		}
 	}
 
@@ -47,9 +53,7 @@ public class DoesDamage : MonoBehaviour {
 		
 	}
 
-	void Update(){
-		
-	}
+
 
 
 }
