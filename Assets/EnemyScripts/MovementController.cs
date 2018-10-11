@@ -77,9 +77,11 @@ public class MovementController : MonoBehaviour {
 			if (moveInput.x > 0) {
 				m_rigidbody.transform.localScale = crouchRight;
 				lastDir = true;
+				canShield = false;
 			} else if (moveInput.x < 0) {
 				m_rigidbody.transform.localScale = crouchLeft;
 				lastDir = false;
+				canShield = false;
 			} else if (moveInput.x == 0) {
 				canShield = true;
 				if (lastDir)
