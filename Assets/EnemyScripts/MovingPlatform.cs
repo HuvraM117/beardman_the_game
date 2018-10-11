@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class MovingPlatform : MonoBehaviour {
     [SerializeField] GameObject startPlatform;
     [SerializeField] GameObject destinationPlatform;
     [SerializeField] float speed;
+    [SerializeField] bool LEFTandRIGHT;
+    [SerializeField] bool UPandDown;
 
     Vector3 startingPos;
     Vector3 endPos;
@@ -32,17 +35,33 @@ public class MovingPlatform : MonoBehaviour {
         goingUp = true;
     }
 
-    //THIS only works for up and down right now 
     void checkIfChangeDirection()
     {
         var pos = startPlatform.transform.position;
 
-        if (pos.y > endPos.y)
+        if (UPandDown)
         {
-            goingUp = false;
-        }else if (pos.y < startingPos.y)
+
+            if (pos.y > endPos.y)
+            {
+                goingUp = false;
+            }
+            else if (pos.y < startingPos.y)
+            {
+                goingUp = true;
+            }
+        }
+
+        if (LEFTandRIGHT)
         {
-            goingUp = true;
+            if (pos.x > endPos.x)
+            {
+                goingUp = false;
+            }
+            else if (pos.x < startingPos.x)
+            {
+                goingUp = true;
+            }
         }
     }
 
@@ -51,16 +70,36 @@ public class MovingPlatform : MonoBehaviour {
 	void Update () {
 
         var pos = startPlatform.transform.position;
-        if (goingUp)
+        if (UPandDown)
         {
-            float changedX = pos.x + (speed * .0001f);
-            float changedY = (changedX * scale) + b;
-            startPlatform.transform.position = new Vector3(changedX, changedY, pos.z);
+            if (goingUp)
+            {
+                float changedX = pos.x + (speed * .0001f);
+                float changedY = (changedX * scale) + b;
+                startPlatform.transform.position = new Vector3(changedX, changedY, pos.z);
+            }
+            else
+            {
+                float changedX = pos.x - (speed * .0001f);
+                float changedY = (changedX * scale) + b;
+                startPlatform.transform.position = new Vector3(changedX, changedY, pos.z);
+            }
         }
-        else{
-            float changedX = pos.x - (speed * .0001f);
-            float changedY = (changedX * scale) + b;
-            startPlatform.transform.position = new Vector3(changedX, changedY, pos.z);
+
+        if (LEFTandRIGHT)
+        {
+            if (goingUp)
+            {
+                float changedX = pos.x + (speed * .001f);
+                float changedY = pos.y; //(changedX * scale) + b;
+                startPlatform.transform.position = new Vector3(changedX, changedY, pos.z);
+            }
+            else
+            {
+                float changedX = pos.x - (speed * .001f);
+                float changedY = pos.y;// (changedX * scale) + b;
+                startPlatform.transform.position = new Vector3(changedX, changedY, pos.z);
+            }
         }
         checkIfChangeDirection();
     }
