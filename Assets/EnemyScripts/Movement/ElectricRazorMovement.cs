@@ -37,7 +37,7 @@ public class ElectricRazorMovement : MonoBehaviour {
 			currentFloated = 0; // resets floating distance 
 		} else {
 			transform.Translate(direction * speed * Time.deltaTime);
-			currentFloated += direction * speed * Time.deltaTime;
+			currentFloated = currentFloated + Mathf.Sqrt(Vector2.SqrMagnitude(direction * speed * Time.deltaTime));
 
 			if (currentFloated >= idleFloatRange) {
 				currentFloated = 0;
