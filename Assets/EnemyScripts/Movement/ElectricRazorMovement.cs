@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* 
- * Will move horizontally back and forth (TODO: make not move around platforms)
+ * Will move horizontally back and forth, and follow player if in range
+ * TODO: take platforms into account or something
 */
 public class ElectricRazorMovement : MonoBehaviour {
 
@@ -27,12 +28,14 @@ public class ElectricRazorMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector2 direction = new Vector2 (1 * movingRight, 0.0f);
-		float distanceToPlayer = Mathf.Sqrt ((Mathf.Pow(player.transform.position.x - this.transform.position.x, 2.0f)) +
-			Mathf.Pow(player.transform.position.y - this.transform.position.y, 2.0f));
+		float xDistance = player.transform.position.x - this.transform.position.x;
+		float yDistance = player.transform.position.y - this.transform.position.y;
+		float distanceToPlayer = Mathf.Sqrt ((Mathf.Pow(xDistance, 2.0f)) + Mathf.Pow(yDistance, 2.0f));
 		if (distanceToPlayer <= followRange) {  //NOTE: this method doesn't care if it's already following
 												//the player, because it needs to update it's direction 
 												//every frame b/c player moves
 			//follow
+			direction = new Vector2(xDistance, yDistance);
 			transform.Translate(direction * speed * Time.deltaTime);
 			currentFloated = 0; // resets floating distance 
 		} else {
