@@ -9,7 +9,8 @@ public class DoesDamage : MonoBehaviour {
 
 	GameObject player;                          // Reference to the player GameObject.
 	PlayerState playerHealth;                  // Reference to the player's health.
-	Damagable health;                    // Reference to this enemy's health.
+	Damagable enemyhealth;                    // Reference to this enemy's health.
+
 
 	float timer; 
 
@@ -17,23 +18,22 @@ public class DoesDamage : MonoBehaviour {
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent <PlayerState> ();
+		enemyhealth = player.GetComponent <Damagable> ();
 	}
 
-	void OnTriggerEnter2D (Collider other)
+	void OnCollisionEnter2D (Collision2D other)
 	{
 		timer += Time.deltaTime;
 
-		if(timer >= timeBetweenAttacks && Damagable.currentHealth > 0){
-			if (other.gameObject == player) {
-				Attack ();
-			}
+		Debug.Log("I hit the player!");
+
+		if (other.gameObject == player) {
+			Attack ();
 		}
 	}
 
 	void Attack ()
 	{
-		// Reset the timer.
-		timer = 0f;
 
 		if(playerHealth.currentHealth > 0)
 		{
@@ -41,7 +41,7 @@ public class DoesDamage : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerExit2D(Collider2D collider)
+	void OnCollisionExit2D(Collider2D collider)
 	{
 		
 	}

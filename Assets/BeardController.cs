@@ -5,7 +5,7 @@ using UnityEngine;
 public class BeardController : MonoBehaviour
 {
 
-    public float followDistance = 0f;
+    public float followDistance = 2.5f;
     public bool isLimitedByDistance = true;
     public Rigidbody2D beardman;
     private MovementController movementController;
@@ -35,16 +35,16 @@ public class BeardController : MonoBehaviour
             Vector2 followVector = (Vector2)mainCamera.ScreenToWorldPoint(mousePos) - beardman.position;
             this.transform.position = Vector2.ClampMagnitude(followVector, followDistance) + beardman.position;
         }
-        //if (Input.GetKey(KeyCode.E))
-        //{
-        //    if (followDistance < 3.75)
-        //        followDistance += 0.25f;
-        //}
-        //if (Input.GetKey(KeyCode.Q))
-        //{
-        //    if (followDistance > 0.25)
-        //        followDistance -= 0.25f;
-        //}
+        if (Input.GetKey(KeyCode.E))
+        {
+            if (followDistance < 5)
+                followDistance += 0.1f;
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            if (followDistance > 1)
+                followDistance -= 0.1f;
+        }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             UseBeard();
