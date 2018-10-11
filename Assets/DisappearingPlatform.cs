@@ -7,6 +7,11 @@ public class DisappearingPlatform : MonoBehaviour {
     private static BoxCollider2D boxCol;
     private int timesHit;
     private Sprite[] sprites;
+    private float speed = 30.0f; //how fast it shakes
+    private float amount = 0.02f; //how much it shakes
+    private bool shake;
+    private float timeSpent = 0f;
+    private float shakeTime = 1f;
 
     // Use this for initialization
     void Start () {
@@ -14,7 +19,7 @@ public class DisappearingPlatform : MonoBehaviour {
         //need to find a way to get the assets programatically
         //get neede assets 
         sprites = Resources.LoadAll<Sprite>("Environment");
-
+        shake = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,19 +31,19 @@ public class DisappearingPlatform : MonoBehaviour {
 
         if (timesHit == 1)
         {
-            shakePlatform();
+            shake = true;
             this.GetComponent<SpriteRenderer>().sprite = sprites[1];
         }
 
         if (timesHit == 2)
         {
-            shakePlatform();
+            shake = true;
             this.GetComponent<SpriteRenderer>().sprite = sprites[2];
         }
 
         if (timesHit == 3)
         {
-            shakePlatform();
+            shake = true;
             this.GetComponent<SpriteRenderer>().sprite = sprites[3];
         }
     }
@@ -57,11 +62,30 @@ public class DisappearingPlatform : MonoBehaviour {
 
             timeSpent += Time.deltaTime; 
         }
+        shake = false;
     }
 
     // Update is called once per frame
     void Update () {
-        
+
+        if (shake)
+        {
+           
+            var pos = gameObject.transform.position;
+            pos.x = pos.x + Mathf.Sin(Time.time * speed) * amount;
+
+            gameObject.transform.position = pos;
+
+            if (timeSpent > shakeTime)
+            {
+                shake = false;
+                timeSpent = 0f;
+            }
+            else
+            {
+                timeSpent += Time.deltaTime;
+            }
+        }
 
         if (timesHit >= 3) {
             DestroyObject(this.gameObject);
