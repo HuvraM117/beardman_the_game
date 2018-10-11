@@ -33,7 +33,8 @@ public class BeardController : MonoBehaviour
         {
             Vector2 mousePos = Input.mousePosition;
             Vector2 followVector = (Vector2)mainCamera.ScreenToWorldPoint(mousePos) - beardman.position;
-            this.transform.position = Vector2.ClampMagnitude(followVector, followDistance) + beardman.position;
+			this.transform.position = Vector2.ClampMagnitude (followVector, followDistance) + beardman.position;
+			this.transform.position += new Vector3 (0f, 0f, -1f);
         }
         if (Input.GetKey(KeyCode.E))
         {

@@ -8,14 +8,21 @@ public class MovementController : MonoBehaviour {
     private Collider2D footCollider;
 	public Animator playerAnimator;
     [SerializeField] private FootController groundedState;
+	[SerializeField] private GameObject shield;
     private bool IsGrounded {
         get { return groundedState.IsGrounded; }
     }
     private bool isCrouching = false;
+	private bool canShield = false;
+	private bool invincible = false;
+	private bool lastDir = false;//False is left, true is right
     [SerializeField] private float MOVESPEED = 5f;
     [SerializeField] private float JUMPFORCE = 12f;
-	private Vector3 crouchSize;
+	private Vector3 crouchRight;
 	private Vector3 fullSize;
+	private Vector3 faceLeft;
+	private Vector3 faceRight;
+	private Vector3 crouchLeft;
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +30,10 @@ public class MovementController : MonoBehaviour {
         footCollider = GetComponent<CircleCollider2D>();
 		fullSize = new Vector3 (m_rigidbody.transform.localScale.x, 
 			m_rigidbody.transform.localScale.y, m_rigidbody.transform.localScale.z);
-		crouchSize = Vector3.Scale (fullSize, new Vector3 (1f, 0.5f, 1f));
+		crouchRight = Vector3.Scale (fullSize, new Vector3 (1f, 0.5f, 1f));
+		crouchLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 0.5f, 1f));
+		faceLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 1f, 1f));
+		faceRight = Vector3.Scale (fullSize, new Vector3 (1f, 1f, 1f));
 	}
 	
 	// Update is called once per frame
@@ -47,19 +57,44 @@ public class MovementController : MonoBehaviour {
         if(!isCrouching)
         {
             moveInput.x = Input.GetAxis("Horizontal") * MOVESPEED;
-			m_rigidbody.transform.localScale = fullSize;
+			canShield = false;
+			if (moveInput.x > 0) {
+				m_rigidbody.transform.localScale = faceRight;
+				lastDir = true;
+			} else if (moveInput.x < 0) {
+				m_rigidbody.transform.localScale = faceLeft;
+				lastDir = false;
+			} else {
+				if (lastDir)
+					m_rigidbody.transform.localScale = faceRight;
+				else
+					m_rigidbody.transform.localScale = faceLeft;
+			}
         }
         else if (IsGrounded)
         {
 			moveInput.x = Input.GetAxis("Horizontal") * 1.5f;
-			m_rigidbody.transform.localScale = crouchSize;
+			if (moveInput.x > 0) {
+				m_rigidbody.transform.localScale = crouchRight;
+				lastDir = true;
+			} else if (moveInput.x < 0) {
+				m_rigidbody.transform.localScale = crouchLeft;
+				lastDir = false;
+			} else if (moveInput.x == 0) {
+				canShield = true;
+				if (lastDir)
+					m_rigidbody.transform.localScale = crouchRight;
+				else
+					m_rigidbody.transform.localScale = crouchLeft;
+			} else
+				canShield = false;
         }
 
         if(IsGrounded && Input.GetButtonDown("Jump")) {
             moveInput.y = JUMPFORCE;
             // isGrounded = false;
         }
-
+		PlayerCrouch ();
         return moveInput;
     }
 
@@ -67,4 +102,14 @@ public class MovementController : MonoBehaviour {
     {
         //Debug.Log("collision");
     }
+
+	private void PlayerCrouch() {
+		if (canShield && IsGrounded) {
+			shield.transform.position = m_rigidbody.transform.position + new Vector3 (0f, 0f, -2f);
+			invincible = true;
+		} else {
+			shield.transform.position = new Vector3 (0f, 0f, 0f);
+			invincible = false;
+		}
+	}
 }
