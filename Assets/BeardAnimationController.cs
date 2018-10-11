@@ -7,7 +7,7 @@ public class BeardAnimationController : MonoBehaviour {
 
 
 
-    private const int HARDMAXSEGMENTS = 30; // the max number of beard segments that can ever exist (max of max beard length)
+    private const int HARDMAXSEGMENTS = 100; // the max number of beard segments that can ever exist (max of max beard length)
     private const float SEGMENTDISTANCE = .1f; // how far apart the segments are
     private Vector3 beardTipOffset = new Vector3(0f, .3f, 0f); // so the beard tip is centered on the beard
     [SerializeField] private GameObject beardSegmentPrefab;

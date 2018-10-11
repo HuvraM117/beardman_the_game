@@ -8,7 +8,7 @@ public enum BeardState { IDLE, EXTENDING, RETRACTING, PULLING };
 // putting it in it's own class encapsulates and extracts the underlying state nicely
 public class PlayerState : MonoBehaviour {
 
-    private static float currentHealth = 10f;
+    public float currentHealth = 10f;
     public static float CurrentHealth { get; private set; }
 
     private static BeardState _currentBeardState = BeardState.IDLE;
@@ -60,6 +60,16 @@ public class PlayerState : MonoBehaviour {
             BeardLength = BeardLength - BEARDGROWTHRATE;
         Debug.Log(vitality);
     }
+
+	public void TakeDamage (int amount){
+		if (currentHealth <= 0){
+			currentHealth = 0; 
+			gameObject.SetActive(false); 
+			/* despawn need to add in some kind of animation with it */
+		}
+		currentHealth -= amount; 
+	}
+		
 
     private void FixedUpdate()
     {
