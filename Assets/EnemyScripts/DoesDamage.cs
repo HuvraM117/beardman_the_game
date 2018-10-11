@@ -7,7 +7,7 @@ public class DoesDamage : MonoBehaviour {
 	public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
 	public int damage = 1;               // The amount of health taken away per attack.
 
-	GameObject player;                          // Reference to the player GameObject.
+	public GameObject player;                          // Reference to the player GameObject.
 	PlayerState playerHealth;                  // Reference to the player's health.
 	Damagable enemyhealth;                    // Reference to this enemy's health.
 
@@ -16,7 +16,6 @@ public class DoesDamage : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent <PlayerState> ();
 		enemyhealth = player.GetComponent <Damagable> ();
 	}
@@ -28,17 +27,19 @@ public class DoesDamage : MonoBehaviour {
 		Debug.Log("I hit the player!");
 
 		if (other.gameObject == player) {
-			Attack ();
+			StartCoroutine(Attack());
 		}
 	}
 
-	void Attack ()
+	private IEnumerator Attack()
 	{
+		Debug.Log ("I attacked!!");
 
 		if(playerHealth.currentHealth > 0)
 		{
 			playerHealth.TakeDamage(damage);
 		}
+		return null;
 	}
 
 	void OnCollisionExit2D(Collider2D collider)
