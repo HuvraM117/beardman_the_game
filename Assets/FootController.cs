@@ -33,12 +33,12 @@ public class FootController : MonoBehaviour {
         leftHit = Physics2D.Raycast(transform.position + raycastOrigin, Vector2.left, .5f);
 
         //update if on moving platform or not
-        if(movingPlatform == null && downHit.collider != null && downHit.collider.gameObject.GetComponent<MovingPlatform>() != null)
+        if(movingPlatform == null && downHit.collider != null && downHit.collider.gameObject.tag == "MovingPlatform")
         {
             movingPlatform = downHit.collider.gameObject;
             previousPlatformPosition = movingPlatform.transform.position;
         }
-        else if(movingPlatform != null && (downHit.collider == null || downHit.collider.gameObject.GetComponent<MovingPlatform>() == null))
+        else if(movingPlatform != null && (downHit.collider == null || downHit.collider.gameObject.tag != "MovingPlatform"))
         {
             movingPlatform = null;
         }
@@ -49,8 +49,12 @@ public class FootController : MonoBehaviour {
     public Vector2 UpdatePlatformVelocity()
     {
         if(movingPlatform == null) { return Vector2.zero; }
+        Debug.Log("NEW: " + movingPlatform.transform.position + " OLD: " + previousPlatformPosition + " DIFF " + (movingPlatform.transform.position - previousPlatformPosition));
+
         Vector2 platformVelocity = movingPlatform.transform.position - previousPlatformPosition;
         previousPlatformPosition = movingPlatform.transform.position;
+        Debug.Log(movingPlatform);
+        Debug.Log(platformVelocity);
         return platformVelocity;
     }
 
