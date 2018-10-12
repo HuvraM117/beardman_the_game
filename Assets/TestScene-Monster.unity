@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114012700870836200, guid: aff0904e27a1aa8429c0c79df72dd231,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 538253499}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aff0904e27a1aa8429c0c79df72dd231, type: 2}
   m_IsPrefabParent: 0
@@ -863,6 +868,11 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 538253499}
+    - target: {fileID: 114971999917169342, guid: 86f1bf22a2b3e0e49a8ee719fa790ce2,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 538253499}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86f1bf22a2b3e0e49a8ee719fa790ce2, type: 2}
   m_IsPrefabParent: 0
@@ -1008,6 +1018,11 @@ Prefab:
       propertyPath: m_Name
       value: SquirrelEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114012700870836200, guid: aff0904e27a1aa8429c0c79df72dd231,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 538253499}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aff0904e27a1aa8429c0c79df72dd231, type: 2}
   m_IsPrefabParent: 0
@@ -1050,6 +1065,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114521626801293568, guid: 2f28cf7a08f99e441a2376189084c69e,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 538253499}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f28cf7a08f99e441a2376189084c69e, type: 2}
   m_IsPrefabParent: 0
