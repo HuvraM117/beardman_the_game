@@ -7,7 +7,7 @@ public class MovingPlatform : MonoBehaviour {
 
     [SerializeField] GameObject startPlatform;
     [SerializeField] GameObject destinationPlatform;
-    [SerializeField] float speed;
+    [SerializeField] public float speed;
     [SerializeField] bool LEFTandRIGHT;
     [SerializeField] bool UPandDown;
 

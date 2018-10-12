@@ -97,6 +97,9 @@ public class MovementController : MonoBehaviour {
             // isGrounded = false;
         }
 		PlayerCrouch ();
+
+        moveInput += groundedState.UpdatePlatformVelocity();
+
         return moveInput;
     }
 
