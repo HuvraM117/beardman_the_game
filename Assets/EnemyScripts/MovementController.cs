@@ -97,6 +97,7 @@ public class MovementController : MonoBehaviour {
             // isGrounded = false;
         }
 		PlayerCrouch ();
+
         return moveInput;
     }
 
