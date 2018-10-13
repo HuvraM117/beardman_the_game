@@ -31,27 +31,21 @@ public class AnimalMovement : MonoBehaviour {
 	void Update () {
 		//Moves animal
 		if(!jumping) {
-			Vector2 vector = new Vector2(1f * movingRight, 0f) * speed;
+			Vector2 vector = new Vector2 (speed * movingRight, 0f);
 			m_rigidbody.AddForce(vector);
-			sinceLastFlipped += Time.deltaTime;
 		}
 	}
 
-	public void OnCollisionEnter2D(Collision2D collision) {
-		Debug.Log ("Collider happened! " + movingRight.ToString());
-		if (sinceLastFlipped > .1) {
-			sinceLastFlipped = 0.0f;
+	public void OnTriggerEnter2D(Collider2D collision) {
+		Debug.Log ("Collider happened!");
+
+		if (collision.gameObject.CompareTag ("EnemyCollisionOnly") && !jumping) {
 			movingRight = -movingRight;
 			Debug.Log ("Switched direction!");
 		}
-			/*
-		if (collision.gameObject.CompareTag("Tilemap") && sinceLastFlipped > .1f) {
-			sinceLastFlipped = 0.0f;
-			movingRight = -movingRight;
-			Debug.Log ("Switched direction!");
-		} else {
-			Debug.Log ("FAIL!!");
-			/*double doIJump = Random.Range(0f, 1f);
+
+		/*
+			double doIJump = Random.Range(0f, 1f);
 			if (doIJump < jumpProbability) {
 				StartCoroutine(jump());
 			} else {
