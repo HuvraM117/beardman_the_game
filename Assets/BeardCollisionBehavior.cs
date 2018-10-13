@@ -17,7 +17,6 @@ public class BeardCollisionBehavior : MonoBehaviour {
 		enemyhealth = other.GetComponent <Damagable> ();
 
 		if (other.gameObject.CompareTag("Enemy")) {
-			Debug.Log ("I hit"); 
 			enemyhealth.TakeDamage (damage);
 			hitSwitch = false;
 		}
@@ -26,7 +25,7 @@ public class BeardCollisionBehavior : MonoBehaviour {
 	// unregister any currently colliding objects that have exited the collider
 	private void OnTriggerExit2D(Collider2D other)
 	{
-		if(other.CompareTag("BasicEnemy"))
+		if(other.CompareTag("Enemy"))
 		{
 			hitSwitch = true;
 		}
