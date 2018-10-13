@@ -16,7 +16,7 @@ public class AnimalMovement : MonoBehaviour {
 									// e.g. jumpProbability = 0 means it will never jump
 									// 		jumpProbability = .5 means it will jump half the time
 	private bool jumping; // boolean that is true if character is jumping, false otherwise
-
+	private float sinceLastFlipped;
 	private Rigidbody2D m_rigidbody;
 
 	// Use this for initialization
@@ -24,6 +24,7 @@ public class AnimalMovement : MonoBehaviour {
 		m_rigidbody = GetComponent<Rigidbody2D>();
 		movingRight = 1;
 		jumping = false;
+		sinceLastFlipped = 0.0f;
 	}
 	
 	// Update is called once per frame
@@ -32,20 +33,31 @@ public class AnimalMovement : MonoBehaviour {
 		if(!jumping) {
 			Vector2 vector = new Vector2(1f * movingRight, 0f) * speed;
 			m_rigidbody.AddForce(vector);
+			sinceLastFlipped += Time.deltaTime;
 		}
 	}
 
-	public void OnCollisionEnter(Collision collision) {
-		if (collision.rigidbody) {
+	public void OnCollisionEnter2D(Collision2D collision) {
+		Debug.Log ("Collider happened! " + movingRight.ToString());
+		if (sinceLastFlipped > .1) {
+			sinceLastFlipped = 0.0f;
 			movingRight = -movingRight;
+			Debug.Log ("Switched direction!");
+		}
+			/*
+		if (collision.gameObject.CompareTag("Tilemap") && sinceLastFlipped > .1f) {
+			sinceLastFlipped = 0.0f;
+			movingRight = -movingRight;
+			Debug.Log ("Switched direction!");
 		} else {
-			double doIJump = Random.Range(0f, 1f);
+			Debug.Log ("FAIL!!");
+			/*double doIJump = Random.Range(0f, 1f);
 			if (doIJump < jumpProbability) {
 				StartCoroutine(jump());
 			} else {
 				movingRight = -movingRight;
 			}
-		}
+		}*/
 	}
 
 	private IEnumerator jump() {
