@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114745763834865878}
   m_Layer: 0
   m_Name: SquirrelEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.5
   damage: 1
+  player: {fileID: 0}
 --- !u!114 &114745763834865878
 MonoBehaviour:
   m_ObjectHideFlags: 1

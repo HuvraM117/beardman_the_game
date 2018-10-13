@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114521626801293568}
   m_Layer: 0
   m_Name: BirdEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.5
   damage: 1
+  player: {fileID: 0}
 --- !u!114 &114547137179380008
 MonoBehaviour:
   m_ObjectHideFlags: 1
