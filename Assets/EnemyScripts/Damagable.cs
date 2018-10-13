@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Damagable : MonoBehaviour {
 
-	public int max_health = 1; //one for squirrel + bird 
+	public int max_health = 2; //one for squirrel + bird 
 	public int currentHealth = 0;
 	public bool alive = true; 
 
@@ -21,22 +21,17 @@ public class Damagable : MonoBehaviour {
 
 		if (currentHealth <= 0){
 			currentHealth = 0; 
-			alive = false; 
-			gameObject.SetActive(false); 
+			Destroy(gameObject);
+			Debug.Log ("I am Dead");
 			/* despawn need to add in some kind of animation with it */
 		}
 		currentHealth -= amount; 
+		Debug.Log ("I got hit!");
 	}
 
 	// Update is called once per frame
 	void Update () {
 
 	}
-
-	/* put something like this on the beard to take damage 
-	void OnTriggerEnter(Collider other){
-	other.gameObject.GetComponent(<Damagable>) ().TakeDamage(damage);
-	} 
-
-	Damage = value of attack power */ 
+		
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class DoesDamage : MonoBehaviour {
 
-	public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
-	public int damage = 1;               // The amount of health taken away per attack.
+	[SerializeField] private float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
+	[SerializeField] private int damage = 1;               // The amount of health taken away per attack.
 
-	public GameObject player;                          // Reference to the player GameObject.
+	public GameObject player;                   // Reference to the player GameObject.
 	PlayerState playerHealth;                  // Reference to the player's health.
 	Damagable enemyhealth;                    // Reference to this enemy's health.
 
@@ -29,8 +29,6 @@ public class DoesDamage : MonoBehaviour {
 	{
 		if (timer >= timeBetweenAttacks) {
 			timer = 0;
-			Debug.Log("I hit the player!");
-
 			if (other.gameObject == player) {
 				StartCoroutine(Attack());
 			}
@@ -39,8 +37,6 @@ public class DoesDamage : MonoBehaviour {
 
 	private IEnumerator Attack()
 	{
-		Debug.Log ("I attacked!!");
-
 		if(playerHealth.currentHealth > 0)
 		{
 			playerHealth.TakeDamage(damage);
@@ -48,7 +44,7 @@ public class DoesDamage : MonoBehaviour {
 		return null;
 	}
 
-	void OnCollisionExit2D(Collider2D collider)
+	void OnCollisionExit2D(Collision2D collider)
 	{
 		
 	}
