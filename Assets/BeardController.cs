@@ -5,11 +5,11 @@ using UnityEngine;
 public class BeardController : MonoBehaviour
 {
 
-    public float followDistance = 2.5f;
     public bool isLimitedByDistance = true;
     public Rigidbody2D beardman;
     private MovementController movementController;
     private BeardAnimationController beardAnimator;
+    [SerializeField] private PlayerState playerState;
 
     public float grappleForce = 3f;
     private float grappleStrength = 0f;
@@ -33,17 +33,7 @@ public class BeardController : MonoBehaviour
         {
             Vector2 mousePos = Input.mousePosition;
             Vector2 followVector = (Vector2)mainCamera.ScreenToWorldPoint(mousePos) - beardman.position;
-            this.transform.position = Vector2.ClampMagnitude(followVector, followDistance) + beardman.position;
-        }
-        if (Input.GetKey(KeyCode.E))
-        {
-            if (followDistance < 5)
-                followDistance += 0.1f;
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            if (followDistance > 1)
-                followDistance -= 0.1f;
+            this.transform.position = Vector2.ClampMagnitude(followVector, playerState.BeardLength) + beardman.position;
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

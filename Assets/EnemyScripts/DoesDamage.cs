@@ -8,7 +8,7 @@ public class DoesDamage : MonoBehaviour {
 	public int damage = 1;               // The amount of health taken away per attack.
 
 	GameObject player;                          // Reference to the player GameObject.
-	PlayerState playerHealth;                  // Reference to the player's health.
+	PlayerState playerState;                  // Reference to the player's state.
 	Damagable enemyhealth;                    // Reference to this enemy's health.
 
 
@@ -17,7 +17,7 @@ public class DoesDamage : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
-		playerHealth = player.GetComponent <PlayerState> ();
+		playerState = player.GetComponent <PlayerState> ();
 		enemyhealth = player.GetComponent <Damagable> ();
 	}
 
@@ -37,9 +37,9 @@ public class DoesDamage : MonoBehaviour {
 		// Reset the timer.
 		timer = 0f;
 
-		if(playerHealth.currentHealth > 0)
+		if(playerState.Health > 0)
 		{
-			playerHealth.TakeDamage(damage);
+			playerState.TakeDamage(damage);
 		}
 	}
 

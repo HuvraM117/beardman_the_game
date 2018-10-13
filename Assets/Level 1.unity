@@ -1218,7 +1218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e71cf891b3c9b4d8853c19b9fc7247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 10
+  healthBeardUI: {fileID: 1185916937}
 --- !u!114 &675649034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,6 +1232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle: {fileID: 0}
   character: {fileID: 675649032}
+  playerState: {fileID: 675649033}
 --- !u!61 &675649036
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2099,6 +2100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1185916935}
   - component: {fileID: 1185916936}
+  - component: {fileID: 1185916937}
   m_Layer: 5
   m_Name: HealthAndBeardSlider
   m_TagString: Untagged
@@ -2124,7 +2126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350, y: 350}
+  m_AnchoredPosition: {x: -350, y: 258}
   m_SizeDelta: {x: 270, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1185916936
@@ -2161,7 +2163,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2006685135}
   m_FillRect: {fileID: 633728965}
   m_HandleRect: {fileID: 2006685134}
@@ -2175,6 +2177,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1185916937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1185916934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa14301852307f74c88e7df71a291620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1187263165
 GameObject:
   m_ObjectHideFlags: 0
