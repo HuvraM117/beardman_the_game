@@ -41,7 +41,7 @@ public class DoesDamage : MonoBehaviour {
 		{
 			playerHealth.TakeDamage(damage);
 		}
-		return null;
+		yield return null;
 	}
 
 	void OnCollisionExit2D(Collision2D collider)
