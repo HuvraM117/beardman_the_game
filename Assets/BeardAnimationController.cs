@@ -12,6 +12,7 @@ public class BeardAnimationController : MonoBehaviour {
     private Vector3 beardTipOffset = new Vector3(0f, .3f, 0f); // so the beard tip is centered on the beard
     [SerializeField] private GameObject beardSegmentPrefab;
     [SerializeField] private GameObject beardTipPrefab;
+    [SerializeField] private int BEARDSPEED = 3;
     private GameObject[] segments = new GameObject[HARDMAXSEGMENTS]; // segments of the beard
     private GameObject beardTip; // the collider on the tip of the beard
     private int visibleSegments = 0; // segments currently "active" (actually active + were active but disabled since behind the player)
@@ -67,10 +68,12 @@ public class BeardAnimationController : MonoBehaviour {
         switch (PlayerState.CurrentBeardState)
         {
             case BeardState.EXTENDING:
-                AddBeardSegment();
+                for(int i=0; i<BEARDSPEED; i++)
+                    AddBeardSegment();
                 break;
             case BeardState.RETRACTING:
-                RemoveBeardSegment();
+                for (int i = 0; i < BEARDSPEED; i++)
+                    RemoveBeardSegment();
                 break;
             case BeardState.IDLE:
                 break;

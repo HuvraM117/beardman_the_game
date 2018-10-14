@@ -19,15 +19,15 @@ public class BeardAttacks : MonoBehaviour {
     void FixedUpdate ()
 	{
 		//Uses mouse location for constant tracking of beard end location
-		Vector3 old = particle.transform.position;
+		/*Vector3 old = particle.transform.position;
 		Vector3 pos = Input.mousePosition;
-		pos = Camera.main.ScreenToWorldPoint(pos) + new Vector3 (0, 0, 9);
+		pos = Camera.main.ScreenToWorldPoint(pos) + new Vector3 (0, 0, 10);
 
 		float distance = Vector3.Distance(character.transform.position, pos);
 		if (distance > playerState.BeardLength)
 			particle.transform.position = old;
 		else
-			particle.transform.position = pos;
+			particle.transform.position = pos;*/
 
 		if (Input.GetMouseButtonDown(0))
 		{
