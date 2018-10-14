@@ -62,12 +62,14 @@ public class PlayerState : MonoBehaviour {
     }
 
 	public void TakeDamage (int amount){
-		if (currentHealth <= 0){
+		if (MovementController.Shielding ())
+			;//Take no damage if shielding
+		else if (currentHealth <= 0) {
 			currentHealth = 0; 
-			gameObject.SetActive(false); 
+			gameObject.SetActive (false); 
 			/* despawn need to add in some kind of animation with it */
-		}
-		currentHealth -= amount; 
+		} else 
+			currentHealth -= amount; 
 	}
 		
 
