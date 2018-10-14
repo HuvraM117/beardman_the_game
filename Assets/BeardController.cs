@@ -47,7 +47,7 @@ public class BeardController : MonoBehaviour
         GameObject targetObject = targetHit ? targetHit.collider.gameObject : null;
 
         // TODO: here I assume that all enemies/grappleable objects will have an associated component, we can change this later based on the actual components' names/different critereon
-        if (targetObject && targetObject.name == "Grapple Point")
+		if ((targetObject && targetObject.name == "Grapple Point") && !MovementController.Crouching())
         {
             GrappleBeard(targetObject);
         }

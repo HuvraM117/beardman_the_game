@@ -70,13 +70,14 @@ public class PlayerState : MonoBehaviour {
     }
 
 	public void TakeDamage (int amount){
-		if (health <= 0){
-			health = 0; 
-			gameObject.SetActive(false); 
+		if (MovementController.Shielding ())
+			;//Take no damage if shielding
+		else if (currentHealth <= 0) {
+			currentHealth = 0; 
+			gameObject.SetActive (false); 
 			/* despawn need to add in some kind of animation with it */
-		}
-		health -= amount;
-        healthBeardUI.UpdateSlider(health, beardLength);
+		} else 
+			currentHealth -= amount; 
 	}
 		
 

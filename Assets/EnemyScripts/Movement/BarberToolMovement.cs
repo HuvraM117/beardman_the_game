@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarberToolMovementWalking : MonoBehaviour {
+public class BarberToolMovement : MonoBehaviour {
 
 	public int speed;
 	public int followRange; //NOTE: Only is concerned with X distance

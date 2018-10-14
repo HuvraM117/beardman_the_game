@@ -12,9 +12,9 @@ public class MovementController : MonoBehaviour {
     private bool IsGrounded {
         get { return groundedState.IsGrounded; }
     }
-    private bool isCrouching = false;
+    private static bool isCrouching = false;
 	private bool canShield = false;
-	private bool invincible = false;
+	private static bool invincible = false;
 	private bool lastDir = false;//False is left, true is right
     [SerializeField] private float MOVESPEED = 5f;
     [SerializeField] private float JUMPFORCE = 12f;
@@ -108,11 +108,19 @@ public class MovementController : MonoBehaviour {
 
 	private void PlayerCrouch() {
 		if (canShield && IsGrounded) {
-			shield.transform.position = m_rigidbody.transform.position + new Vector3 (0f, 0f, -2f);
+			shield.SetActive (true);
 			invincible = true;
 		} else {
-			shield.transform.position = new Vector3 (0f, 0f, 0f);
+			shield.SetActive (false);
 			invincible = false;
 		}
+	}
+
+	public static bool Crouching() {
+		return isCrouching;
+	}
+
+	public static bool Shielding() {
+		return invincible;
 	}
 }
