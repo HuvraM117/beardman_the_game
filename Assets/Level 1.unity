@@ -258,6 +258,17 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &198920976 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1675699120980662, guid: 09fab8b165844064f9ea3f43b54a9871,
+    type: 2}
+  m_PrefabInternal: {fileID: 1722326305}
+--- !u!114 &198920977 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114632323585270656, guid: 09fab8b165844064f9ea3f43b54a9871,
+    type: 2}
+  m_PrefabInternal: {fileID: 1722326305}
+  m_Script: {fileID: 11500000, guid: 14e71cf891b3c9b4d8853c19b9fc7247, type: 3}
 --- !u!4 &215583485 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4363854553114170, guid: 09fab8b165844064f9ea3f43b54a9871,
@@ -1346,7 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Endoflevel: {fileID: 298773072}
-  Player: {fileID: 675649032}
+  Player: {fileID: 198920976}
   Range: 3
 --- !u!4 &1195342187
 Transform:
@@ -1360,7 +1371,7 @@ Transform:
   m_Children:
   - {fileID: 298773073}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214292850
 GameObject:
@@ -27058,6 +27069,11 @@ Prefab:
       propertyPath: grappleForce
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114367455078438640, guid: 7ba65c03d268b624f8956e044c5bc80f,
+        type: 2}
+      propertyPath: playerState
+      value: 
+      objectReference: {fileID: 198920977}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ba65c03d268b624f8956e044c5bc80f, type: 2}
   m_IsPrefabParent: 0
@@ -27125,6 +27141,11 @@ Prefab:
       propertyPath: shield
       value: 
       objectReference: {fileID: 252219134}
+    - target: {fileID: 114499448540337674, guid: 09fab8b165844064f9ea3f43b54a9871,
+        type: 2}
+      propertyPath: playerState
+      value: 
+      objectReference: {fileID: 198920977}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09fab8b165844064f9ea3f43b54a9871, type: 2}
   m_IsPrefabParent: 0
