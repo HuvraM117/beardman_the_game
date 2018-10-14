@@ -7,6 +7,7 @@ public class BeardAttacks : MonoBehaviour {
 	public GameObject character;
 	public static Vector3 mousePosition;
 
+    [SerializeField] private PlayerState playerState;
     private BeardAnimationController beardAnimator;
 
 
@@ -23,7 +24,7 @@ public class BeardAttacks : MonoBehaviour {
 		pos = Camera.main.ScreenToWorldPoint(pos) + new Vector3 (0, 0, 10);
 
 		float distance = Vector3.Distance(character.transform.position, pos);
-		if (distance > PlayerState.BeardLength)
+		if (distance > playerState.BeardLength)
 			particle.transform.position = old;
 		else
 			particle.transform.position = pos;*/
