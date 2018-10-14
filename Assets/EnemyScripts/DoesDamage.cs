@@ -37,9 +37,9 @@ public class DoesDamage : MonoBehaviour {
 
 	private IEnumerator Attack()
 	{
-		if(playerHealth.currentHealth > 0)
+		if(playerHealth.Health > 0)
 		{
-			playerState.TakeDamage(damage);
+			playerHealth.TakeDamage(damage);
 		}
 		return null;
 	}
