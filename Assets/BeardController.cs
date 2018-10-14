@@ -69,8 +69,9 @@ public class BeardController : MonoBehaviour
     private void GrappleBeard(GameObject grappleObject)
     {
         beardAnimator.WhipBeard(grappleObject.transform);
-        var dir = (Vector2)grappleObject.transform.position - beardman.position;
-
+        var dir = (Vector2) grappleObject.transform.position- beardman.position;
+		    beardman.velocity = Vector2.zero;
+        
         beardman.AddForce(new Vector2(dir.x, 0) * grappleForce, ForceMode2D.Impulse);
         beardman.AddForce(dir * grappleForce, ForceMode2D.Impulse);
         Debug.Log("grapple");
