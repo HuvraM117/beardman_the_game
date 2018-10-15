@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum BeardState { IDLE, EXTENDING, RETRACTING, PULLING };
 
@@ -13,6 +14,9 @@ public class PlayerState : MonoBehaviour {
 
     private static BeardState _currentBeardState = BeardState.IDLE;
     public static BeardState CurrentBeardState { get; set; }
+
+    // TODO: Unity doesn't like how this is done, but it works
+    private SceneManager sceneManager;
 
     // setting up health and beard length as properties this way automatically ensures that increasing one decreases the other and vice versa
     private float health;
@@ -44,6 +48,7 @@ public class PlayerState : MonoBehaviour {
         health = MAXVITALITY / 2;
         beardLength = MAXVITALITY / 2;
         healthBeardUI.UpdateSlider(health, beardLength);
+        sceneManager = GetComponent<SceneManager>();
     }
 
     // beard length + health, the total resource, I can't think of what else to call it so hopefully someone else can
@@ -73,9 +78,11 @@ public class PlayerState : MonoBehaviour {
 		if (MovementController.Shielding ())
 			;//Take no damage if shielding
 		else if (health-amount <= 0) {
-			health = 0; 
-			gameObject.SetActive (false); 
-			/* despawn need to add in some kind of animation with it */
+			health = 0;
+            // TODO: Change how we do this
+		    SceneManager.LoadScene(0);
+		    //gameObject.SetActive (false); 
+		    /* despawn need to add in some kind of animation with it */
 		} else 
 			health -= amount;
         healthBeardUI.UpdateSlider(health, beardLength);
