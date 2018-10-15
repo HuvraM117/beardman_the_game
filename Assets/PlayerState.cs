@@ -7,7 +7,8 @@ public enum BeardState { IDLE, EXTENDING, RETRACTING, PULLING };
 
 // a state machine for the player
 // putting it in it's own class encapsulates and extracts the underlying state nicely
-public class PlayerState : MonoBehaviour {
+public class PlayerState : MonoBehaviour
+{
 
     [SerializeField] private static float MAXVITALITY = 7f;
     [SerializeField] private SliderState healthBeardUI;
@@ -15,14 +16,14 @@ public class PlayerState : MonoBehaviour {
     private static BeardState _currentBeardState = BeardState.IDLE;
     public static BeardState CurrentBeardState { get; set; }
 
-    // TODO: Unity doesn't like how this is done, but it works
-    private SceneManager sceneManager;
-
+    private Animator animator;
     // setting up health and beard length as properties this way automatically ensures that increasing one decreases the other and vice versa
     private float health;
-    public float Health {
+    public float Health
+    {
         get { return health; }
-        private set {
+        private set
+        {
             beardLength += health - value;
             health = value;
             healthBeardUI.UpdateSlider(health, beardLength);
@@ -30,7 +31,8 @@ public class PlayerState : MonoBehaviour {
     }
 
     private float beardLength;
-    public float BeardLength {
+    public float BeardLength
+    {
         get { return beardLength; }
         private set
         {
@@ -48,7 +50,9 @@ public class PlayerState : MonoBehaviour {
         health = MAXVITALITY / 2;
         beardLength = MAXVITALITY / 2;
         healthBeardUI.UpdateSlider(health, beardLength);
-        sceneManager = GetComponent<SceneManager>();
+
+        animator = transform.GetComponentInChildren<Animator>();
+        animator.SetFloat("Health", health);
     }
 
     // beard length + health, the total resource, I can't think of what else to call it so hopefully someone else can
@@ -74,20 +78,31 @@ public class PlayerState : MonoBehaviour {
             BeardLength = BeardLength - BEARDGROWTHRATE;
     }
 
-	public void TakeDamage (int amount){
-		if (MovementController.Shielding ())
-			;//Take no damage if shielding
-		else if (health-amount <= 0) {
-			health = 0;
-            // TODO: Change how we do this
-		    SceneManager.LoadScene(0);
-		    //gameObject.SetActive (false); 
-		    /* despawn need to add in some kind of animation with it */
-		} else 
-			health -= amount;
+    public void TakeDamage(int amount)
+    {
+        if (MovementController.Shielding())
+            ;//Take no damage if shielding
+        else if (health - amount <= 0)
+        {
+            health = 0;
+            //gameObject.SetActive (false);
+            StartCoroutine(playerDie());
+            /* despawn need to add in some kind of animation with it */
+        }
+        else
+            health -= amount;
         healthBeardUI.UpdateSlider(health, beardLength);
-	}
-		
+        animator.SetFloat("Health", health);
+    }
+
+    IEnumerator playerDie()
+    {
+        gameObject.GetComponent<MovementController>().enabled = false;
+        animator.SetFloat("Health", health);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 
     private void FixedUpdate()
     {
@@ -96,5 +111,7 @@ public class PlayerState : MonoBehaviour {
             growBeard();
         if (Input.GetKey("e"))
             shrinkBeard();
+        if (Input.GetKey(KeyCode.F10))
+            TakeDamage(10);
     }
 }
