@@ -4,24 +4,50 @@ using UnityEngine;
 
 public class BarberMovement : MonoBehaviour {
 
-    private Vector3 waypoint; // the current waypoint we're moving to
+    private Vector3 _waypoint;
+    public Vector3 Waypoint // the current waypoint we're moving to
+    {
+        get { return _waypoint; }
+        private set {
+            _waypoint = value;
+            if (_waypoint.x > transform.position.x)
+            {
+                transform.localScale = faceRight;
+            }
+            else
+            {
+                transform.localScale = faceLeft;
+            }
+        }
+    }
     [SerializeField] private float MOVESPEED = .1f;
+    private Vector3 faceLeft;
+    private Vector3 faceRight;
 
     private void Start()
     {
-        waypoint = transform.position;
+        faceLeft = Vector3.Scale(transform.localScale, new Vector3(1f, 1f, 1f));
+        faceRight = Vector3.Scale(transform.localScale, new Vector3(-1f, 1f, 1f));
+
+        Waypoint = transform.position;
 
         // TODO: for testing, when done remove the below: move towards the target
-        waypoint = new Vector3(16f, waypoint.y, waypoint.z);
+        Waypoint = new Vector3(16f, Waypoint.y, Waypoint.z);
     }
 
     public void MoveTo(Vector3 newWaypoint)
     {
-        waypoint = newWaypoint;
+        Waypoint = newWaypoint;
     }
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, waypoint, MOVESPEED);
+        transform.position = Vector3.MoveTowards(transform.position, Waypoint, MOVESPEED);
+
+        // TODO: for testing, when done remove the below: move back and forth
+        if(Waypoint.x == transform.position.x)
+        {
+            Waypoint = new Vector3((Waypoint.x == 16f) ? 9.5f : 16f, Waypoint.y, Waypoint.z);
+        }
     }
 }
