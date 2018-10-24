@@ -22,9 +22,11 @@ GameObject:
   - component: {fileID: 114297347549285746}
   - component: {fileID: 114027340158022588}
   - component: {fileID: 114562419840434322}
+  - component: {fileID: 50112733293345754}
+  - component: {fileID: 70600395175350374}
   m_Layer: 0
   m_Name: Barber
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4371708986486198}
   - component: {fileID: 212776423237537396}
+  - component: {fileID: 114980319978150070}
   m_Layer: 0
   m_Name: Barber Sprite
   m_TagString: Untagged
@@ -65,13 +68,48 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1523199719487744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.09, y: -15.32, z: 0}
+  m_LocalPosition: {x: 9.5, y: -15.13, z: -0.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4371708986486198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50112733293345754
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523199719487744}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!70 &70600395175350374
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523199719487744}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.22625971, y: -0.088888645}
+  m_Size: {x: 1.9222021, y: 5.6706495}
+  m_Direction: 0
 --- !u!114 &114027340158022588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,6 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MOVESPEED: 0.05
+  SWOOPSPEEDMULTIPLIER: 5
+  SWOOPAMPLITUDE: 3
 --- !u!114 &114562419840434322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,6 +152,19 @@ MonoBehaviour:
   max_health: 12
   currentHealth: 0
   alive: 1
+--- !u!114 &114980319978150070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1631518439207392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ab04d270fec76419daec70ce191455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JITTERFACTOR: 0.08
+  JITTERPERIOD: 3
 --- !u!212 &212776423237537396
 SpriteRenderer:
   m_ObjectHideFlags: 1
