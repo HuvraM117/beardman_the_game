@@ -44,11 +44,21 @@ public class BarberMovement : MonoBehaviour {
         Waypoint = new Vector3(16f, Waypoint.y, Waypoint.z);
     }
 
+    public void MoveTo(float newX)
+    {
+        MoveTo(new Vector3(newX, Waypoint.y, Waypoint.z));
+    }
+
     public void MoveTo(Vector3 newWaypoint)
     {
         Waypoint = newWaypoint;
         currentMoveSpeed = MOVESPEED;
         isSwooping = false;
+    }
+
+    public void SwoopTo(float newX)
+    {
+        SwoopTo(new Vector3(newX, Waypoint.y, Waypoint.z));
     }
 
     public void SwoopTo(Vector3 newWaypoint)
@@ -71,19 +81,10 @@ public class BarberMovement : MonoBehaviour {
         // swoop in an arc
         if(isSwooping)
         {
-            float currentHeight = initialHeight - SWOOPAMPLITUDE * Mathf.Abs(Mathf.Sin(Mathf.PI * Mathf.Abs((transform.position.x - initialX) / (Waypoint.x - initialX))));
+            float currentHeight = initialHeight;
+            if(Waypoint.x != initialX)
+                currentHeight -= SWOOPAMPLITUDE * Mathf.Abs(Mathf.Sin(Mathf.PI * Mathf.Abs((transform.position.x - initialX) / (Waypoint.x - initialX))));
             transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);
-        }
-
-        Debug.Log("Waypoint: " + Waypoint.x + "Transform: " + transform.position.x);
-        // TODO: for testing, when done remove the below: move back and forth, swooping when the waypoint is reached
-        if(IsWaypointReached())
-        {
-            Debug.Log("Waypoint reached");
-            if(isSwooping)
-                MoveTo(new Vector3((Mathf.Abs(Waypoint.x - 16f) < WAYPOINTTOLERANCE) ? 9.5f : 16f, Waypoint.y, Waypoint.z));
-            else
-                SwoopTo(new Vector3((Mathf.Abs(Waypoint.x - 16f) < WAYPOINTTOLERANCE) ? 9.5f : 16f, Waypoint.y, Waypoint.z));
         }
     }
 }
