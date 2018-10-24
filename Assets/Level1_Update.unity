@@ -268,6 +268,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 114027340158022588, guid: 5682129c33b88fd41b70797e0fa9b875,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 675649032}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
   m_IsPrefabParent: 0
@@ -27933,51 +27938,6 @@ MonoBehaviour:
   beardTipPrefab: {fileID: 1863146338731996, guid: f7a9fa71524fdcb4b88bd206dc4258d0,
     type: 2}
   BEARDSPEED: 3
---- !u!1 &763811045 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1523199719487744, guid: 5682129c33b88fd41b70797e0fa9b875,
-    type: 2}
-  m_PrefabInternal: {fileID: 40822631}
---- !u!114 &763811046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 763811045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eae036594bebaa64ab7e0fba4f603174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MOVESPEED: 5
---- !u!114 &763811047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 763811045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a8dbcde58964428885b7170aea93924, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeBetweenAttacks: 0.5
-  damage: 1
-  player: {fileID: 675649032}
---- !u!114 &763811048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 763811045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e428c9130184010a7e68d4352a6d52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  max_health: 12
-  currentHealth: 0
-  alive: 1
 --- !u!1001 &763813138
 Prefab:
   m_ObjectHideFlags: 0
@@ -29536,6 +29496,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aff0904e27a1aa8429c0c79df72dd231, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2027983274 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1631518439207392, guid: 5682129c33b88fd41b70797e0fa9b875,
+    type: 2}
+  m_PrefabInternal: {fileID: 40822631}
+--- !u!114 &2027983277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2027983274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ab04d270fec76419daec70ce191455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JITTERFACTOR: 0.08
+  JITTERPERIOD: 3
 --- !u!1001 &2054351694
 Prefab:
   m_ObjectHideFlags: 0
