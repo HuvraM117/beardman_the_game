@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisappearingPlatform : MonoBehaviour {
+public class DisappearingPlatform : MonoBehaviour
+{
 
     private static BoxCollider2D boxCol;
     private int timesHit;
@@ -12,9 +13,11 @@ public class DisappearingPlatform : MonoBehaviour {
     private bool shake;
     private float timeSpent = 0f;
     private float shakeTime = 1f;
+    [SerializeField] bool StayGone;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         timesHit = 0;
         //need to find a way to get the assets programatically
         //get neede assets 
@@ -24,7 +27,7 @@ public class DisappearingPlatform : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<PlayerState>() != null)
+        if (collision.gameObject.GetComponent<PlayerState>() != null)
         {
             timesHit++;
         }
@@ -60,17 +63,18 @@ public class DisappearingPlatform : MonoBehaviour {
             var pos = gameObject.transform.position;
             pos.x = Mathf.Sin(Time.time * speed) * amount;
 
-            timeSpent += Time.deltaTime; 
+            timeSpent += Time.deltaTime;
         }
         shake = false;
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
 
         if (shake)
         {
-           
+
             var pos = gameObject.transform.position;
             pos.x = pos.x + Mathf.Sin(Time.time * speed) * amount;
 
@@ -87,8 +91,40 @@ public class DisappearingPlatform : MonoBehaviour {
             }
         }
 
-        if (timesHit >= 3) {
+        if (timesHit >= 3)
+        {
+
+            StartCoroutine(removePlatform());
+
+        }
+    }
+
+    IEnumerator removePlatform()
+    {
+        if (!StayGone)
+        {
+            Debug.Log("i will return");
+            //set game object as inactive 
+            this.gameObject.SetActive(false);
+
+            //set game object sprite
+            this.GetComponent<SpriteRenderer>().sprite = sprites[0];
+
+            //wait a few seconds
+            yield return new WaitForSeconds(5);
+
+            //set game object as inactive 
+            this.gameObject.SetActive(true);
+
+            //reset times hit counter 
+            timesHit = 0;
+
+        }
+        else // destroy object 
+        {
+            yield return new WaitForSeconds(.2f);
+
             DestroyObject(this.gameObject);
         }
-	}
+    }
 }
