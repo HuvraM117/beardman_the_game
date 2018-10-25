@@ -23,7 +23,7 @@ public class BirdMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		tempPosition = transform.position;
-		yModifier = 0.1
+		yModifier = 0.1f;
 	}
 	
 	// Update is called once per frame
