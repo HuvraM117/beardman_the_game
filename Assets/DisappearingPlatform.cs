@@ -71,7 +71,6 @@ public class DisappearingPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (shake)
         {
 
@@ -101,29 +100,26 @@ public class DisappearingPlatform : MonoBehaviour
 
     IEnumerator removePlatform()
     {
+        Debug.Log(StayGone);
         if (!StayGone)
         {
-            Debug.Log("i will return");
-            //set game object as inactive 
-            this.gameObject.SetActive(false);
 
-            //set game object sprite
-            this.GetComponent<SpriteRenderer>().sprite = sprites[0];
+            this.GetComponent<SpriteRenderer>().sprite = null;
 
             //wait a few seconds
             yield return new WaitForSeconds(5);
 
             //set game object as inactive 
-            this.gameObject.SetActive(true);
+            this.GetComponent<SpriteRenderer>().sprite = sprites[0];
 
-            //reset times hit counter 
+            //reset times hit counter
             timesHit = 0;
 
         }
         else // destroy object 
         {
             yield return new WaitForSeconds(.2f);
-
+            Debug.Log("destroy");
             DestroyObject(this.gameObject);
         }
     }
