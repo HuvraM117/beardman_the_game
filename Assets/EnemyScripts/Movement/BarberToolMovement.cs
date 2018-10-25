@@ -45,7 +45,13 @@ public class BarberToolMovement : MonoBehaviour {
 
 	}
 
-	void reachEndOfPlatform() {
-		movingRight = -movingRight;
+	//Reaches end of platform
+	public void OnTriggerEnter2D(Collider2D collision) {
+		Debug.Log ("Collider happened!");
+
+		if (collision.gameObject.CompareTag ("EnemyCollisionOnly")) {
+			movingRight = -movingRight;
+			Debug.Log ("Switched direction!");
+		}
 	}
 }
