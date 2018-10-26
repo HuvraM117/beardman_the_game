@@ -229,6 +229,58 @@ MonoBehaviour:
   speed: 20
   LEFTandRIGHT: 0
   UPandDown: 1
+--- !u!1001 &40822631
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 9.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -15.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114027340158022588, guid: 5682129c33b88fd41b70797e0fa9b875,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 675649032}
+    - target: {fileID: 114297347549285746, guid: 5682129c33b88fd41b70797e0fa9b875,
+        type: 2}
+      propertyPath: SWOOPSPEEDMULTIPLIER
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &122870509
 Prefab:
   m_ObjectHideFlags: 0
@@ -27891,6 +27943,36 @@ MonoBehaviour:
   beardTipPrefab: {fileID: 1863146338731996, guid: f7a9fa71524fdcb4b88bd206dc4258d0,
     type: 2}
   BEARDSPEED: 3
+--- !u!1 &763811045 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1523199719487744, guid: 5682129c33b88fd41b70797e0fa9b875,
+    type: 2}
+  m_PrefabInternal: {fileID: 40822631}
+--- !u!114 &763811046 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114562419840434322, guid: 5682129c33b88fd41b70797e0fa9b875,
+    type: 2}
+  m_PrefabInternal: {fileID: 40822631}
+  m_Script: {fileID: 11500000, guid: 21e428c9130184010a7e68d4352a6d52, type: 3}
+--- !u!114 &763811048 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114297347549285746, guid: 5682129c33b88fd41b70797e0fa9b875,
+    type: 2}
+  m_PrefabInternal: {fileID: 40822631}
+  m_Script: {fileID: 11500000, guid: eae036594bebaa64ab7e0fba4f603174, type: 3}
+--- !u!114 &763811052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 763811045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcec26047e2d8da4eafdbb897012298a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 763811048}
+  damageable: {fileID: 763811046}
 --- !u!1001 &763813138
 Prefab:
   m_ObjectHideFlags: 0
