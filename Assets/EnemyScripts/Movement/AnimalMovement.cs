@@ -18,6 +18,7 @@ public class AnimalMovement : MonoBehaviour {
 	private bool jumping; // boolean that is true if character is jumping, false otherwise
 	private float sinceLastFlipped;
 	private Rigidbody2D m_rigidbody;
+    private SpriteRenderer spriteRenderer;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,7 @@ public class AnimalMovement : MonoBehaviour {
 		movingRight = 1;
 		jumping = false;
 		sinceLastFlipped = 0.0f;
+	    spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -41,7 +43,8 @@ public class AnimalMovement : MonoBehaviour {
 
 		if (collision.gameObject.CompareTag ("EnemyCollisionOnly") && !jumping) {
 			movingRight = -movingRight;
-			Debug.Log ("Switched direction!");
+		    spriteRenderer.flipX = !spriteRenderer.flipX;
+            Debug.Log ("Switched direction!");
 		}
 
 		/*

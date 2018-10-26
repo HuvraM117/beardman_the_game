@@ -6,12 +6,15 @@ public class Damagable : MonoBehaviour {
 
 	public int max_health = 2; //one for squirrel + bird 
 	public int currentHealth = 0;
-	public bool alive = true; 
+	public bool alive = true;
+
+    private Animator animator;
 
 	// Use this for initialization
 	void Start () {
 		alive = true; 
 		currentHealth = max_health;
+	    animator = GetComponent<Animator>();
 	}
 
 	public void TakeDamage(int amount){
@@ -21,7 +24,9 @@ public class Damagable : MonoBehaviour {
 
 		if (currentHealth <= 0){
 			currentHealth = 0; 
-			Destroy(gameObject);
+
+		    StartCoroutine(PlayDeathAnimation());
+
 			Debug.Log ("I am Dead");
 			/* despawn need to add in some kind of animation with it */
 		}
@@ -29,8 +34,24 @@ public class Damagable : MonoBehaviour {
 		Debug.Log ("I got hit!");
 	}
 
-	// Update is called once per frame
-	void Update () {
+    IEnumerator PlayDeathAnimation()
+    {
+        // If this has an animator (since enemies should will be damagable)
+        if (animator != null)
+        {
+            animator.SetBool("isDead", true);
+        }
+
+        // Figure out a more elegant way to disable movement
+        var movementController = GetComponent<AnimalMovement>();
+        movementController.speed = 0;
+        // Let the animation play
+        yield return new WaitForSeconds(1.0f);
+        Destroy(gameObject);
+    }
+
+    // Update is called once per frame
+    void Update () {
 
 	}
 		

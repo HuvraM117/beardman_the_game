@@ -5,11 +5,11 @@ using UnityEngine;
 public class BeardController : MonoBehaviour
 {
 
-    public float followDistance = 2.5f;
     public bool isLimitedByDistance = true;
     public Rigidbody2D beardman;
     private MovementController movementController;
     private BeardAnimationController beardAnimator;
+    [SerializeField] private PlayerState playerState;
 
     public float grappleForce = 3f;
     private float grappleStrength = 0f;
@@ -33,18 +33,7 @@ public class BeardController : MonoBehaviour
         {
             Vector2 mousePos = Input.mousePosition;
             Vector2 followVector = (Vector2)mainCamera.ScreenToWorldPoint(mousePos) - beardman.position;
-			this.transform.position = Vector2.ClampMagnitude (followVector, followDistance) + beardman.position;
-			this.transform.position += new Vector3 (0f, 0f, -1f);
-        }
-        if (Input.GetKey(KeyCode.E))
-        {
-            if (followDistance < 5)
-                followDistance += 0.1f;
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            if (followDistance > 1)
-                followDistance -= 0.1f;
+            this.transform.position = Vector2.ClampMagnitude(followVector, playerState.BeardLength) + beardman.position;
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -81,7 +70,8 @@ public class BeardController : MonoBehaviour
     {
         beardAnimator.WhipBeard(grappleObject.transform);
         var dir = (Vector2) grappleObject.transform.position- beardman.position;
-
+		    beardman.velocity = Vector2.zero;
+        
         beardman.AddForce(new Vector2(dir.x, 0) * grappleForce, ForceMode2D.Impulse);
         beardman.AddForce(dir * grappleForce, ForceMode2D.Impulse);
         Debug.Log("grapple");

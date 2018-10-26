@@ -37,11 +37,11 @@ public class DoesDamage : MonoBehaviour {
 
 	private IEnumerator Attack()
 	{
-		if(playerHealth.currentHealth > 0)
+		if(playerHealth.Health > 0)
 		{
 			playerHealth.TakeDamage(damage);
 		}
-		return null;
+		yield return null;
 	}
 
 	void OnCollisionExit2D(Collision2D collider)
