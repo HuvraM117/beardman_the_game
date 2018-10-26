@@ -9,59 +9,58 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1318271255711178}
+  m_RootGameObject: {fileID: 1210827617147078}
   m_IsPrefabParent: 1
---- !u!1 &1318271255711178
+--- !u!1 &1210827617147078
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4441799885423202}
-  - component: {fileID: 212449924723927248}
-  - component: {fileID: 114367455078438640}
+  - component: {fileID: 4440931695426496}
+  - component: {fileID: 212860529687593232}
+  - component: {fileID: 114934207259033002}
   m_Layer: 0
-  m_Name: Beard Controller
+  m_Name: test_particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4441799885423202
+--- !u!4 &4440931695426496
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1318271255711178}
+  m_GameObject: {fileID: 1210827617147078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.86, y: -0.51, z: -1.0859499}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 5.8035173, y: -2.353396, z: -1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114367455078438640
+--- !u!114 &114934207259033002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1318271255711178}
+  m_GameObject: {fileID: 1210827617147078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10d50edbe7f7c314bbe4e9e4444c6ec0, type: 3}
+  m_Script: {fileID: 11500000, guid: 001bc23711f544d29a5f989dfa394056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followDistance: 3
-  isLimitedByDistance: 1
-  beardman: {fileID: 0}
-  grappleForce: 6
---- !u!212 &212449924723927248
+  particle: {fileID: 1210827617147078}
+  character: {fileID: 0}
+  playerState: {fileID: 0}
+--- !u!212 &212860529687593232
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1318271255711178}
+  m_GameObject: {fileID: 1210827617147078}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -90,12 +89,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.5294118, g: 0.33893633, b: 0.027249131, a: 1}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 0.007352948, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
