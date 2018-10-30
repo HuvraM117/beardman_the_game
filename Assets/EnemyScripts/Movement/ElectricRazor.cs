@@ -89,9 +89,9 @@ public class ElectricRazor : MonoBehaviour {
 
 		while(yUp < amplitude) {
 			tempPosition.x += Mathf.Cos (amplitude * timeCount);
-			tempPosition.y += Mathf.Sin (amplitude & timeCount);
+			tempPosition.y += Mathf.Sin (amplitude * timeCount);
 			transform.position = tempPosition;
-			yUp += Mathf.Sin (amplitude & timeCount);
+			yUp += Mathf.Sin (amplitude * timeCount);
 			timeCount += Time.fixedDeltaTime;
 		}
 
