@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StraightEdgeThrowing : MonoBehaviour
@@ -18,8 +19,6 @@ public class StraightEdgeThrowing : MonoBehaviour
 	// Normalized update interval
 	void FixedUpdate () {
 		
-
-
 	}
 
     // Check if player is within current range
@@ -44,7 +43,7 @@ public class StraightEdgeThrowing : MonoBehaviour
      */
     void FireProjectile()
     {
-        // TODO: Implement
+        var projectileGameObject = Instantiate(projectile, transform.position, transform.rotation);
     }
 
 }

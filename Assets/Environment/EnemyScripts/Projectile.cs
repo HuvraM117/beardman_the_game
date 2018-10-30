@@ -5,11 +5,12 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
 
-    public bool moveRight;
-    public int speed;
+    public bool moveRight { get; set; }
+    public int speed { get; set; }
 
     private Rigidbody2D rigidbody;
     private int timeToSelfDestruct = 4;
+    Vector2 velocity;
 
     public Projectile(bool moveRight)
     {
@@ -19,23 +20,33 @@ public class Projectile : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-	    Vector2 velocity;
 	    if (moveRight)
 	    {
-	        velocity = new Vector2(speed, 0);
-        }
+	        velocity = Vector2.right * speed; //new Vector2(speed, 0);
+	    }
 	    else
 	    {
-            velocity = new Vector2(-speed, 0);
+	        velocity = Vector2.left * speed;
 	    }
 
         rigidbody = GetComponent<Rigidbody2D>();
 	    rigidbody.velocity = velocity;
 
-        Destroy(gameObject, timeToSelfDestruct);
+        //DestroyObjectDelayed();
+	}
+
+    //TODO: Not working as expected..?
+    void DestroyObjectDelayed()
+    {
+        Destroy(gameObject, (float)timeToSelfDestruct);
     }
-	
+
 
     // Collision w/ player
     // TODO: Figure whether this can just be handled with the other script
+
+    void FixedUpdate()
+    {
+
+    }
 }
