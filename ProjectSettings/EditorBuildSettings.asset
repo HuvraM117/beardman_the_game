@@ -8,12 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Beardman Menu.unity
     guid: f38b1a01058095c46bda5cfabc40f14c
+  - enabled: 1
+    path: Assets/Level1_Update.unity
+    guid: 8e052cd4f6d1c4fa1babef548a785b8c
+  - enabled: 1
+    path: Assets/LeadUpToBoss.unity
+    guid: 95a9430b12400114888f77e3935b2c65
+  - enabled: 1
+    path: Assets/BossLevel.unity
+    guid: fe9698152356a41c18fce3848ef6affa
   - enabled: 0
     path: Assets/Level 1.unity
     guid: 5846fbcbc856348baaa4a42af55846c9
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Level1_Update.unity
-    guid: 8e052cd4f6d1c4fa1babef548a785b8c
