@@ -1,4 +1,5 @@
 ﻿//Caitlin 
+/*QUESTION: are barber tools also stuck on platforms? Or can/do they jump sometimes?*/
 
 using System.Collections;
 using System.Collections.Generic;
