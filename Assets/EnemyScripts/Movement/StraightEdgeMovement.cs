@@ -8,42 +8,55 @@ using UnityEngine;
 public class StraightEdgeMovement : MonoBehaviour {
 
 	public int speed;
-	public int followRange; //NOTE: Only is concerned with X distance
-	private int movingRight;
-	private bool following;
+	public float timeBetweenAttacks;
+	public int followRange; //NOTE: Only concerned with X distance
+	public int attackRange; //NOTE: Only concerned with X distance
 	public GameObject player;
 
+	private int movingRight;
+	private bool following;
+	private bool attacking;
 	private Rigidbody2D m_rigidbody;
+	private float timeSinceLastAttack; 
 
 	// Use this for initialization
 	void Start () {
 		movingRight = 1;
 		following = false;
+		attacking = false;
+		timeSinceLastAttack = 0.0f;
 		m_rigidbody = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//check if should be following player
-		if (!following && Mathf.Abs (player.transform.position.x - this.transform.position.x) <= followRange) {
+		if (!attacking) { //if not attacking, move
+			//check if should be attacking
+			if (Mathf.Abs (player.transform.position.x - this.transform.position.x) <= attackRange) {
+				//then attack! 
+				StartCoroutine(attack());
+			} else { //move
+				//check if should be following player
+				if (!following && Mathf.Abs (player.transform.position.x - this.transform.position.x) <= followRange) {
 
-			following = true;
-			//adjusts direction of movement
-			if (player.transform.position.x - this.transform.position.x > 0) {
-				movingRight = 1;
-			} else {
-				movingRight = -1;
+					following = true;
+					//adjusts direction of movement
+					if (player.transform.position.x - this.transform.position.x > 0) {
+						movingRight = 1;
+					} else {
+						movingRight = -1;
+					}
+
+					//check if should NOT be following player 
+				} else if (following && Mathf.Abs (player.transform.position.x - this.transform.position.x) > followRange) {
+					following = false;
+				}
+
+				//moves 
+				Vector2 vector = new Vector2(1f * movingRight, 0) * speed;
+				m_rigidbody.AddForce(vector);
 			}
-
-		//check if should NOT be following player 
-		} else if (following && Mathf.Abs (player.transform.position.x - this.transform.position.x) > followRange) {
-			following = false;
 		}
-
-		//moves 
-		Vector2 vector = new Vector2(1f * movingRight, 0) * speed;
-		m_rigidbody.AddForce(vector);
-
 	}
 
 	//Reaches end of platform
@@ -54,5 +67,12 @@ public class StraightEdgeMovement : MonoBehaviour {
 			movingRight = -movingRight;
 			Debug.Log ("Switched direction!");
 		}
+	}
+
+	private IEnumerator attack() {
+		attacking = true;
+
+		attacking = false;
+		return null;
 	}
 }
