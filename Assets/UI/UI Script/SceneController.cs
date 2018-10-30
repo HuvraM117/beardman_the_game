@@ -14,9 +14,22 @@ public class SceneController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (LevelComplete ())
-			SceneManager.LoadScene (0);
+        var scene = SceneManager.GetActiveScene();
+
+        var levelComplete = LevelComplete();
+
+        if (levelComplete && scene.name.Equals("LeadUpToBoss"))
+        {
+            SceneManager.LoadScene(3);
+        }
+
+        if (levelComplete)
+        {
+            SceneManager.LoadScene(0);
+        }
+        
 	}
+
 	bool LevelComplete(){
 		return (Vector3.Distance (Player.transform.position, Endoflevel.transform.position) < Range);
 	}
