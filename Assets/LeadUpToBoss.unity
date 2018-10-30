@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &9254219
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &144492807
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &223248478
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &224499444
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &226346178
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -937,7 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &307290876
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1225,7 +1225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &487440595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &500086215
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1530,7 +1530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &533315433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1644,7 +1644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &604691929
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1929,7 +1929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &711555930
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2118,7 +2118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &737623495
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2232,7 +2232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &775184342
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2424,7 +2424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &784833597
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2629,7 +2629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &914581449
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2743,7 +2743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &917056028
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2857,7 +2857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &978530926
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2971,7 +2971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &1020038462
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3364,7 +3364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &1202998516
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3615,7 +3615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &1314525980
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3894,7 +3894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &1347902790
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4008,7 +4008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &1475515082
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4122,7 +4122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &1500007880
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4584,7 +4584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &1586596024
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8315,7 +8315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &1600611275
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8429,7 +8429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &1636687854
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8779,7 +8779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 782153836}
 --- !u!61 &1748211915
 BoxCollider2D:
   m_ObjectHideFlags: 0
