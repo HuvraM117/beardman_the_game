@@ -21,15 +21,12 @@ public class BarberController : MonoBehaviour {
     {
 
         //update stage
-        if (damageable.currentHealth > 6)
+        if (damageable.currentHealth == 7)
         {
-            stage = 0;
-        }
-        else if (damageable.currentHealth > 2)
-        {
+            movement.SetSpeedIncreased();
             stage = 1;
         }
-        else
+        else if(damageable.currentHealth == 3)
         {
             stage = 2;
         }
@@ -47,14 +44,16 @@ public class BarberController : MonoBehaviour {
         {
             StageThree();
         }
+  
+    }
 
-        // TODO: for testing, when done remove the below: move back and forth, swooping when the waypoint is reached
+    private void CycleWaypoints()
+    {
         if (movement.IsWaypointReached())
         {
             currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
-            Debug.Log("Waypoint reached");
             if (isSwooping)
-               movement.MoveTo(waypoints[currentWaypoint]);
+                movement.MoveTo(waypoints[currentWaypoint]);
             else
                 movement.SwoopTo(waypoints[currentWaypoint]);
             isSwooping = !isSwooping;
@@ -63,12 +62,12 @@ public class BarberController : MonoBehaviour {
 
     private void StageOne()
     {
-
+        CycleWaypoints();
     }
 
     private void StageTwo()
     {
-
+        CycleWaypoints();
     }
 
     private void StageThree()

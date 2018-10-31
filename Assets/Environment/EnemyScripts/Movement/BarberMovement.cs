@@ -10,6 +10,7 @@ public class BarberMovement : MonoBehaviour {
         get { return _waypoint; }
         private set {
             _waypoint = value;
+            _waypoint.z = -.18f; // to ensure the depth stays constant so it doesn't overlap with other sprites
             if (_waypoint.x > transform.position.x)
             {
                 transform.localScale = faceRight;
@@ -23,7 +24,7 @@ public class BarberMovement : MonoBehaviour {
     [SerializeField] private float MOVESPEED = .1f; // base movement speed
     [SerializeField] private float SWOOPSPEEDMULTIPLIER = 3f; // how much faster the barber travels while swooping
     private float currentMoveSpeed; // movement speed with modifiers such as swooping multiplier
-    [SerializeField] private float SWOOPAMPLITUDE = 2f;
+    [SerializeField] private float SWOOPAMPLITUDE = 3f;
     private bool isSwooping = false;
     private float initialHeight;
     private float initialX; // for keeping track of where in a swoop we are
@@ -66,8 +67,15 @@ public class BarberMovement : MonoBehaviour {
     {
         Waypoint = newWaypoint;
         initialX = transform.position.x;
+        initialHeight = transform.position.y;
         currentMoveSpeed = MOVESPEED * SWOOPSPEEDMULTIPLIER;
         isSwooping = true;
+    }
+
+    public void SetSpeedIncreased()
+    {
+        MOVESPEED = .15f;
+        currentMoveSpeed = isSwooping ? MOVESPEED * SWOOPSPEEDMULTIPLIER : MOVESPEED;
     }
 
     public bool IsWaypointReached()

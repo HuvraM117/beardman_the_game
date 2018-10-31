@@ -1446,8 +1446,10 @@ MonoBehaviour:
   movement: {fileID: 622525940}
   damageable: {fileID: 622525938}
   waypoints:
-  - {x: 39, y: 23, z: 0}
-  - {x: 21, y: 23, z: 0}
+  - {x: 39.99, y: 23, z: 0}
+  - {x: 20, y: 23, z: 0}
+  - {x: 20.01, y: 7, z: 0}
+  - {x: 40, y: 7, z: 0}
 --- !u!1001 &633965547
 Prefab:
   m_ObjectHideFlags: 0
@@ -1457,11 +1459,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 21.06
+      value: 38.83
       objectReference: {fileID: 0}
     - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 23.02
+      value: 22.06
       objectReference: {fileID: 0}
     - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1492,6 +1494,11 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 342378066}
+    - target: {fileID: 114297347549285746, guid: 5682129c33b88fd41b70797e0fa9b875,
+        type: 2}
+      propertyPath: SWOOPAMPLITUDE
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
   m_IsPrefabParent: 0
