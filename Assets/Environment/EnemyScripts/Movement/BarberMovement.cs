@@ -27,7 +27,7 @@ public class BarberMovement : MonoBehaviour {
     private bool isSwooping = false;
     private float initialHeight;
     private float initialX; // for keeping track of where in a swoop we are
-    private const float WAYPOINTTOLERANCE = .001f; // tolerance for when we've reached the waypoint, to avoid getting stuck due to floating point inaccuracies
+    private const float WAYPOINTTOLERANCE = .005f; // tolerance for when we've reached the waypoint, to avoid getting stuck due to floating point inaccuracies
     private Vector3 faceLeft;
     private Vector3 faceRight;
 
@@ -41,7 +41,7 @@ public class BarberMovement : MonoBehaviour {
         initialHeight = transform.position.y;
 
         // TODO: for testing, when done remove the below: move towards the target
-        Waypoint = new Vector3(16f, Waypoint.y, Waypoint.z);
+        //Waypoint = new Vector3(16f, Waypoint.y, Waypoint.z);
     }
 
     public void MoveTo(float newX)
@@ -52,6 +52,7 @@ public class BarberMovement : MonoBehaviour {
     public void MoveTo(Vector3 newWaypoint)
     {
         Waypoint = newWaypoint;
+        Debug.Log(Waypoint);
         currentMoveSpeed = MOVESPEED;
         isSwooping = false;
     }
@@ -71,7 +72,7 @@ public class BarberMovement : MonoBehaviour {
 
     public bool IsWaypointReached()
     {
-        return Mathf.Abs(Waypoint.x - transform.position.x) < WAYPOINTTOLERANCE;
+        return isSwooping ? Mathf.Abs(Waypoint.x - transform.position.x) < WAYPOINTTOLERANCE : Vector3.Distance(transform.position, Waypoint) < WAYPOINTTOLERANCE;
     }
 
     private void FixedUpdate()

@@ -1445,6 +1445,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 622525940}
   damageable: {fileID: 622525938}
+  waypoints:
+  - {x: 39, y: 23, z: 0}
+  - {x: 21, y: 23, z: 0}
 --- !u!1001 &633965547
 Prefab:
   m_ObjectHideFlags: 0
@@ -1458,7 +1461,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 23.75
+      value: 23.02
       objectReference: {fileID: 0}
     - target: {fileID: 4683848908510084, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2202,7 +2205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7ea3f30f542484598ae927a021536b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StayGone: 1
+  StayGone: 0
 --- !u!61 &783752249
 BoxCollider2D:
   m_ObjectHideFlags: 0
