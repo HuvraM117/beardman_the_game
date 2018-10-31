@@ -8,12 +8,17 @@ public class BarberController : MonoBehaviour {
     [SerializeField] private Damagable damageable;
     private bool isSwooping = false; // TODO: we can probably remove this when we implement the actual behavior
     [SerializeField] Vector3[] waypoints = { new Vector3(39f, 23f, 0f), new Vector3(21f, 23f, 0f) };
+    [SerializeField] GameObject[] traps = new GameObject[0];
     int currentWaypoint = 0;
+    int currentTrap = 0;
 
-    int stage = 0;
+    private int stage = 0;
+    [SerializeField] private float timePerTrap = 2f; // the time a given trap stays active before cycling to the next one
+    private float trapCyclePeriod; // the total time it takes to cycle between all traps
 
     private void Start()
     {
+        trapCyclePeriod = traps.Length * timePerTrap;
         movement.MoveTo(waypoints[currentWaypoint]);
     }
 
@@ -47,6 +52,7 @@ public class BarberController : MonoBehaviour {
   
     }
 
+    // move through each waypoint in a cycle
     private void CycleWaypoints()
     {
         if (movement.IsWaypointReached())
@@ -57,6 +63,19 @@ public class BarberController : MonoBehaviour {
             else
                 movement.SwoopTo(waypoints[currentWaypoint]);
             isSwooping = !isSwooping;
+        }
+    }
+
+    // cycle through activating and deactivating traps
+    private void CycleTraps()
+    {
+        Debug.Log((Time.timeSinceLevelLoad % trapCyclePeriod));
+        if((Time.timeSinceLevelLoad % trapCyclePeriod) > (timePerTrap * (currentTrap+1)) || (currentTrap == traps.Length-1 && (Time.timeSinceLevelLoad % trapCyclePeriod) < timePerTrap))
+        {
+            Debug.Log("olo");
+            traps[currentTrap].SetActive(false);
+            currentTrap = (currentTrap + 1) % traps.Length;
+            traps[currentTrap].SetActive(true);
         }
     }
 
@@ -72,6 +91,7 @@ public class BarberController : MonoBehaviour {
 
     private void StageThree()
     {
-
+        CycleWaypoints();
+        CycleTraps();
     }
 }
