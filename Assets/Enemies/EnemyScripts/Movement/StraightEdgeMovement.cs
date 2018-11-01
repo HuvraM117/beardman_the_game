@@ -12,6 +12,7 @@ public class StraightEdgeMovement : MonoBehaviour {
 	public int followRange; //NOTE: Only concerned with X distance
 	public int attackRange; //NOTE: Only concerned with X distance
 	public GameObject player;
+    public Projectile projectile;
 
 	private int movingRight;
 	private bool following;
@@ -72,10 +73,12 @@ public class StraightEdgeMovement : MonoBehaviour {
 	private IEnumerator attack() {
 		attacking = true;
 
-		var projectileGameObject = (GameObject)Instantiate (
-			bulletPrefab,
+		var projectileGameObject = Instantiate (
+			projectile,
 			transform.position,
 			transform.rotation);
+
+	    projectileGameObject.moveRight = movingRight;
 
 		attacking = false;
 		return null;
