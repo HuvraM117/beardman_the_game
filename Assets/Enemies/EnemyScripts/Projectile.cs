@@ -5,14 +5,14 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
 
-    public bool moveRight { get; set; }
+    public int moveRight { get; set; } //1 for moving right -1 for moving left
     public int speed { get; set; }
 
     private Rigidbody2D rigidbody;
     private int timeToSelfDestruct = 4;
     Vector2 velocity;
 
-    public Projectile(bool moveRight)
+    public Projectile(int moveRight)
     {
         this.moveRight = moveRight;
     }
@@ -20,14 +20,7 @@ public class Projectile : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-	    if (moveRight)
-	    {
-	        velocity = Vector2.right * speed; //new Vector2(speed, 0);
-	    }
-	    else
-	    {
-	        velocity = Vector2.left * speed;
-	    }
+	    velocity = Vector2.right * speed * moveRight; //new Vector2(speed, 0);
 
         rigidbody = GetComponent<Rigidbody2D>();
 	    rigidbody.velocity = velocity;
