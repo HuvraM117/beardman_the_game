@@ -7,7 +7,7 @@ public class BarberController : MonoBehaviour {
     [SerializeField] private BarberMovement movement;
     [SerializeField] private Damagable damageable;
     private bool isSwooping = false; // TODO: we can probably remove this when we implement the actual behavior
-    float[] waypoints = { 16f, 9.5f };
+    [SerializeField] float[] waypoints = { 39f, 21f };
     int currentWaypoint = 0;
 
     private void FixedUpdate()
