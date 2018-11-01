@@ -29,7 +29,7 @@ public class BirdMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		tempPosition.x += xVelocity * Time.deltaTime;
-		tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * ySpeed * amplitude * yModifier * Time.fixedDeltaTime);
+		tempPosition.y = Mathf.Cos(Time.realtimeSinceStartup * ySpeed * amplitude * yModifier * Time.fixedDeltaTime);
 		transform.position = tempPosition;
 		xMoved += xVelocity * Time.deltaTime;
 
