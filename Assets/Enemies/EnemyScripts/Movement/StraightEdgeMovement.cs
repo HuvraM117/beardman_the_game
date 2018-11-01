@@ -78,7 +78,15 @@ public class StraightEdgeMovement : MonoBehaviour {
 			transform.position,
 			transform.rotation);
 
-	    projectileGameObject.moveRight = movingRight;
+	    //projectileGameObject.moveRight = movingRight;
+
+		// Add velocity to the projectile
+		projectileGameObject.GetComponent<Rigidbody>().velocity = projectileGameObject.transform.forward * 6;
+
+		yield return new WaitForSeconds(5);
+
+		// Destroy the projectile after 2 seconds
+		Destroy(projectileGameObject, 5.0f);
 
 		attacking = false;
 		return null;
