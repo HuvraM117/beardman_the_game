@@ -81,7 +81,6 @@ public class ElectricRazor : MonoBehaviour {
 		}
 
 		//swoop back up
-		//TODO: make go back up 
 
 		int amplitude = 2;
 		float timeCount = 0;
