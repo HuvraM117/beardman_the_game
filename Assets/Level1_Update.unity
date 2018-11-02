@@ -29850,7 +29850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.5
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: 675649032}
 --- !u!114 &2097114738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29865,7 +29865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   followRange: 200
-  player: {fileID: 0}
+  player: {fileID: 675649032}
 --- !u!114 &2097114739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29877,8 +29877,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157d28eda20b0b6498f4563caaae827e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facingRight: 1
-  collider: {fileID: 0}
 --- !u!50 &2097114740
 Rigidbody2D:
   serializedVersion: 4
@@ -30127,8 +30125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca5a2524039e16468c5a63a95fa708f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveRight: 1
-  speed: 1
 --- !u!1001 &2138991812
 Prefab:
   m_ObjectHideFlags: 0

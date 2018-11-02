@@ -89,6 +89,6 @@ public class StraightEdgeMovement : MonoBehaviour {
 		Destroy(projectileGameObject, 5.0f);
 
 		attacking = false;
-		return null;
+		//return null;
 	}
 }

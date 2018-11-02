@@ -33,13 +33,4 @@ public class Projectile : MonoBehaviour
     {
         Destroy(gameObject, (float)timeToSelfDestruct);
     }
-
-
-    // Collision w/ player
-    // TODO: Figure whether this can just be handled with the other script
-
-    void FixedUpdate()
-    {
-
-    }
 }
