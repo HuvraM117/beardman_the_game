@@ -35,6 +35,7 @@ public class StraightEdgeMovement : MonoBehaviour {
 			//check if should be attacking
 			if (Mathf.Abs (player.transform.position.x - this.transform.position.x) <= attackRange) {
 				//then attack! 
+			    Debug.Log("Attacking the player!");
 				StartCoroutine(attack());
 			} else { //move
 				//check if should be following player
@@ -72,23 +73,24 @@ public class StraightEdgeMovement : MonoBehaviour {
 
 	private IEnumerator attack() {
 		attacking = true;
-
+        
 		var projectileGameObject = Instantiate (
 			projectile,
 			transform.position,
 			transform.rotation);
 
-	    //projectileGameObject.moveRight = movingRight;
+        Debug.Log("Creating projectile at: X:" + projectileGameObject.transform.position.x + " Y: " + projectileGameObject.transform.position.y);
 
-		// Add velocity to the projectile
-		projectileGameObject.GetComponent<Rigidbody>().velocity = projectileGameObject.transform.forward * 6;
+		// Add velocity to the projectile. Avoids multiplying 0.
+	    var velocityVect = new Vector3(6, 1);
+		projectileGameObject.GetComponent<Rigidbody2D>().velocity = gameObject.transform.forward + velocityVect;
+
+        Debug.Log("Projectile speed: " + projectileGameObject.gameObject.GetComponent<Rigidbody2D>().velocity);
 
 		yield return new WaitForSeconds(5);
 
-		// Destroy the projectile after 2 seconds
-		Destroy(projectileGameObject, 5.0f);
+	    Destroy(projectileGameObject);
 
 		attacking = false;
-		//return null;
 	}
 }

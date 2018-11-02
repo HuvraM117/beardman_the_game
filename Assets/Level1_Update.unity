@@ -29858,7 +29858,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2097114735}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24634840ab6fc9a4f9bfe94b773480c2, type: 3}
   m_Name: 
@@ -29874,9 +29874,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2097114735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 157d28eda20b0b6498f4563caaae827e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b8822234fc8c2b41b2e35eb703c968c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  timeBetweenAttacks: 0.5
+  followRange: 50
+  attackRange: 30
+  player: {fileID: 675649032}
+  projectile: {fileID: 114474745924518960, guid: 0dec0e81c5b156b4791ba1d30b0f1440,
+    type: 2}
 --- !u!50 &2097114740
 Rigidbody2D:
   serializedVersion: 4
