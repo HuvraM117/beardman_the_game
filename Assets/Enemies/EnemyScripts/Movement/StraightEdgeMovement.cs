@@ -78,18 +78,19 @@ public class StraightEdgeMovement : MonoBehaviour {
 			projectile,
 			transform.position,
 			transform.rotation);
+	    projectileGameObject.gameObject.GetComponent<DoesDamage>().player = player;
 
         Debug.Log("Creating projectile at: X:" + projectileGameObject.transform.position.x + " Y: " + projectileGameObject.transform.position.y);
 
 		// Add velocity to the projectile. Avoids multiplying 0.
 	    var velocityVect = new Vector3(6, 1);
 		projectileGameObject.GetComponent<Rigidbody2D>().velocity = gameObject.transform.forward + velocityVect;
-
+        
         Debug.Log("Projectile speed: " + projectileGameObject.gameObject.GetComponent<Rigidbody2D>().velocity);
 
 		yield return new WaitForSeconds(5);
 
-	    Destroy(projectileGameObject);
+	    projectileGameObject.DestroyObjectDelayed();
 
 		attacking = false;
 	}
