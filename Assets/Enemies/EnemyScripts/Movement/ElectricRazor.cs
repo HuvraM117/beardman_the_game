@@ -81,7 +81,18 @@ public class ElectricRazor : MonoBehaviour {
 		}
 
 		//swoop back up
-		//TODO: make go back up 
+
+		int amplitude = 2;
+		float timeCount = 0;
+		float yUp = 0;
+
+		while(yUp < amplitude) {
+			tempPosition.x += Mathf.Cos (amplitude * timeCount);
+			tempPosition.y += Mathf.Sin (amplitude * timeCount);
+			transform.position = tempPosition;
+			yUp += Mathf.Sin (amplitude * timeCount);
+			timeCount += Time.fixedDeltaTime;
+		}
 
 		attacking = false;
 		return null;
