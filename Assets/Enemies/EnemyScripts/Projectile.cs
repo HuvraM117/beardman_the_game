@@ -20,17 +20,16 @@ public class Projectile : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-	    velocity = Vector2.right * speed * moveRight; //new Vector2(speed, 0);
+	    //velocity = Vector2.right * speed * moveRight; //new Vector2(speed, 0);
 
         rigidbody = GetComponent<Rigidbody2D>();
-	    rigidbody.velocity = velocity;
-
+	    //rigidbody.velocity = velocity;
         //DestroyObjectDelayed();
 	}
 
     //TODO: Not working as expected..?
-    void DestroyObjectDelayed()
+    public void DestroyObjectDelayed()
     {
-        Destroy(gameObject, (float)timeToSelfDestruct);
+        Destroy(gameObject);
     }
 }
