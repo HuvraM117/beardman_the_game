@@ -19,8 +19,8 @@ public class DisappearingPlatform : MonoBehaviour
     void Start()
     {
         timesHit = 0;
-        //need to find a way to get the assets programatically
-        //get neede assets 
+
+        //get needed assets 
         sprites = Resources.LoadAll<Sprite>("Environment");
         shake = false;
     }
@@ -105,12 +105,17 @@ public class DisappearingPlatform : MonoBehaviour
         {
 
             this.GetComponent<SpriteRenderer>().sprite = null;
+            BoxCollider2D bc = this.GetComponent<BoxCollider2D>();
+
+            this.GetComponent<BoxCollider2D>().enabled = false;
 
             //wait a few seconds
             yield return new WaitForSeconds(5);
 
             //set game object as inactive 
             this.GetComponent<SpriteRenderer>().sprite = sprites[0];
+
+            this.GetComponent<BoxCollider2D>().enabled = true;
 
             //reset times hit counter
             timesHit = 0;
