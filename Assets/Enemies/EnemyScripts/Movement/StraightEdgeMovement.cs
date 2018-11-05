@@ -30,35 +30,38 @@ public class StraightEdgeMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (!attacking) { //if not attacking, move
+	void Update () { 
+		if (!attacking) { //if not attacking, check if should be
 			//check if should be attacking
 			if (Mathf.Abs (player.transform.position.x - this.transform.position.x) <= attackRange) {
 				//then attack! 
-			    Debug.Log("Attacking the player!");
-				StartCoroutine(attack());
-			} else { //move
-				//check if should be following player
-				if (!following && Mathf.Abs (player.transform.position.x - this.transform.position.x) <= followRange) {
-
-					following = true;
-					//adjusts direction of movement
-					if (player.transform.position.x - this.transform.position.x > 0) {
-						movingRight = 1;
-					} else {
-						movingRight = -1;
-					}
-
-					//check if should NOT be following player 
-				} else if (following && Mathf.Abs (player.transform.position.x - this.transform.position.x) > followRange) {
-					following = false;
+				Debug.Log ("Attacking the player!");
+				StartCoroutine (attack ());
+			} 
+		}
+		//check if should be following player
+		if (!following && Mathf.Abs (player.transform.position.x - this.transform.position.x) <= followRange) {
+			Debug.Log ("following!!");
+				following = true;
+				//adjusts direction of movement
+				if (player.transform.position.x - this.transform.position.x > 0) {
+				
+					movingRight = 1;
+				} else {
+					movingRight = -1;
+					Debug.Log("moving left!!");
 				}
 
-				//moves 
-				Vector2 vector = new Vector2(1f * movingRight, 0) * speed;
-				m_rigidbody.AddForce(vector);
-			}
+			//check if should NOT be following player 
+		} else if (following && Mathf.Abs (player.transform.position.x - this.transform.position.x) > followRange) {
+			Debug.Log ("Not following");
+			following = false;
 		}
+
+		//moves 
+		Vector2 velocity = new Vector2(1f * movingRight * speed, 0.0f);
+		m_rigidbody.MovePosition(m_rigidbody.position + Time.fixedDeltaTime * velocity);
+
 	}
 
 	//Reaches end of platform
@@ -80,15 +83,15 @@ public class StraightEdgeMovement : MonoBehaviour {
 			transform.rotation);
 	    projectileGameObject.gameObject.GetComponent<DoesDamage>().player = player;
 
-        Debug.Log("Creating projectile at: X:" + projectileGameObject.transform.position.x + " Y: " + projectileGameObject.transform.position.y);
+        //Debug.Log("Creating projectile at: X:" + projectileGameObject.transform.position.x + " Y: " + projectileGameObject.transform.position.y);
 
 		// Add velocity to the projectile. Avoids multiplying 0.
-	    var velocityVect = new Vector3(6, 1);
+	    var velocityVect = new Vector3(movingRight * 6, 1);
 		projectileGameObject.GetComponent<Rigidbody2D>().velocity = gameObject.transform.forward + velocityVect;
         
-        Debug.Log("Projectile speed: " + projectileGameObject.gameObject.GetComponent<Rigidbody2D>().velocity);
+        //Debug.Log("Projectile speed: " + projectileGameObject.gameObject.GetComponent<Rigidbody2D>().velocity);
 
-		yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(timeBetweenAttacks);
 
 	    projectileGameObject.DestroyObjectDelayed();
 
