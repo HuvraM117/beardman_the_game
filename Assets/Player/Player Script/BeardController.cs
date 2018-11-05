@@ -71,7 +71,7 @@ public class BeardController : MonoBehaviour
 
         beardAnimator.WhipBeard(target);
         var dir = (Vector2) target- beardman.position;
-		    beardman.velocity = Vector2.zero;
+		beardman.velocity = new Vector2 (beardman.velocity.x, 0);
         
 		beardman.AddForce(new Vector2(dir.x*2f, 0) * grappleForce , ForceMode2D.Impulse);
 		beardman.AddForce(dir * grappleForce, ForceMode2D.Impulse);
