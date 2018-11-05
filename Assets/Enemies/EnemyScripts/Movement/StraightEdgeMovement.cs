@@ -19,6 +19,8 @@ public class StraightEdgeMovement : MonoBehaviour {
 	private bool attacking;
 	private Rigidbody2D m_rigidbody;
 	private float timeSinceLastAttack; 
+	private float myXscale;
+	private float myYscale;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +29,8 @@ public class StraightEdgeMovement : MonoBehaviour {
 		attacking = false;
 		timeSinceLastAttack = 0.0f;
 		m_rigidbody = GetComponent<Rigidbody2D>();
+		myXscale = transform.localScale.x;
+		myYscale = transform.localScale.y;
 	}
 	
 	// Update is called once per frame
@@ -42,15 +46,19 @@ public class StraightEdgeMovement : MonoBehaviour {
 		//check if should be following player
 		if (!following && Mathf.Abs (player.transform.position.x - this.transform.position.x) <= followRange) {
 			Debug.Log ("following!!");
-				following = true;
-				//adjusts direction of movement
-				if (player.transform.position.x - this.transform.position.x > 0) {
-				
-					movingRight = 1;
-				} else {
-					movingRight = -1;
-					Debug.Log("moving left!!");
+			following = true;
+			//adjusts direction of movement
+			if (player.transform.position.x - this.transform.position.x > 0) {
+				if (movingRight != 1) {
+					movingRight = 1;//switch direction
+					transform.localScale = new Vector2 (myXscale, myYscale);
 				}
+			} else {
+				if(movingRight != -1) {
+					movingRight = -1;
+					transform.localScale = new Vector2 (-myXscale, myYscale);
+				}
+			}
 
 			//check if should NOT be following player 
 		} else if (following && Mathf.Abs (player.transform.position.x - this.transform.position.x) > followRange) {
