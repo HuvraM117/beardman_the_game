@@ -73,7 +73,7 @@ public class MovementController : MonoBehaviour {
         }
         else if (IsGrounded)
         {
-			moveInput.x = Input.GetAxis("Horizontal") * 1.5f;
+			moveInput.x = Input.GetAxis("Horizontal") * MOVESPEED/1.5f;
 			if (moveInput.x > 0) {
 				m_rigidbody.transform.localScale = crouchRight;
 				lastDir = true;
