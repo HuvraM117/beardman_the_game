@@ -19,15 +19,15 @@ public class BeardAnimationController : MonoBehaviour {
     private int trailingSegments = 0; // segments currently "active" but behind the player (so not actually active)
     private int maxSegments; // the current max length of the beard in segments
 
-    private Transform target;
-    private Vector3 beardPath;
-    private Vector3 beardOrigin;
+    private Vector2 target;
+    private Vector2 beardPath;
+    private Vector2 beardOrigin;
 
     private BeardState nextState = BeardState.IDLE; // which state to transition to next after the current one
 
 	// Use this for initialization
 	void Start () {
-        target = gameObject.transform;
+        target = gameObject.transform.position;
         // uses object pooling so we don't waste resources spawning and destroying beard segments
 		for(int i=0; i<HARDMAXSEGMENTS; i++)
         {
@@ -38,25 +38,25 @@ public class BeardAnimationController : MonoBehaviour {
         beardTip = Instantiate(beardTipPrefab);
 	}
 
-    public void WhipBeard(Transform targetTransform)
+    public void WhipBeard(Vector2 target)
     {
         if(PlayerState.CurrentBeardState != BeardState.IDLE) { return; }
         nextState = BeardState.RETRACTING;
-        ExtendBeard(targetTransform);
+        ExtendBeard(target);
     }
 
     public void GrappleBeard(Transform targetTransform)
     {
         if (PlayerState.CurrentBeardState != BeardState.IDLE) { return; }
         nextState = BeardState.PULLING;
-        ExtendBeard(targetTransform);
+        ExtendBeard(targetTransform.position);
     }
 
     // extend the beard out to a point
-    private void ExtendBeard(Transform targetTransform)
+    private void ExtendBeard(Vector2 target)
     {
-        target = targetTransform;
-        maxSegments = (int)((target.position - beardOrigin).magnitude / SEGMENTDISTANCE); // can't use beardPath here as it hasn't been updated yet
+        this.target = target;
+        maxSegments = (int)((target - beardOrigin).magnitude / SEGMENTDISTANCE); // can't use beardPath here as it hasn't been updated yet
         PlayerState.CurrentBeardState = BeardState.EXTENDING;
         beardTip.GetComponent<Collider2D>().enabled = true;
     }
@@ -64,7 +64,7 @@ public class BeardAnimationController : MonoBehaviour {
     private void FixedUpdate()
     {
         beardOrigin = transform.position;
-        beardPath = target.position - beardOrigin;
+        beardPath = target - beardOrigin;
         switch (PlayerState.CurrentBeardState)
         {
             case BeardState.EXTENDING:
@@ -108,7 +108,7 @@ public class BeardAnimationController : MonoBehaviour {
         for(int i=trailingSegments; i<visibleSegments; i++)
         {
             // if the segment is farther from the target than the player
-            if(beardPath.sqrMagnitude <= (segments[i].transform.position - beardOrigin).magnitude)
+            if(beardPath.sqrMagnitude <= (segments[i].transform.position - new Vector3(beardOrigin.x, beardOrigin.y, 0f)).magnitude)
             {
                 segments[i].SetActive(false);
                 trailingSegments++;
