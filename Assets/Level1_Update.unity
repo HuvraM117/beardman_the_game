@@ -29925,7 +29925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  timeBetweenAttacks: 0.5
+  timeBetweenAttacks: 1
   followRange: 50
   attackRange: 30
   player: {fileID: 675649032}
