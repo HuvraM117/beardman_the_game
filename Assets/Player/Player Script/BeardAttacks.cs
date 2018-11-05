@@ -48,6 +48,7 @@ public class BeardAttacks : MonoBehaviour {
         }
         else
         {
+            Debug.Log("LKSDFJHDSLKFJ");
             WhipBeard(particle);
         }
     }
