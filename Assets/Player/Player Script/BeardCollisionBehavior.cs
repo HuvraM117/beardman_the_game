@@ -11,7 +11,7 @@ public class BeardCollisionBehavior : MonoBehaviour {
 
 
 	// register any newly currently colliding objects with collisions and deal damage if it's an enemy
-	private void OnTriggerStay2D(Collider2D other)
+	private void OnTriggerEnter2D(Collider2D other)
 	{
 		playerHealth = other.GetComponent <PlayerState> ();
 		enemyhealth = other.GetComponent <Damagable> ();
