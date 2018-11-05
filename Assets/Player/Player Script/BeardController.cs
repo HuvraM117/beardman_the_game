@@ -49,7 +49,7 @@ public class BeardController : MonoBehaviour
         // TODO: here I assume that all enemies/grappleable objects will have an associated component, we can change this later based on the actual components' names/different critereon
         if ((targetObject && targetObject.name == "Grapple Point") && !MovementController.Crouching())
         {
-            GrappleBeard(targetObject);
+            GrappleBeard(targetHit.point);
         }
         else
         {
@@ -61,15 +61,15 @@ public class BeardController : MonoBehaviour
     // assuming the target is in range, not range-limited
     private void WhipBeard(GameObject targetObject)
     {
-        beardAnimator.WhipBeard(targetObject.transform);
+        beardAnimator.WhipBeard(targetObject.transform.position);
         Debug.Log("whip");
     }
 
     // assuming the target is in range, not range-limited
-    private void GrappleBeard(GameObject grappleObject)
+    private void GrappleBeard(Vector2 target)
     {
-        beardAnimator.WhipBeard(grappleObject.transform);
-        var dir = (Vector2) grappleObject.transform.position- beardman.position;
+        beardAnimator.WhipBeard(target);
+        var dir = (Vector2) target- beardman.position;
 		    beardman.velocity = Vector2.zero;
         
         beardman.AddForce(new Vector2(dir.x, 0) * grappleForce, ForceMode2D.Impulse);

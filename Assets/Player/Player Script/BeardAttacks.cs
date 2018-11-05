@@ -56,7 +56,7 @@ public class BeardAttacks : MonoBehaviour {
     // assuming the target is in range, not range-limited
     private void WhipBeard(GameObject targetObject)
     {
-        beardAnimator.WhipBeard(targetObject.transform);
+        beardAnimator.WhipBeard(targetObject.transform.position);
         Debug.Log("whip");
     }
 
