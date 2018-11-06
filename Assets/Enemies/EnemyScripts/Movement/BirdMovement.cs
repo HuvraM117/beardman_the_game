@@ -14,6 +14,8 @@ public class BirdMovement : MonoBehaviour {
 	private Vector2 tempPosition; // used to adjust position
 	private float xMoved; //counter for how far it's moved horizontally 
 	private float yModifier; //used so bird doesn't do crazy things
+	private float myXscale;
+	private float myYscale;
 
 	public float maxHorizontalRange; //range of horizontal movement
 	public float xVelocity; //horizontal velocity (positive or negative)
@@ -24,6 +26,12 @@ public class BirdMovement : MonoBehaviour {
 	void Start () {
 		tempPosition = transform.position;
 		yModifier = 20f;
+
+		myXscale = transform.localScale.x;
+		myYscale = transform.localScale.y;
+		if (xVelocity > 0) { //flips direction if starts moving right
+			transform.localScale = new Vector2 (-myXscale, myYscale);
+		}
 	}
 
 	// Update is called once per frame
@@ -35,6 +43,11 @@ public class BirdMovement : MonoBehaviour {
 
 		if (xMoved >= maxHorizontalRange) { //if bird passes some fixed point
 			xVelocity = -xVelocity; //switch direction
+			if (xVelocity > 0) { // moving right
+				transform.localScale = new Vector2 (-myXscale, myYscale);
+			} else { //moving left
+				transform.localScale = new Vector2 (myXscale, myYscale);
+			}
 			xMoved = 0;
 		}
 	}
