@@ -31,7 +31,7 @@ public class BirdMovement : MonoBehaviour {
 		tempPosition.x += xVelocity * Time.deltaTime;
 		tempPosition.y = Mathf.Cos(Time.realtimeSinceStartup * ySpeed * amplitude * yModifier * Time.fixedDeltaTime);
 		transform.position = tempPosition;
-		xMoved += xVelocity * Time.deltaTime;
+		xMoved += Mathf.Abs(xVelocity * Time.deltaTime);
 
 		if (xMoved >= maxHorizontalRange) { //if bird passes some fixed point
 			xVelocity = -xVelocity; //switch direction
