@@ -15,7 +15,6 @@ public class StraightEdgeMovement : MonoBehaviour {
     public Projectile projectile;
 
 	private int movingRight;
-	private bool following;
 	private bool attacking;
 	private Rigidbody2D m_rigidbody;
 	private float timeSinceLastAttack; 
@@ -25,7 +24,6 @@ public class StraightEdgeMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		movingRight = 1;
-		following = false;
 		attacking = false;
 		timeSinceLastAttack = 0.0f;
 		m_rigidbody = GetComponent<Rigidbody2D>();
@@ -44,27 +42,21 @@ public class StraightEdgeMovement : MonoBehaviour {
 			} 
 		}
 		//check if should be following player
-		if (!following && Mathf.Abs (player.transform.position.x - this.transform.position.x) <= followRange) {
-			Debug.Log ("following!!");
-			following = true;
+		if (Mathf.Abs (player.transform.position.x - this.transform.position.x) <= followRange) {
 			//adjusts direction of movement
+			//moving right
 			if (player.transform.position.x - this.transform.position.x > 0) {
 				if (movingRight != 1) {
 					movingRight = 1;//switch direction
 					transform.localScale = new Vector2 (myXscale, myYscale);
 				}
-			} else {
-				if(movingRight != -1) {
-					movingRight = -1;
-					transform.localScale = new Vector2 (-myXscale, myYscale);
-				}
+				//moving left
+			} else if (movingRight != -1) {
+				movingRight = -1;
+				transform.localScale = new Vector2 (-myXscale, myYscale);
 			}
-
-			//check if should NOT be following player 
-		} else if (following && Mathf.Abs (player.transform.position.x - this.transform.position.x) > followRange) {
-			Debug.Log ("Not following");
-			following = false;
 		}
+			
 
 		//moves 
 		Vector2 velocity = new Vector2(1f * movingRight * speed, 0.0f);
