@@ -35,6 +35,7 @@ public class BirdMovement : MonoBehaviour {
 
 		if (xMoved >= maxHorizontalRange) { //if bird passes some fixed point
 			xVelocity = -xVelocity; //switch direction
+			xMoved = 0;
 		}
 	}
 
