@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114296115379994002}
   - component: {fileID: 114971999917169342}
   - component: {fileID: 114095115339219494}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BarberTool
   m_TagString: Enemy
   m_Icon: {fileID: 0}
