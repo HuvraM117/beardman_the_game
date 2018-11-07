@@ -8,6 +8,7 @@ public class SceneController : MonoBehaviour {
 	public GameObject Endoflevel;
 	public GameObject Player;
 	public GameObject Backgroud;
+    public GameObject SettingsPopUp;
 	public float moveRatio;
 	public Vector3 backgroundOffset;
     private Camera BossLevelCamera;
@@ -15,11 +16,13 @@ public class SceneController : MonoBehaviour {
 	private float startOfLevel;
 	private float progress;
 	public int Range=10;
+
 	// Use this for initialization
 	void Start () {
         //BossLevelCamera = this.gameObject.GetComponents<Camera>()[0];
         //normalCamera = Player.GetComponents<Camera>()[0];
 		startOfLevel=Player.transform.position.x;
+        SettingsPopUp.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -43,12 +46,19 @@ public class SceneController : MonoBehaviour {
         }
         
 	}
+    
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 
 	bool LevelComplete(){
 
         return (Vector3.Distance (Player.transform.position, Endoflevel.transform.position) < Range);
         
     }
+
 	void scrollBackgroud(){
 		progress = (Player.transform.position.x-startOfLevel) * moveRatio;
 
