@@ -10,7 +10,8 @@ public class SliderState : MonoBehaviour {
 
     private void Start()
     {
-        slider = gameObject.GetComponent<Slider>();
+        slider = gameObject.GetComponent("Slider") as Slider;
+        Debug.Log("Slider Found = " + slider == null);
     }
 
     public void UpdateSlider(float health, float beardLength)

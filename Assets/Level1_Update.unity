@@ -5537,7 +5537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e71cf891b3c9b4d8853c19b9fc7247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBeardUI: {fileID: 0}
+  healthBeardUI: {fileID: 1921942222}
 --- !u!114 &675649034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157689,7 +157689,7 @@ MonoBehaviour:
   Endoflevel: {fileID: 298773072}
   Player: {fileID: 675649032}
   Backgroud: {fileID: 1520712187}
-  SettingsPopUp: {fileID: 0}
+  SettingsPopUp: {fileID: 1466729004}
   moveRatio: 0.01
   backgroundOffset: {x: 9.2, y: 0, z: 2}
   Range: 3
@@ -158430,6 +158430,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1466729004 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1148171874074222, guid: 1f1e09d11d5078a468b239e7ebde04f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1000255038}
 --- !u!1 &1477246444
 GameObject:
   m_ObjectHideFlags: 0
@@ -159972,6 +159977,12 @@ CircleCollider2D:
   m_Offset: {x: -0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1921942222 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114817014749879984, guid: 1f1e09d11d5078a468b239e7ebde04f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1000255038}
+  m_Script: {fileID: 11500000, guid: fa14301852307f74c88e7df71a291620, type: 3}
 --- !u!1 &1958972861
 GameObject:
   m_ObjectHideFlags: 0
