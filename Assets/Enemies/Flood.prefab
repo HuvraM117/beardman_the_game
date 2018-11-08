@@ -65,7 +65,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10, y: 10}
   m_EdgeRadius: 0
 --- !u!114 &114612270019408380
 MonoBehaviour:
@@ -78,10 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39bce83ef4ff46f599b9b95032b9ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  Squirrel: {fileID: 0}
-  Bird: {fileID: 0}
-  StraightEdge: {fileID: 0}
+  player: {fileID: 1675699120980662, guid: 09fab8b165844064f9ea3f43b54a9871, type: 2}
+  Squirrel: {fileID: 1009386319763294, guid: aff0904e27a1aa8429c0c79df72dd231, type: 2}
+  Bird: {fileID: 1334504269448074, guid: 2f28cf7a08f99e441a2376189084c69e, type: 2}
+  StraightEdge: {fileID: 1644356081070920, guid: 889b652c53689fe4b91dadc885bed126,
+    type: 2}
   spawnTime: 2
   deathCounter: 4
   spawnPoints:
