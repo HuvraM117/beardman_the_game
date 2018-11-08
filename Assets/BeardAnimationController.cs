@@ -7,7 +7,7 @@ public class BeardAnimationController : MonoBehaviour {
 
 
 
-    private const int HARDMAXSEGMENTS = 100; // the max number of beard segments that can ever exist (max of max beard length)
+    private const int HARDMAXSEGMENTS = 200; // the max number of beard segments that can ever exist (max of max beard length)
     private const float SEGMENTDISTANCE = .1f; // how far apart the segments are
     private Vector3 beardTipOffset = new Vector3(0f, .3f, 0f); // so the beard tip is centered on the beard
     [SerializeField] private GameObject beardSegmentPrefab;
@@ -18,6 +18,11 @@ public class BeardAnimationController : MonoBehaviour {
     private int visibleSegments = 0; // segments currently "active" (actually active + were active but disabled since behind the player)
     private int trailingSegments = 0; // segments currently "active" but behind the player (so not actually active)
     private int maxSegments; // the current max length of the beard in segments
+	private GameObject beardTipLeft; 
+	private GameObject beardTipRight;
+	private Vector3 beardPathLeft;
+	private Vector3 beardPathRight;
+	private bool endPitch = false;
 
     private Transform target;
     private Vector3 beardPath;
@@ -36,6 +41,8 @@ public class BeardAnimationController : MonoBehaviour {
             segments[i].SetActive(false);
         }
         beardTip = Instantiate(beardTipPrefab);
+		beardTipLeft = Instantiate(beardTipPrefab);
+		beardTipRight = Instantiate(beardTipPrefab);
 	}
 
     public void WhipBeard(Transform targetTransform)
@@ -59,12 +66,16 @@ public class BeardAnimationController : MonoBehaviour {
         maxSegments = (int)((target.position - beardOrigin).magnitude / SEGMENTDISTANCE); // can't use beardPath here as it hasn't been updated yet
         PlayerState.CurrentBeardState = BeardState.EXTENDING;
         beardTip.GetComponent<Collider2D>().enabled = true;
+		beardTipLeft.GetComponent<Collider2D>().enabled = true;
+		beardTipRight.GetComponent<Collider2D>().enabled = true;
     }
 
     private void FixedUpdate()
     {
         beardOrigin = transform.position;
         beardPath = target.position - beardOrigin;
+		beardPathLeft = target.position - beardOrigin;
+
         switch (PlayerState.CurrentBeardState)
         {
             case BeardState.EXTENDING:
@@ -89,16 +100,22 @@ public class BeardAnimationController : MonoBehaviour {
 
     private void UpdateCurrentBeardSegments()
     { 
-        // relocate every beard segment to lie along the vector
-        for (int i=0; i<visibleSegments; i++)
-        {
-            segments[i].transform.position = beardOrigin + beardPath.normalized * SEGMENTDISTANCE * i;
-        }
-
+		/*if (BeardController.pitchForkActive) {
+			for (int i = 0; i <visibleSegments; i++) {
+				segments [i].transform.position = beardOrigin + beardPath.normalized * SEGMENTDISTANCE * i;
+				segments [i + visibleSegments] = 
+			}
+		}
+		else {*/
+			// relocate every beard segment to lie along the vector
+			for (int i = 0; i <visibleSegments; i++) {
+				segments [i].transform.position = beardOrigin + beardPath.normalized * SEGMENTDISTANCE * i;
+			}
+		//}
         // relocate the beard tip
-        if(visibleSegments > 0)
-            beardTip.transform.position = segments[visibleSegments - 1].transform.position + beardTipOffset;
-
+		if (visibleSegments > 0) {
+			beardTip.transform.position = segments [visibleSegments - 1].transform.position + beardTipOffset;
+		}
     }
 
     private void RemoveTrailingBeardSegments()
@@ -127,6 +144,15 @@ public class BeardAnimationController : MonoBehaviour {
         // if we've reached max length, transition to the next state, otherwise, lengthen the beard
         if (visibleSegments >= maxSegments)
         {
+			if (BeardController.pitchForkActive) {
+				segments [HARDMAXSEGMENTS - 1].SetActive (true);
+				segments [HARDMAXSEGMENTS - 2].SetActive (true);
+				segments [HARDMAXSEGMENTS - 1].GetComponent<Collider2D> ().enabled = true;
+				segments [HARDMAXSEGMENTS - 2].GetComponent<Collider2D> ().enabled = true;
+				segments [HARDMAXSEGMENTS - 1].transform.position = BeardController.leftForkPos;
+				segments [HARDMAXSEGMENTS - 2].transform.position = BeardController.rightForkPos;
+				endPitch = true;
+			}
             PlayerState.CurrentBeardState = nextState;
         }
         else
@@ -151,6 +177,13 @@ public class BeardAnimationController : MonoBehaviour {
         }
         else
         {
+			if (BeardController.pitchForkActive && endPitch) {
+				segments [HARDMAXSEGMENTS - 1].SetActive (false);
+				segments [HARDMAXSEGMENTS - 2].SetActive (false);
+				segments [HARDMAXSEGMENTS - 1].GetComponent<Collider2D> ().enabled = false;
+				segments [HARDMAXSEGMENTS - 2].GetComponent<Collider2D> ().enabled = false;
+				endPitch = false;
+			}
             //disable old collider
             segments[visibleSegments].GetComponent<Collider2D>().enabled = false;
             visibleSegments--;
