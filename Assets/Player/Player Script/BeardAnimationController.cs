@@ -13,6 +13,7 @@ public class BeardAnimationController : MonoBehaviour {
     [SerializeField] private GameObject beardSegmentPrefab;
     [SerializeField] private GameObject beardTipPrefab;
     [SerializeField] private int BEARDSPEED = 3;
+	[SerializeField] private LineRenderer lineRender;
     private GameObject[] segments = new GameObject[HARDMAXSEGMENTS]; // segments of the beard
     private GameObject beardTip; // the collider on the tip of the beard
     private int visibleSegments = 0; // segments currently "active" (actually active + were active but disabled since behind the player)
@@ -34,6 +35,7 @@ public class BeardAnimationController : MonoBehaviour {
             segments[i] = Instantiate(beardSegmentPrefab);
             segments[i].transform.parent = transform;
             segments[i].SetActive(false);
+			lineRender.SetPosition (i, new Vector3 (0, 0));
         }
         beardTip = Instantiate(beardTipPrefab);
 	}
@@ -93,6 +95,7 @@ public class BeardAnimationController : MonoBehaviour {
         for (int i=0; i<visibleSegments; i++)
         {
             segments[i].transform.position = beardOrigin + beardPath.normalized * SEGMENTDISTANCE * i;
+			//lineRender.SetPosition (i, beardOrigin + beardPath.normalized * SEGMENTDISTANCE * i);
         }
 
         // relocate the beard tip
@@ -137,6 +140,9 @@ public class BeardAnimationController : MonoBehaviour {
             segments[visibleSegments].SetActive(true);
             //enable new collider
             segments[visibleSegments].GetComponent<Collider2D>().enabled = true;
+
+			lineRender.SetPosition(visibleSegments, new Vector3(0.05f * visibleSegments, 0));
+
             visibleSegments++;
         }
     }
@@ -148,11 +154,15 @@ public class BeardAnimationController : MonoBehaviour {
         {
             beardTip.GetComponent<Collider2D>().enabled = false;
             PlayerState.CurrentBeardState = BeardState.IDLE;
+			lineRender.SetPosition(visibleSegments, new Vector3(0, 0));
         }
         else
         {
             //disable old collider
             segments[visibleSegments].GetComponent<Collider2D>().enabled = false;
+			
+			lineRender.SetPosition(visibleSegments, new Vector3(0, 0));
+
             visibleSegments--;
             segments[visibleSegments].SetActive(false);
             //enable new collider
