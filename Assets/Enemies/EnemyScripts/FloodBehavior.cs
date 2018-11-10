@@ -9,8 +9,8 @@ public class FloodBehavior : MonoBehaviour {
 	[SerializeField] private GameObject Bird;                 // The enemy prefab to be spawned.
 	[SerializeField] private GameObject StraightEdge;         // The enemy prefab to be spawned.
 	float timer; 
-	[SerializeField] private float spawnTime = 2f;            // How long between each spawn.
-	[SerializeField] private float deathCounter = 4f;       // How long before respawn
+	[SerializeField] private float spawnTime = .2f;            // How long between each spawn.
+	[SerializeField] private float deathCounter = .4f;       // How long before respawn
 	[SerializeField] private Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
 
 	private int enemyCounter; 
@@ -26,6 +26,8 @@ public class FloodBehavior : MonoBehaviour {
 
 		toRespawn = false; 
 		toSpawn = true; 
+
+		playerHealth = player.GetComponent <PlayerState> (); 
 
 		enemies.Add(Squirrel);
 		enemies.Add(Bird);
