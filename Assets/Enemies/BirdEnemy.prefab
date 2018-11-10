@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114547137179380008}
   - component: {fileID: 114200314822798434}
   - component: {fileID: 114521626801293568}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BirdEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61554687538206328
 BoxCollider2D:
   m_ObjectHideFlags: 1
