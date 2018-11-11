@@ -16,11 +16,13 @@ public class HealthConsumable : Consumable {
     public  override void onConsume(GameObject consumable)
     {
         PlayerState playerstate = consumable.GetComponent<PlayerState>();
+
         if (playerstate != null)
         {
             playerstate.TakeDamage(0 - healthRestore);
+            gameObject.SetActive(false);
         }
-        gameObject.GetComponent<Animator>().SetTrigger("Consumed");
-        //gameObject.SetActive(false);
+
+        //gameObject.GetComponent<Animator>().SetTrigger("Consumed");
     }
 }

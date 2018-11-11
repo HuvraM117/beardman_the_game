@@ -19,7 +19,7 @@ public class SliderState : MonoBehaviour {
     {
         Debug.Log("health: " + health + "length: " + beardLength);
 
-        gameObject.transform.localScale = new Vector3((health + beardLength) * SLIDERWIDTHMULTIPLIER, 1f, 1f);
+        //gameObject.transform.localScale = new Vector3((health + beardLength) * SLIDERWIDTHMULTIPLIER, 1f, 1f);
         slider.value = health / (health + beardLength);
     }
 }
