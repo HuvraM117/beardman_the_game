@@ -34,12 +34,14 @@ public class FootController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        triggeredTriggers++;
+        if(collision.gameObject.name != "Grapple Point")
+            triggeredTriggers++;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        triggeredTriggers--;
+        if (collision.gameObject.name != "Grapple Point")
+            triggeredTriggers--;
     }
 
     public void ManuallyDecrementTriggers()
