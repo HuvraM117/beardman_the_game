@@ -11,6 +11,7 @@ public class BeardController : MonoBehaviour
     private BeardAnimationController beardAnimator;
     [SerializeField] private PlayerState playerState;
 	[SerializeField] private LineRenderer beardLine;
+    [SerializeField] private Vector3 beardOriginOffset = Vector2.zero;
 
     public float grappleForce = 3f;
     private float grappleStrength = 0f;
@@ -36,9 +37,10 @@ public class BeardController : MonoBehaviour
             Vector2 mousePos = Input.mousePosition;
             Vector2 followVector = (Vector2)mainCamera.ScreenToWorldPoint(mousePos) - beardman.position;
             this.transform.position = Vector2.ClampMagnitude(followVector, playerState.BeardLength) + beardman.position;
-			beardLine.transform.position = beardman.transform.position;
 			this.transform.rotation = Quaternion.Euler (0, 0, Mathf.Atan2((this.transform.position.y - beardman.transform.position.y)
 				, (this.transform.position.x - beardman.transform.position.x)) * 180 / Mathf.PI);
+            beardLine.transform.position = beardman.transform.position + beardOriginOffset;
+
         }
         if (Input.GetKey(KeyCode.Mouse0))
             UseBeard();
