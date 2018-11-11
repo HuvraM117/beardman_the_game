@@ -32,6 +32,7 @@ public class DestroyableObjects : MonoBehaviour {
 
         if(col.gameObject == beardTip)
         {
+            GameObject.FindWithTag("Player").BroadcastMessage("ManuallyDecrementTriggers");
             Destroy(gameObject);
         }
 

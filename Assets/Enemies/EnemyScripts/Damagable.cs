@@ -47,6 +47,7 @@ public class Damagable : MonoBehaviour {
         movementController.speed = 0;
         // Let the animation play
         yield return new WaitForSeconds(1.0f);
+        GameObject.FindWithTag("Player").BroadcastMessage("ManuallyDecrementTriggers");
         Destroy(gameObject);
     }
 

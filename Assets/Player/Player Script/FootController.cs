@@ -41,4 +41,9 @@ public class FootController : MonoBehaviour {
     {
         triggeredTriggers--;
     }
+
+    public void ManuallyDecrementTriggers()
+    {
+        triggeredTriggers--;
+    }
 }
