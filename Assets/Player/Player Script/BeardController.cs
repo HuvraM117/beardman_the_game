@@ -15,6 +15,7 @@ public class BeardController : MonoBehaviour
     public float grappleForce = 3f;
     private float grappleStrength = 0f;
     Camera mainCamera;
+    private bool lsdaf = false;
     // Use this for initialization
     void Start()
     {
@@ -39,11 +40,11 @@ public class BeardController : MonoBehaviour
 			this.transform.rotation = Quaternion.Euler (0, 0, Mathf.Atan2((this.transform.position.y - beardman.transform.position.y)
 				, (this.transform.position.x - beardman.transform.position.x)) * 180 / Mathf.PI);
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
+        if (Input.GetKey(KeyCode.Mouse0))
             UseBeard();
-        }
     }
+
+
     public void UseBeard()
     {
         Vector2 targetPosition = this.transform.position;

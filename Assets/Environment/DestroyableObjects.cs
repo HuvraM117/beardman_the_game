@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DestroyableObjects : MonoBehaviour {
 
+    [SerializeField] private GameObject beardTip;
 	// Use this for initialization
 	void Start () {
 		
@@ -28,6 +29,11 @@ public class DestroyableObjects : MonoBehaviour {
 			Destroy(gameObject);
 
 		}
+
+        if(col.gameObject == beardTip)
+        {
+            Destroy(gameObject);
+        }
 
 
 	}
