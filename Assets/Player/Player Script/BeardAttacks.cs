@@ -49,14 +49,14 @@ public class BeardAttacks : MonoBehaviour {
         else
         {
             Debug.Log("LKSDFJHDSLKFJ");
-            WhipBeard(particle);
+            WhipBeard(targetPosition);
         }
     }
 
     // assuming the target is in range, not range-limited
-    private void WhipBeard(GameObject targetObject)
+    private void WhipBeard(Vector2 target)
     {
-        beardAnimator.WhipBeard(targetObject.transform.position);
+        beardAnimator.WhipBeard(target);
         Debug.Log("whip");
     }
 
