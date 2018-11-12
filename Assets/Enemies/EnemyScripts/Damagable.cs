@@ -8,13 +8,17 @@ public class Damagable : MonoBehaviour {
 	public int currentHealth = 0;
 	public bool alive = true;
 
-    private Animator animator;
+	int count = 0; 
+	FloodBehavior enemyCounter; 
+
+    //private Animator animator;
 
 	// Use this for initialization
 	void Start () {
+		
 		alive = true; 
 		currentHealth = max_health;
-	    animator = GetComponent<Animator>();
+	    //animator = GetComponent<Animator>();
 	}
 
 	public void TakeDamage(int amount){
@@ -24,6 +28,9 @@ public class Damagable : MonoBehaviour {
 
 		if (currentHealth <= 0){
 			currentHealth = 0; 
+
+			//enemyCounter = gameObject.GetComponent<FloodBehavior> ();
+			//enemyCounter.Respawn ();
 
 		    StartCoroutine(PlayDeathAnimation());
 
@@ -37,16 +44,16 @@ public class Damagable : MonoBehaviour {
     IEnumerator PlayDeathAnimation()
     {
         // If this has an animator (since enemies should will be damagable)
-        if (animator != null)
-        {
-            animator.SetBool("isDead", true);
-        }
+       // if (animator != null)
+        //{
+         //   animator.SetBool("isDead", true);
+        //}
 
         // Figure out a more elegant way to disable movement
-        var movementController = GetComponent<AnimalMovement>();
-        movementController.speed = 0;
-        // Let the animation play
-        yield return new WaitForSeconds(1.0f);
+        //var movementController = GetComponent<AnimalMovement>();
+        //movementController.speed = 0;
+        // Let the animation play 
+        yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);
     }
 

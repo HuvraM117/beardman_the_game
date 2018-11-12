@@ -9,12 +9,14 @@ public class FloodBehavior : MonoBehaviour {
 	[SerializeField] private GameObject Bird;                 // The enemy prefab to be spawned.
 	[SerializeField] private GameObject StraightEdge;         // The enemy prefab to be spawned.
 	float timer; 
-	[SerializeField] private float spawnTime = .2f;            // How long between each spawn.
-	[SerializeField] private float deathCounter = .4f;       // How long before respawn
+	//[SerializeField] private float floodTime = 90000.0f; 			// How long the flood lasts 
+	[SerializeField] private float spawnTime = 0.2f;            // How long between each spawn.
+	[SerializeField] private float deathCounter = 0.2f; 
 	[SerializeField] private Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
 
 	private int enemyCounter; 
-	private int maxEnemyCounter = 10;
+	Damagable Count; 
+	private int maxEnemyCounter = 30;
 
 	private bool toRespawn; //Stop & Start Checkers
 	private bool toSpawn; 
@@ -28,6 +30,7 @@ public class FloodBehavior : MonoBehaviour {
 		toSpawn = true; 
 
 		playerHealth = player.GetComponent <PlayerState> (); 
+		Count = player.GetComponent <Damagable> (); 
 
 		enemies.Add(Squirrel);
 		enemies.Add(Bird);
@@ -42,27 +45,32 @@ public class FloodBehavior : MonoBehaviour {
 	void Update () {
 
 		timer += Time.deltaTime;
-		if (enemyCounter < maxEnemyCounter){
-			toRespawn = true; 
-			Respawn(); 
+		var minutes = timer / 60;
+		if (minutes == 1) {
+			timer = 0; 
+			Debug.Log ("toSpawn is False"); 
+			toSpawn = false;
 		}
 
+		//if (toRespawn){
+		//	Respawn(); 
+		//}
 	}
 
-	void OnCollisionEnter2D (Collision2D other)
+	void OnTriggerEnter2D (Collider2D other)
 	{
-		Debug.Log("START FLOOD");
-		if (other.gameObject == player) {
-			InvokeRepeating ("Spawn", spawnTime, spawnTime);
 
-			//note: edit Damaged to minus enemyCounter value
+		if (other.gameObject == player) {
+			Debug.Log ("START FLOOD");
+			InvokeRepeating ("Spawn", spawnTime, deathCounter);
 		}
 	}
 
-	void OnCollisionExit2D (Collision2D other)
+	void OnTriggerExit2D (Collider2D other)
 	{
-		Debug.Log("STOP FLOOD");
+
 		if (other.gameObject == player) {
+			Debug.Log("STOP FLOOD");
 			toRespawn = false; 
 			toSpawn = false;
 		}
@@ -70,33 +78,47 @@ public class FloodBehavior : MonoBehaviour {
 
 	void Spawn ()
 	{
+		Debug.Log("Spawning");
 		// If the player has no health left, if the max enemies have generated, or we have left the trigger...
-		if(playerHealth.Health < 0 || enemyCounter == maxEnemyCounter || toSpawn == false)
+		if (playerHealth.Health < 0 || enemyCounter == maxEnemyCounter || toSpawn == false)
 		{
+			toRespawn = true; 
 			// ...exit the function.
 			return;
+
 		}
 
 		// Find a random index between zero and one less than the number of spawn points.
 		int spawnPointIndex = UnityEngine.Random.Range (0, spawnPoints.Length);
+		Debug.Log ("spawnPoint is" + spawnPointIndex);
 
-		// Create an instance of one of our randomly choosen enemy prefabs 
-		int random = UnityEngine.Random.Range(0, 2);
-		GameObject choosen = enemies[random];
 
-		Instantiate (choosen, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-		enemyCounter++; 
-	}
-
-	void Respawn()
-	{
-		if (toRespawn == true) {
-			if (timer >= deathCounter) {
-				timer = 0;
-				//call spawn to generate a new enemy
-				Spawn (); 
-			}
+		if (spawnPointIndex == 0) {
+			Instantiate (Squirrel, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+			Debug.Log ("Squirrel");
+		}  
+		else if (spawnPointIndex == 1) {
+			Instantiate (Bird, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+			Debug.Log ("Bird");
+		} 
+		else {
+			Instantiate (StraightEdge, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+			Debug.Log ("StraightEdge");
 		}
 
+		enemyCounter++; 
+		Debug.Log (enemyCounter); 
+
 	}
+
+	//public void Respawn()
+	//{
+	//	Debug.Log("Respawning");
+	//	if (timer >= deathCounter) {
+	//			timer = 0;
+				//call spawn to generate a new enemy
+	//			Spawn (); 
+
+	//	}
+	//}
 }
