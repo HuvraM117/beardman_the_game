@@ -8,7 +8,7 @@ public class Damagable : MonoBehaviour {
 	public int currentHealth = 0;
 	public bool alive = true;
     private bool isCollidingWithPlayer = false;
-
+    public bool dropsPickUp = true;
     private Animator animator;
 
 	// Use this for initialization
@@ -29,6 +29,7 @@ public class Damagable : MonoBehaviour {
 		    StartCoroutine(PlayDeathAnimation());
 
 			Debug.Log ("I am Dead");
+
 			/* despawn need to add in some kind of animation with it */
 		}
 		currentHealth -= amount; 
@@ -50,7 +51,26 @@ public class Damagable : MonoBehaviour {
         yield return new WaitForSeconds(1.0f);
         if(isCollidingWithPlayer)
             GameObject.FindWithTag("Player").BroadcastMessage("ManuallyDecrementTriggers");
+        if (dropsPickUp) {
+            DropHealthPickup();
+        }
         Destroy(gameObject);
+    }
+
+    private void DropHealthPickup()
+    {
+        //create prefab programitically 
+        GameObject pickUpPrefab = (GameObject)Resources.LoadAll("Player")[0];
+
+        //sets its location to be a little higher than the enemy 
+        Vector3 pos = gameObject.transform.position;
+
+        pickUpPrefab.transform.position = new Vector3(pos.x, pos.y + 1f, pos.z);
+
+        GameObject obj = Instantiate(pickUpPrefab);
+
+        obj.SetActive(true);
+
     }
 
     // Update is called once per frame

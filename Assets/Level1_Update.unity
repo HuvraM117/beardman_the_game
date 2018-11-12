@@ -155490,6 +155490,21 @@ Prefab:
       propertyPath: playerState
       value: 
       objectReference: {fileID: 675649033}
+    - target: {fileID: 114367455078438640, guid: 7ba65c03d268b624f8956e044c5bc80f,
+        type: 2}
+      propertyPath: beardLine
+      value: 
+      objectReference: {fileID: 1962493206}
+    - target: {fileID: 114367455078438640, guid: 7ba65c03d268b624f8956e044c5bc80f,
+        type: 2}
+      propertyPath: beardOriginOffset.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114367455078438640, guid: 7ba65c03d268b624f8956e044c5bc80f,
+        type: 2}
+      propertyPath: beardOriginOffset.z
+      value: -0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ba65c03d268b624f8956e044c5bc80f, type: 2}
   m_IsPrefabParent: 0

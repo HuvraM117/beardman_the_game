@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114562419840434322}
   - component: {fileID: 50112733293345754}
   - component: {fileID: 70600395175350374}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barber
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4371708986486198}
   - component: {fileID: 212776423237537396}
   - component: {fileID: 114980319978150070}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barber Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
