@@ -106,11 +106,13 @@ public class MovingPlatform : MonoBehaviour {
 
 
 		if (col.gameObject.name == "Feet"){
+
 			col.gameObject.transform.parent.gameObject.transform.parent = startPlatform.transform;
+
+		}
 			
 	}
-			
-	}
+
 	void OnTriggerExit2D(Collider2D col){
 
 
