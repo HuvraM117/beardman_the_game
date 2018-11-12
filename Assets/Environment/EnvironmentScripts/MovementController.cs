@@ -15,6 +15,7 @@ public class MovementController : MonoBehaviour {
     private static bool isCrouching = false;
 	private bool canShield = false;
 	private static bool invincible = false;
+	private Vector3 raycastOrigin = new Vector2(0f, 0.9f);
 	private bool lastDir = false;//False is left, true is right
     [SerializeField] private float MOVESPEED = 5f;
     [SerializeField] private float JUMPFORCE = 12f;
@@ -38,7 +39,12 @@ public class MovementController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        isCrouching = Input.GetButton("Crouch");
+		if (isCrouching && (Physics2D.Raycast (m_rigidbody.transform.position + raycastOrigin, Vector2.left, .5f).collider != null
+			|| Physics2D.Raycast (m_rigidbody.transform.position + raycastOrigin, Vector2.right, .5f).collider != null 
+			|| Physics2D.Raycast (m_rigidbody.transform.position + raycastOrigin, Vector2.up, .5f).collider != null))
+			isCrouching = true;
+		else
+			isCrouching = Input.GetButton("Crouch");
         m_rigidbody.velocity = UpdateMovement();
 		playerAnimator.SetFloat("Speed",m_rigidbody.velocity.magnitude);
 		playerAnimator.SetBool ("Grounded", IsGrounded);
@@ -73,7 +79,7 @@ public class MovementController : MonoBehaviour {
         }
         else if (IsGrounded)
         {
-			moveInput.x = Input.GetAxis("Horizontal") * MOVESPEED/1.5f;
+			moveInput.x = Input.GetAxis("Horizontal") * MOVESPEED;
 			if (moveInput.x > 0) {
 				m_rigidbody.transform.localScale = crouchRight;
 				lastDir = true;
