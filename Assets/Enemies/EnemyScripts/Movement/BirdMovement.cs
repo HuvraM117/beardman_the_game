@@ -22,9 +22,14 @@ public class BirdMovement : MonoBehaviour {
 	public float ySpeed; //vertical speed
 	public float amplitude; //amount of vertical movement 
 
+	private float xStart;
+	private float yStart;
+
 	// Use this for initialization
 	void Start () {
 		tempPosition = transform.position;
+		xStart = tempPosition.x;
+		yStart = tempPosition.y;
 		yModifier = 20f;
 
 		myXscale = transform.localScale.x;
@@ -37,7 +42,7 @@ public class BirdMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		tempPosition.x += xVelocity * Time.deltaTime;
-		tempPosition.y = Mathf.Cos(Time.realtimeSinceStartup * ySpeed * amplitude * yModifier * Time.fixedDeltaTime);
+		tempPosition.y = yStart + Mathf.Cos(Time.realtimeSinceStartup * ySpeed * amplitude * yModifier * Time.fixedDeltaTime);
 		transform.position = tempPosition;
 		xMoved += Mathf.Abs(xVelocity * Time.deltaTime);
 
