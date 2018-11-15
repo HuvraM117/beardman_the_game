@@ -85,6 +85,10 @@ public class BeardController : MonoBehaviour
 
 		beardman.AddForce(new Vector2(dir.x*2f, 0) * grappleForce , ForceMode2D.Impulse);
 		beardman.AddForce(dir * grappleForce, ForceMode2D.Impulse);
+		if (beardman.velocity.x > 20f)
+			beardman.velocity = new Vector2(20f, beardman.velocity.y);
+		if (beardman.velocity.y > 20f)
+			beardman.velocity = new Vector2(beardman.velocity.x, 20f);
 		Debug.Log("grapple");
 	}
 }//end beard controller
