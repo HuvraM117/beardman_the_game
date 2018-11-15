@@ -69,15 +69,15 @@ public class ElectricRazor : MonoBehaviour {
 		float yMove = 0; 
 
 		if(xDistance > 0) { //moving right
-			xMove = Mathf.Abs(xDistance / yDistance) * speed * Time.fixedDeltaTime;
+			xMove = Mathf.Abs(xDistance / yDistance) * 2.0f * speed * Time.fixedDeltaTime;
 		} else { // moving left
-			xMove = - Mathf.Abs(xDistance / yDistance) * speed * Time.fixedDeltaTime;
+			xMove = - Mathf.Abs(xDistance / yDistance) * 2.0f * speed * Time.fixedDeltaTime;
 		}
 
 		if(yDistance > 0) { //moving right
-			yMove = speed * Time.fixedDeltaTime;
+			yMove = speed * 2.0f * Time.fixedDeltaTime;
 		} else { // moving left
-			yMove = - speed * Time.fixedDeltaTime;
+			yMove = - speed * 2.0f * Time.fixedDeltaTime;
 		}
 
 		float xDistanceMoved = 0.0f;
