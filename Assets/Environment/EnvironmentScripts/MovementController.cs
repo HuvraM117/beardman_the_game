@@ -7,6 +7,8 @@ public class MovementController : MonoBehaviour {
     private Rigidbody2D m_rigidbody;
     private Collider2D footCollider;
 	public Animator playerAnimator;
+    public AudioSource footSource;
+    public AudioClip steps;
     [SerializeField] private FootController groundedState;
 	[SerializeField] private GameObject shield;
     private bool IsGrounded {
@@ -35,6 +37,8 @@ public class MovementController : MonoBehaviour {
 		crouchLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 0.5f, 1f));
 		faceLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 1f, 1f));
 		faceRight = Vector3.Scale (fullSize, new Vector3 (1f, 1f, 1f));
+
+        footSource.clip = steps;
 	}
 	
 	// Update is called once per frame
@@ -49,7 +53,21 @@ public class MovementController : MonoBehaviour {
 		playerAnimator.SetFloat("Speed",m_rigidbody.velocity.magnitude);
 		playerAnimator.SetBool ("Grounded", IsGrounded);
 
-	}
+        if( ( Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) && IsGrounded)
+        {
+            Debug.Log(footSource.isPlaying);
+            if (!footSource.isPlaying)
+            {
+                footSource.Play();
+            }
+            
+        }
+        else
+        {
+            footSource.Stop();
+        }
+
+    }
 
     private Vector2 UpdateMovement()
     {
