@@ -64,7 +64,42 @@ public class MovingPlatform : MonoBehaviour {
         }
     }
 
+	void FixedUpdate(){
+		var pos = startPlatform.transform.position;
+		if (UPandDown)
+		{
+			if (goingUp)
+			{
+				float changedX = pos.x + (speed * .0001f);
+				float changedY = (changedX * scale) + b;
+				startPlatform.transform.position = new Vector3(changedX, changedY, pos.z);
+			}
+			else
+			{
+				float changedX = pos.x - (speed * .0001f);
+				float changedY = (changedX * scale) + b;
+				startPlatform.transform.position = new Vector3(changedX, changedY, pos.z);
+			}
+		}
 
+		if (LEFTandRIGHT)
+		{
+			if (goingUp)
+			{
+				float changedX = pos.x + (speed * .001f);
+				float changedY = pos.y; //(changedX * scale) + b;
+				startPlatform.transform.position = new Vector3(changedX, changedY, pos.z);
+			}
+			else
+			{
+				float changedX = pos.x - (speed * .001f);
+				float changedY = pos.y;// (changedX * scale) + b;
+				startPlatform.transform.position = new Vector3(changedX, changedY, pos.z);
+			}
+		}
+		checkIfChangeDirection();
+	}
+	/*
 	// Update is called once per frame
 	void Update () {
 
@@ -102,6 +137,7 @@ public class MovingPlatform : MonoBehaviour {
         }
         checkIfChangeDirection();
     }
+	*/
 	void OnTriggerEnter2D(Collider2D col){
 
 
