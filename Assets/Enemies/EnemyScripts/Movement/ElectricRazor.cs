@@ -1,6 +1,7 @@
 ﻿//Caitlin
 //Controls movement for electricRazor
 //Also controlls attack movement/attack pattern
+//This is the flying enemy
 
 using System.Collections;
 using System.Collections.Generic;
@@ -64,8 +65,20 @@ public class ElectricRazor : MonoBehaviour {
 
 		Vector2 tempPosition = transform.position;
 
-		float xMove = (xDistance / yDistance) * speed * Time.fixedDeltaTime;
-		float yMove = speed * Time.fixedDeltaTime;
+		float xMove = 0;
+		float yMove = 0; 
+
+		if(xDistance > 0) { //moving right
+			xMove = Mathf.Abs(xDistance / yDistance) * speed * Time.fixedDeltaTime;
+		} else { // moving left
+			xMove = - Mathf.Abs(xDistance / yDistance) * speed * Time.fixedDeltaTime;
+		}
+
+		if(yDistance > 0) { //moving right
+			yMove = speed * Time.fixedDeltaTime;
+		} else { // moving left
+			yMove = - speed * Time.fixedDeltaTime;
+		}
 
 		float xDistanceMoved = 0.0f;
 		Debug.Log ("Goal: " + xDistance);
@@ -100,7 +113,25 @@ public class ElectricRazor : MonoBehaviour {
 			yield return new WaitForFixedUpdate ();
 		}
 
+		//hover for a second
+		timeCount = 0;
+		int upOrDown = 0;
+		while (timeCount < 1) {
+			upOrDown = Mathf.RoundToInt((timeCount * 8)) % 2;
+			if (upOrDown == 0) {
+				//move up
+				tempPosition.y += Time.fixedDeltaTime * speed;
+			} else {
+				//move down
+				tempPosition.y -= Time.fixedDeltaTime * speed;
+			}
+
+			transform.position = tempPosition;
+
+			timeCount += Time.fixedDeltaTime;
+			yield return new WaitForFixedUpdate ();
+		}
+
 		attacking = false;
-		//return null;
 	} 
 }
