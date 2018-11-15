@@ -6,6 +6,9 @@ public class BeardAttacks : MonoBehaviour {
 	public GameObject particle;
 	public GameObject character;
 	public static Vector3 mousePosition;
+    public AudioClip attackNoise;
+    public AudioClip grappleNoise;
+    public AudioSource musicmaker;
 
     [SerializeField] private PlayerState playerState;
     private BeardAnimationController beardAnimator;
@@ -51,6 +54,7 @@ public class BeardAttacks : MonoBehaviour {
         {
             //TODO : add whip noise 
             Debug.Log("LKSDFJHDSLKFJ");
+            musicmaker.PlayOneShot(attackNoise);
             WhipBeard(targetPosition);
         }
     }
@@ -66,6 +70,7 @@ public class BeardAttacks : MonoBehaviour {
     private void GrappleBeard(GameObject grappleObject)
     {
         beardAnimator.GrappleBeard(grappleObject.transform);
+        musicmaker.PlayOneShot(grappleNoise);
         Debug.Log("grapple");
     }
 

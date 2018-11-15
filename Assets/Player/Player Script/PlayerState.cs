@@ -65,14 +65,14 @@ public class PlayerState : MonoBehaviour
     }
 
     //Increases the maximum attack range
-    public void growBeard()
+    public void growBeard()//TODO add the grow/shrink sounds here
     {
         if (health - BEARDGROWTHRATE > 0)
             BeardLength = BeardLength + BEARDGROWTHRATE;
     }
 
     //Shrinks the maximum attack range
-    public void shrinkBeard()
+    public void shrinkBeard()//TODO add the grow/shrink sounds here
     {
         if (BeardLength > 1f)
             BeardLength = BeardLength - BEARDGROWTHRATE;
@@ -107,7 +107,7 @@ public class PlayerState : MonoBehaviour
     private void FixedUpdate()
     {
         //Controls beard length
-        if (Input.GetKey("q")) //TODO add the grow/shrink sounds here
+        if (Input.GetKey("q")) 
             growBeard();
         if (Input.GetKey("e"))
             shrinkBeard();
