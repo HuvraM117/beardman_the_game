@@ -98,19 +98,22 @@ public class FloodBehavior : MonoBehaviour {
 
 		if (spawnPointIndex == 0) {
 			float randX  = UnityEngine.Random.Range (-2f, 2f);
-			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
+			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
+				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
 			Instantiate (Squirrel, whereToSpawn, spawnPoints[spawnPointIndex].rotation);
 			Debug.Log ("Squirrel");
 		}  
 		else if (spawnPointIndex == 1) {
 			float randX  = UnityEngine.Random.Range (-2f, 2f);
-			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
+			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
+				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
 			Instantiate (Bird, whereToSpawn, spawnPoints[spawnPointIndex].rotation);
 			Debug.Log ("Bird");
 		} 
 		else {
 			float randX  = UnityEngine.Random.Range (-2f, 2f);
-			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
+			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
+				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
 			Instantiate (StraightEdge, whereToSpawn, spawnPoints[spawnPointIndex].rotation);
 			Debug.Log ("StraightEdge");
 		}
