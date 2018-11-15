@@ -107,7 +107,7 @@ public class PlayerState : MonoBehaviour
     private void FixedUpdate()
     {
         //Controls beard length
-        if (Input.GetKey("q"))
+        if (Input.GetKey("q")) //TODO add the grow/shrink sounds here
             growBeard();
         if (Input.GetKey("e"))
             shrinkBeard();

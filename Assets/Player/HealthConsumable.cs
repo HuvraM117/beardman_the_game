@@ -19,6 +19,7 @@ public class HealthConsumable : Consumable {
 
         if (playerstate != null)
         {
+            //TODO : play the power-up noise 
             playerstate.TakeDamage(0 - healthRestore);
             gameObject.SetActive(false);
         }
