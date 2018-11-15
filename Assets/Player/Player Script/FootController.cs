@@ -36,7 +36,7 @@ public class FootController : MonoBehaviour
     private void FixedUpdate()
     {
         // Checks a position below the player's current one, checks for collision 
-        isCurrentlyGrounded = Physics2D.OverlapCircle(gameObject.transform.position + new Vector3(0, -1.0f, 0), 0.2f, LayerMask.GetMask("GroundLayer"));
+        isCurrentlyGrounded = Physics2D.OverlapCircle(gameObject.transform.position + new Vector3(0, -1.0f, 0), 0.2f, LayerMask.GetMask("Default","MovingPlatform"));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
