@@ -8,7 +8,9 @@ public class SceneController : MonoBehaviour {
 	public GameObject Endoflevel;
 	public GameObject Player;
 	public GameObject Backgroud;
+	public GameObject MiddleLayerBackgroud;
     public GameObject SettingsPopUp;
+	public Vector3 MiddleLayerBackgroudOffset;
 	public float moveRatio;
 	public Vector3 backgroundOffset;
     private Camera BossLevelCamera;
@@ -63,7 +65,7 @@ public class SceneController : MonoBehaviour {
 		progress = (Player.transform.position.x-startOfLevel) * moveRatio;
 
 		Backgroud.transform.position = Player.transform.position+backgroundOffset+new Vector3(-progress,0,0);
-
+		MiddleLayerBackgroud.transform.position = new Vector3 (Player.transform.position.x + MiddleLayerBackgroudOffset.x - progress * 10, MiddleLayerBackgroud.transform.position.y, MiddleLayerBackgroud.transform.position.z);
 	}
 
     
