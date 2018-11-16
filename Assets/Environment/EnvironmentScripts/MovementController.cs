@@ -7,8 +7,9 @@ public class MovementController : MonoBehaviour {
     private Rigidbody2D m_rigidbody;
     private Collider2D footCollider;
 	public Animator playerAnimator;
-    public AudioSource footSource;
-    public AudioClip steps;
+    private AudioSource footSource;
+    private AudioClip steps;
+
     [SerializeField] private FootController groundedState;
 	[SerializeField] private GameObject shield;
     private bool IsGrounded {
@@ -37,6 +38,13 @@ public class MovementController : MonoBehaviour {
 		crouchLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 0.5f, 1f));
 		faceLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 1f, 1f));
 		faceRight = Vector3.Scale (fullSize, new Vector3 (1f, 1f, 1f));
+
+        //Audio Things
+        var beardman = GameObject.Find("Beard Man/FootAudioSource");
+
+        footSource = beardman.GetComponents<AudioSource>()[0];
+
+        steps = Resources.LoadAll<AudioClip>("Sound/Steps")[0];
 
         footSource.clip = steps;
 	}

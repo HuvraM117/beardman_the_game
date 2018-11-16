@@ -13,8 +13,8 @@ public class PlayerState : MonoBehaviour
     [SerializeField] private static float MAXVITALITY = 7f;
     [SerializeField] private SliderState healthBeardUI;
     //[SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioClip beardGrow;
-    [SerializeField] private AudioClip beardShrink;
+    private AudioClip beardGrow;
+    private AudioClip beardShrink;
 
     private static BeardState _currentBeardState = BeardState.IDLE;
     public static BeardState CurrentBeardState { get; set; }
@@ -59,11 +59,15 @@ public class PlayerState : MonoBehaviour
         animator = transform.GetComponentInChildren<Animator>();
         animator.SetFloat("Health", health);
 
+        //Audio things 
         var beardman = GameObject.Find("Beard Man/MusicMaker");
 
         musicSource = beardman.GetComponents<AudioSource>()[0];
 
-        Debug.Log(musicSource);
+        AudioClip[] sounds = Resources.LoadAll<AudioClip>("Sound/BeardNoise");
+
+        beardGrow = sounds[2];
+        beardShrink = sounds[3];
     }
 
     // beard length + health, the total resource, I can't think of what else to call it so hopefully someone else can
