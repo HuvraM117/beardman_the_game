@@ -1282,6 +1282,16 @@ Prefab:
       propertyPath: steps
       value: 
       objectReference: {fileID: 8300000, guid: a9be898c0b60e044db3b702de2d2bed0, type: 3}
+    - target: {fileID: 114632323585270656, guid: 09fab8b165844064f9ea3f43b54a9871,
+        type: 2}
+      propertyPath: beardGrow
+      value: 
+      objectReference: {fileID: 8300000, guid: 99e9757252a97b146ac9778bc938c492, type: 3}
+    - target: {fileID: 114632323585270656, guid: 09fab8b165844064f9ea3f43b54a9871,
+        type: 2}
+      propertyPath: beardShrink
+      value: 
+      objectReference: {fileID: 8300000, guid: fb986bcc61195554dbb2ae10e0c70ed5, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09fab8b165844064f9ea3f43b54a9871, type: 2}
   m_IsPrefabParent: 0

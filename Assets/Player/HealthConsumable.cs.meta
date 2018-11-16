@@ -3,7 +3,9 @@ guid: 976b1e4853279d140989fca2502a9ff6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - musicSource: {instanceID: 0}
+  - powerUpNoise: {fileID: 8300000, guid: 92478eee40c43b54b91b931d24e7571c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

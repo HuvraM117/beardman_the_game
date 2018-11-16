@@ -12,9 +12,14 @@ public class PlayerState : MonoBehaviour
 
     [SerializeField] private static float MAXVITALITY = 7f;
     [SerializeField] private SliderState healthBeardUI;
+    //[SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioClip beardGrow;
+    [SerializeField] private AudioClip beardShrink;
 
     private static BeardState _currentBeardState = BeardState.IDLE;
     public static BeardState CurrentBeardState { get; set; }
+    private AudioSource musicSource;
+
 
     private Animator animator;
     // setting up health and beard length as properties this way automatically ensures that increasing one decreases the other and vice versa
@@ -53,6 +58,12 @@ public class PlayerState : MonoBehaviour
 
         animator = transform.GetComponentInChildren<Animator>();
         animator.SetFloat("Health", health);
+
+        var beardman = GameObject.Find("Beard Man/MusicMaker");
+
+        musicSource = beardman.GetComponents<AudioSource>()[0];
+
+        Debug.Log(musicSource);
     }
 
     // beard length + health, the total resource, I can't think of what else to call it so hopefully someone else can
@@ -65,17 +76,23 @@ public class PlayerState : MonoBehaviour
     }
 
     //Increases the maximum attack range
-    public void growBeard()//TODO add the grow/shrink sounds here
+    public void growBeard()
     {
         if (health - BEARDGROWTHRATE > 0)
+        {
+            musicSource.PlayOneShot(beardGrow);
             BeardLength = BeardLength + BEARDGROWTHRATE;
+        }  
     }
 
     //Shrinks the maximum attack range
-    public void shrinkBeard()//TODO add the grow/shrink sounds here
+    public void shrinkBeard()
     {
         if (BeardLength > 1f)
+        {
+            musicSource.PlayOneShot(beardShrink);
             BeardLength = BeardLength - BEARDGROWTHRATE;
+        }  
     }
 
     public void TakeDamage(int amount)

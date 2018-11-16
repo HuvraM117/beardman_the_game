@@ -47,14 +47,11 @@ public class BeardAttacks : MonoBehaviour {
         // TODO: here I assume that all enemies/grappleable objects will have an associated component, we can change this later based on the actual components' names/different critereon
         if(targetObject && targetObject.GetComponent<GrapplePoint>() != null)
         {
-            //TODO : add grapple noise
             GrappleBeard(targetObject);
         }
         else
         {
             //TODO : add whip noise 
-            Debug.Log("LKSDFJHDSLKFJ");
-            musicmaker.PlayOneShot(attackNoise);
             WhipBeard(targetPosition);
         }
     }
@@ -63,6 +60,7 @@ public class BeardAttacks : MonoBehaviour {
     private void WhipBeard(Vector2 target)
     {
         beardAnimator.WhipBeard(target);
+        musicmaker.PlayOneShot(attackNoise);
         Debug.Log("whip");
     }
 

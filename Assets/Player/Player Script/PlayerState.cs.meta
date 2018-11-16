@@ -3,7 +3,11 @@ guid: 14e71cf891b3c9b4d8853c19b9fc7247
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - healthBeardUI: {instanceID: 0}
+  - musicSource: {instanceID: 0}
+  - beardGrow: {fileID: 8300000, guid: 99e9757252a97b146ac9778bc938c492, type: 3}
+  - beardShrink: {fileID: 8300000, guid: fb986bcc61195554dbb2ae10e0c70ed5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

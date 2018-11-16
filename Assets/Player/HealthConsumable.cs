@@ -8,6 +8,22 @@ public class HealthConsumable : Consumable {
 
     public int healthRestore;
 
+    private AudioSource musicSource;
+
+    private AudioClip powerUpNoise;
+
+    private void Start()
+    {
+
+        var beardman = GameObject.Find("Beard Man/MusicMaker");
+
+        musicSource = beardman.GetComponents<AudioSource>()[0];
+
+        var powerUpNoise = Resources.LoadAll<AudioClip>("Sound")[0];
+
+    }
+    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         onConsume(collision.gameObject);
@@ -19,7 +35,7 @@ public class HealthConsumable : Consumable {
 
         if (playerstate != null)
         {
-            //TODO : play the power-up noise 
+            musicSource.PlayOneShot(powerUpNoise);
             playerstate.TakeDamage(0 - healthRestore);
             gameObject.SetActive(false);
         }

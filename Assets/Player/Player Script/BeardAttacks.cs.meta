@@ -3,7 +3,13 @@ guid: 001bc23711f544d29a5f989dfa394056
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - particle: {instanceID: 0}
+  - character: {instanceID: 0}
+  - attackNoise: {fileID: 8300000, guid: f66c9fd672312f24fa1fa316cd7622d1, type: 3}
+  - grappleNoise: {fileID: 8300000, guid: 353a38d42e2e55f49a44866ce713c70e, type: 3}
+  - musicmaker: {instanceID: 0}
+  - playerState: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
