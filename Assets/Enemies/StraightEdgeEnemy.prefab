@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114610920711366576}
   - component: {fileID: 114276680609244916}
   - component: {fileID: 114982055787447482}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StraightEdgeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -135,8 +135,7 @@ MonoBehaviour:
   followRange: 5
   attackRange: 5
   player: {fileID: 0}
-  projectile: {fileID: 114474745924518960, guid: 0dec0e81c5b156b4791ba1d30b0f1440,
-    type: 2}
+  projectile: {fileID: 0}
 --- !u!114 &114982055787447482
 MonoBehaviour:
   m_ObjectHideFlags: 1
