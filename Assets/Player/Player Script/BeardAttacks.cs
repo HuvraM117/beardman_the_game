@@ -6,10 +6,25 @@ public class BeardAttacks : MonoBehaviour {
 	public GameObject particle;
 	public GameObject character;
 	public static Vector3 mousePosition;
+    private AudioClip attackNoise;
+    private AudioClip grappleNoise;
+    private AudioSource musicSource;
 
     [SerializeField] private PlayerState playerState;
     private BeardAnimationController beardAnimator;
 
+    private void Start()
+    {
+        //Audio things 
+        var beardman = GameObject.Find("Beard Man/MusicMaker");
+
+        musicSource = beardman.GetComponents<AudioSource>()[0];
+
+        AudioClip[] sounds = Resources.LoadAll<AudioClip>("Sound/BeardNoise");
+
+        attackNoise = sounds[0];
+        grappleNoise = sounds[1];
+    }
 
     private void Awake()
     {
@@ -48,15 +63,16 @@ public class BeardAttacks : MonoBehaviour {
         }
         else
         {
-            Debug.Log("LKSDFJHDSLKFJ");
-            WhipBeard(particle);
+            //TODO : add whip noise 
+            WhipBeard(targetPosition);
         }
     }
 
     // assuming the target is in range, not range-limited
-    private void WhipBeard(GameObject targetObject)
+    private void WhipBeard(Vector2 target)
     {
-        beardAnimator.WhipBeard(targetObject.transform.position);
+        beardAnimator.WhipBeard(target);
+        musicSource.PlayOneShot(attackNoise);
         Debug.Log("whip");
     }
 
@@ -64,6 +80,7 @@ public class BeardAttacks : MonoBehaviour {
     private void GrappleBeard(GameObject grappleObject)
     {
         beardAnimator.GrappleBeard(grappleObject.transform);
+        musicSource.PlayOneShot(grappleNoise);
         Debug.Log("grapple");
     }
 
