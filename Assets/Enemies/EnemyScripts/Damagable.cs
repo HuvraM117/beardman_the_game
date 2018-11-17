@@ -12,7 +12,10 @@ public class Damagable : MonoBehaviour {
     private Animator animator;
 
     private AudioClip hurtSound;
-    //private AudioClip deathSound;
+    private AudioClip deathSound;
+
+    private AudioClip bossHurt;
+    private AudioClip bossDeath;
 
     private AudioSource musicSource;
 
@@ -28,10 +31,18 @@ public class Damagable : MonoBehaviour {
         musicSource = beardman.GetComponents<AudioSource>()[0];
 
         AudioClip[] enemySounds = Resources.LoadAll<AudioClip>("Sound/EnemySounds");
+        AudioClip[] bossSounds = Resources.LoadAll<AudioClip>("Sound/BossSounds");
 
         hurtSound = enemySounds[0];
-        //deathSound = enemySounds[];
+        deathSound = enemySounds[1];
 
+        bossHurt = bossSounds[0];
+        bossDeath = bossSounds[1];
+    }
+
+    private bool isBoss()
+    {
+        return gameObject.GetComponent<BarberController>();
     }
 
 	public void TakeDamage(int amount){
@@ -49,7 +60,15 @@ public class Damagable : MonoBehaviour {
 			/* despawn need to add in some kind of animation with it */
 		}
 
-        musicSource.PlayOneShot(hurtSound);
+        if (isBoss())
+        {
+            musicSource.PlayOneShot(bossHurt);
+        }
+        else
+        {
+            musicSource.PlayOneShot(hurtSound);
+        }
+        
 
 		currentHealth -= amount; 
 		Debug.Log ("I got hit!");
@@ -61,6 +80,15 @@ public class Damagable : MonoBehaviour {
         if (animator != null)
         {
             animator.SetBool("isDead", true);
+        }
+
+        if (isBoss())
+        {
+            musicSource.PlayOneShot(bossDeath);
+        }
+        else
+        {
+            musicSource.PlayOneShot(deathSound);
         }
 
         // Figure out a more elegant way to disable movement

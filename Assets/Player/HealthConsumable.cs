@@ -19,7 +19,7 @@ public class HealthConsumable : Consumable {
 
         musicSource = beardman.GetComponents<AudioSource>()[0];
 
-        var powerUpNoise = Resources.LoadAll<AudioClip>("Sound")[0];
+        powerUpNoise = Resources.LoadAll<AudioClip>("Sound/PowerUp")[0];
 
     }
     
