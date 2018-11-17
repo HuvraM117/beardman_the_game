@@ -15,7 +15,7 @@ public class BeardAttacks : MonoBehaviour {
 
     private void Start()
     {
-        //Audio things 
+        //Audio things
         var beardman = GameObject.Find("Beard Man/MusicMaker");
 
         musicSource = beardman.GetComponents<AudioSource>()[0];
@@ -63,7 +63,7 @@ public class BeardAttacks : MonoBehaviour {
         }
         else
         {
-            //TODO : add whip noise 
+            Debug.Log("LKSDFJHDSLKFJ");
             WhipBeard(targetPosition);
         }
     }
@@ -85,4 +85,3 @@ public class BeardAttacks : MonoBehaviour {
     }
 
 }
-
