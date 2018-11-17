@@ -11,12 +11,28 @@ public class Damagable : MonoBehaviour {
     public bool dropsPickUp = true;
     private Animator animator;
 
+    private AudioClip hurtSound;
+    //private AudioClip deathSound;
+
+    private AudioSource musicSource;
+
 	// Use this for initialization
 	void Start () {
 		alive = true; 
 		currentHealth = max_health;
 	    animator = GetComponent<Animator>();
-	}
+
+        //Audio things 
+        var beardman = GameObject.Find("Beard Man/MusicMaker");
+
+        musicSource = beardman.GetComponents<AudioSource>()[0];
+
+        AudioClip[] enemySounds = Resources.LoadAll<AudioClip>("Sound/EnemySounds");
+
+        hurtSound = enemySounds[0];
+        //deathSound = enemySounds[];
+
+    }
 
 	public void TakeDamage(int amount){
 		if (!alive){
@@ -32,6 +48,9 @@ public class Damagable : MonoBehaviour {
 
 			/* despawn need to add in some kind of animation with it */
 		}
+
+        musicSource.PlayOneShot(hurtSound);
+
 		currentHealth -= amount; 
 		Debug.Log ("I got hit!");
 	}

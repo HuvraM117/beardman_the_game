@@ -16,6 +16,7 @@ public class PlayerState : MonoBehaviour
     private AudioClip beardGrow;
     private AudioClip beardShrink;
     private AudioClip beardManDeath;
+    private AudioClip beardManHurt;
 
     private static BeardState _currentBeardState = BeardState.IDLE;
     public static BeardState CurrentBeardState { get; set; }
@@ -70,6 +71,10 @@ public class PlayerState : MonoBehaviour
 
         beardGrow = beardSounds[2];
         beardShrink = beardSounds[3];
+
+        beardManDeath = beardManSounds[1];
+        beardManHurt = beardManSounds[0];
+
     }
 
     // beard length + health, the total resource, I can't think of what else to call it so hopefully someone else can
@@ -113,7 +118,12 @@ public class PlayerState : MonoBehaviour
             /* despawn need to add in some kind of animation with it */
         }
         else
+        {
             health -= amount;
+            if(amount > 0)
+                musicSource.PlayOneShot(beardManHurt);
+        }
+           
         healthBeardUI.UpdateSlider(health, beardLength);
         animator.SetFloat("Health", health);
     }
@@ -122,6 +132,9 @@ public class PlayerState : MonoBehaviour
     {
         gameObject.GetComponent<MovementController>().enabled = false;
         animator.SetFloat("Health", health);
+
+        musicSource.PlayOneShot(beardManDeath);
+
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
