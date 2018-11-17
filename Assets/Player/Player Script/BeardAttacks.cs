@@ -48,7 +48,6 @@ public class BeardAttacks : MonoBehaviour {
         }
         else
         {
-            Debug.Log("LKSDFJHDSLKFJ");
             WhipBeard(targetPosition);
         }
     }
@@ -63,7 +62,7 @@ public class BeardAttacks : MonoBehaviour {
     // assuming the target is in range, not range-limited
     private void GrappleBeard(GameObject grappleObject)
     {
-        beardAnimator.GrappleBeard(grappleObject.transform);
+        beardAnimator.GrappleBeard(grappleObject.transform.position);
         Debug.Log("grapple");
     }
 

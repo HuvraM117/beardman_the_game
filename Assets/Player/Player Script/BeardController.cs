@@ -79,7 +79,7 @@ public class BeardController : MonoBehaviour
 	private void GrappleBeard(Vector2 target)
 	{
 
-		beardAnimator.WhipBeard(target);
+		beardAnimator.GrappleBeard(target);
 		var dir = (Vector2) target- beardman.position;
 		beardman.velocity = new Vector2 (beardman.velocity.x, 0);
 

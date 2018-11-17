@@ -39,11 +39,13 @@ public class BeardAnimationController : MonoBehaviour {
         ExtendBeard(target);
     }
 
-    public void GrappleBeard(Transform targetTransform)
+    public void GrappleBeard(Vector2 target)
     {
+        Debug.Log("grappling");
         if (PlayerState.CurrentBeardState != BeardState.IDLE) { return; }
+        Debug.Log("next state: " + nextState);
         nextState = BeardState.PULLING;
-        ExtendBeard(targetTransform.position);
+        ExtendBeard(target);
     }
 
     // extend the beard out to a point
@@ -87,10 +89,50 @@ public class BeardAnimationController : MonoBehaviour {
         if(visibleSegments > 0)
             beardTip.transform.localPosition = lineRender.GetPosition(visibleSegments) + beardTipOffset;
 
+        
+
+    }
+
+    private void Update()
+    {
+        float distanceToTarget = Vector2.Distance(new Vector2(transform.position.x, transform.position.y) + beardOrigin, target);
+        for (int i = 0; i < visibleSegments; i++)
+        {
+            if (distanceToTarget < Vector2.Distance(new Vector2(transform.position.x, transform.position.y), transform.TransformPoint(lineRender.GetPosition(i))))
+                lineRender.SetPosition(i, Vector2.zero);
+        }
+    }
+
+    public void CheckForTrailingBeardSegments()
+    {
+        if (PlayerState.CurrentBeardState == BeardState.PULLING)
+        {
+            Debug.Log("DKLSJFHDSKJFHKDJSHFRKJDSHFKJDH");
+            RemoveTrailingBeardSegments();
+
+        }
     }
 
     private void RemoveTrailingBeardSegments()
     {
+        Debug.Log("visible: " + visibleSegments + " trailing: " + trailingSegments);
+
+        // find segments no longer between the player and grapple point, set them invisible, and update the counter
+        int newTrailingSegments = 0;
+        for(int i=trailingSegments; i<visibleSegments; i++)
+        {
+            Vector2 segmentPosition = transform.TransformPoint(lineRender.GetPosition(i));
+            Vector2 origin = transform.position;
+
+            if(!(segmentPosition.x > origin.x && segmentPosition.x < target.x || segmentPosition.x > target.x && segmentPosition.x < origin.x
+                && segmentPosition.y > origin.y && segmentPosition.y < target.y || segmentPosition.y > target.y && segmentPosition.y < origin.y))
+            {
+                lineRender.SetPosition(i, Vector2.zero);
+                newTrailingSegments++;
+            }
+        }
+        trailingSegments += newTrailingSegments;
+
         // if we've pulled the player all the way, transition to the next state, and remove segments that are now trailing behind the player
         // NOTE: the actual physics of pulling the player should be handled somewhere else, this class is for animation states only
         if (visibleSegments == trailingSegments)
@@ -98,6 +140,7 @@ public class BeardAnimationController : MonoBehaviour {
             visibleSegments = 0;
             trailingSegments = 0;
             PlayerState.CurrentBeardState = BeardState.IDLE;
+            Debug.Log("IDLE");
         }
     }
 
