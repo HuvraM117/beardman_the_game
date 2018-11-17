@@ -5,76 +5,90 @@ using UnityEngine;
 public class BeardController : MonoBehaviour
 {
 
-    public bool isLimitedByDistance = true;
-    public Rigidbody2D beardman;
-    private MovementController movementController;
-    private BeardAnimationController beardAnimator;
-    [SerializeField] private PlayerState playerState;
+	public bool isLimitedByDistance = true;
+	public Rigidbody2D beardman;
+	private MovementController movementController;
+	private BeardAnimationController beardAnimator;
+	[SerializeField] private PlayerState playerState;
+	[SerializeField] private LineRenderer beardLine;
+	[SerializeField] private Vector3 beardOriginOffset = Vector2.zero;
+	private Vector3 beardAimPoint;
 
-    public float grappleForce = 3f;
-    private float grappleStrength = 0f;
-    Camera mainCamera;
-    // Use this for initialization
-    void Start()
-    {
-        if (beardman == null)
-        {
-            beardman = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
-        }
-        mainCamera = Camera.main;
-        movementController = beardman.GetComponent<MovementController>();
-        beardAnimator = beardman.GetComponentInChildren<BeardAnimationController>();
-    }
+	public float grappleForce = 3f;
+	private float grappleStrength = 0f;
+	Camera mainCamera;
+	private bool lsdaf = false;
+	// Use this for initialization
+	void Start()
+	{
+		if (beardman == null)
+		{
+			beardman = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+		}
+		mainCamera = Camera.main;
+		movementController = beardman.GetComponent<MovementController>();
+		beardAnimator = beardman.GetComponentInChildren<BeardAnimationController>();
+	}
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (isLimitedByDistance)
-        {
-            Vector2 mousePos = Input.mousePosition;
-            Vector2 followVector = (Vector2)mainCamera.ScreenToWorldPoint(mousePos) - beardman.position;
-            this.transform.position = Vector2.ClampMagnitude(followVector, playerState.BeardLength) + beardman.position;
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            UseBeard();
-        }
-    }
-    public void UseBeard()
-    {
-        Vector2 targetPosition = this.transform.position;
-        RaycastHit2D targetHit = Physics2D.Linecast(transform.position, beardman.position);
-        GameObject targetObject = targetHit ? targetHit.collider.gameObject : null;
+	// Update is called once per frame
+	void FixedUpdate()
+	{
+		if (isLimitedByDistance)
+		{
+			Vector2 mousePos = Input.mousePosition;
+			Vector2 followVector = (Vector2)mainCamera.ScreenToWorldPoint(mousePos) - beardman.position;
+			this.transform.position = Vector2.ClampMagnitude(followVector, playerState.BeardLength) + beardman.position;
+			this.transform.rotation = Quaternion.Euler (0, 0, Mathf.Atan2((beardAimPoint.y - beardman.transform.position.y)
+				, (beardAimPoint.x - beardman.transform.position.x)) * 180 / Mathf.PI);
+			beardLine.transform.position = beardman.transform.position + beardOriginOffset;
 
-        // TODO: here I assume that all enemies/grappleable objects will have an associated component, we can change this later based on the actual components' names/different critereon
-        if ((targetObject && targetObject.name == "Grapple Point") && !MovementController.Crouching())
-        {
-            GrappleBeard(targetHit.point);
-        }
-        else
-        {
-            WhipBeard(this.gameObject);
-        }
-    }
+		}
+		if (Input.GetKey (KeyCode.Mouse0))
+			UseBeard();
+	}
 
 
-    // assuming the target is in range, not range-limited
-    private void WhipBeard(GameObject targetObject)
-    {
-        beardAnimator.WhipBeard(targetObject.transform.position);
-        Debug.Log("whip");
-    }
+	public void UseBeard()
+	{
+		Vector2 targetPosition = this.transform.position;
+		RaycastHit2D targetHit = Physics2D.Linecast(transform.position, beardman.position);
+		GameObject targetObject = targetHit ? targetHit.collider.gameObject : null;
 
-    // assuming the target is in range, not range-limited
-    private void GrappleBeard(Vector2 target)
-    {
+		// TODO: here I assume that all enemies/grappleable objects will have an associated component, we can change this later based on the actual components' names/different critereon
+		if ((targetObject && targetObject.name == "Grapple Point") && !MovementController.Crouching())
+		{
+			beardAimPoint = this.transform.position;
+			GrappleBeard(targetHit.point);
+		}
+		else
+		{
+			beardAimPoint = this.transform.position;
+			WhipBeard(this.gameObject);
+		}
+	}
 
-        beardAnimator.WhipBeard(target);
-        var dir = (Vector2) target- beardman.position;
+
+	// assuming the target is in range, not range-limited
+	private void WhipBeard(GameObject targetObject)
+	{
+		beardAnimator.WhipBeard(targetObject.transform.position);
+		Debug.Log("whip");
+	}
+
+	// assuming the target is in range, not range-limited
+	private void GrappleBeard(Vector2 target)
+	{
+
+		beardAnimator.WhipBeard(target);
+		var dir = (Vector2) target- beardman.position;
 		beardman.velocity = new Vector2 (beardman.velocity.x, 0);
-        
+
 		beardman.AddForce(new Vector2(dir.x*2f, 0) * grappleForce , ForceMode2D.Impulse);
 		beardman.AddForce(dir * grappleForce, ForceMode2D.Impulse);
-        Debug.Log("grapple");
-    }
+		if (beardman.velocity.x > 20f)
+			beardman.velocity = new Vector2(20f, beardman.velocity.y);
+		if (beardman.velocity.y > 20f)
+			beardman.velocity = new Vector2(beardman.velocity.x, 20f);
+		Debug.Log("grapple");
+	}
 }//end beard controller

@@ -7,8 +7,8 @@ public class Damagable : MonoBehaviour {
 	public int max_health = 2; //one for squirrel + bird 
 	public int currentHealth = 0;
 	public bool alive = true;
+    private bool isCollidingWithPlayer = false;
     public bool dropsPickUp = true;
-
     private Animator animator;
 
 	// Use this for initialization
@@ -49,6 +49,8 @@ public class Damagable : MonoBehaviour {
         movementController.speed = 0;
         // Let the animation play
         yield return new WaitForSeconds(1.0f);
+        if(isCollidingWithPlayer)
+            GameObject.FindWithTag("Player").BroadcastMessage("ManuallyDecrementTriggers");
         if (dropsPickUp) {
             DropHealthPickup();
         }
@@ -75,5 +77,17 @@ public class Damagable : MonoBehaviour {
     void Update () {
 
 	}
-		
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            isCollidingWithPlayer = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            isCollidingWithPlayer = false;
+    }
+
 }
