@@ -1,6 +1,7 @@
 ﻿//Caitlin
 //Controls movement for electricRazor
 //Also controlls attack movement/attack pattern
+//This is the flying enemy
 
 using System.Collections;
 using System.Collections.Generic;
@@ -14,20 +15,18 @@ using UnityEngine;
 public class ElectricRazor : MonoBehaviour {
 
 	private int movingRight; // 1 if moving right, -1 if moving left
-	private bool following;
 	private float currentFloated; //amount of idleFloatRange that has floated
 	private bool attacking;
 
-	public int attackRange;
-	public int followRange;
-	public int speed;
-	public int idleFloatRange; //how far it will float before turning around
+	public int attackRange = 5;
+	public int followRange = 10;
+	public int speed = 2;
+	public int idleFloatRange = 15; //how far it will float before turning around
 	public GameObject player;
 
 	// Use this for initialization
 	void Start () {
 		movingRight = 1;
-		following = false;
 		attacking = false;
 	}
 	
@@ -45,11 +44,11 @@ public class ElectricRazor : MonoBehaviour {
 				//every frame b/c player moves
 				//follow
 				direction = new Vector2(xDistance, yDistance);
-				transform.Translate(direction * speed * Time.deltaTime);
+				transform.Translate(direction * speed * .5f * Time.fixedDeltaTime);
 				currentFloated = 0; // resets floating distance 
 			} else {
-				transform.Translate(direction * speed * Time.deltaTime);
-				currentFloated = currentFloated + Mathf.Sqrt(Vector2.SqrMagnitude(direction * speed * Time.deltaTime));
+				transform.Translate(direction * speed * Time.fixedDeltaTime);
+				currentFloated = currentFloated + Mathf.Sqrt(Vector2.SqrMagnitude(direction * speed * Time.fixedDeltaTime));
 
 				if (currentFloated >= idleFloatRange) {
 					currentFloated = 0;
@@ -66,11 +65,23 @@ public class ElectricRazor : MonoBehaviour {
 
 		Vector2 tempPosition = transform.position;
 
-		float xMove = xDistance * speed * Time.deltaTime;
-		float yMove = yDistance * speed * Time.deltaTime;
+		float xMove = 0;
+		float yMove = 0; 
+
+		if(xDistance > 0) { //moving right
+			xMove = Mathf.Abs(xDistance / yDistance) * 2.0f * speed * Time.fixedDeltaTime;
+		} else { // moving left
+			xMove = - Mathf.Abs(xDistance / yDistance) * 2.0f * speed * Time.fixedDeltaTime;
+		}
+
+		if(yDistance > 0) { //moving right
+			yMove = speed * 2.0f * Time.fixedDeltaTime;
+		} else { // moving left
+			yMove = - speed * 2.0f * Time.fixedDeltaTime;
+		}
 
 		float xDistanceMoved = 0.0f;
-
+		Debug.Log ("Goal: " + xDistance);
 		//B line down
 		while (xDistanceMoved <= xDistance) { 	//NOTE: only takes x distance into account
 												//for easier/faster calculation
@@ -78,6 +89,8 @@ public class ElectricRazor : MonoBehaviour {
 			tempPosition.y += yMove;
 			transform.position = tempPosition;
 			xDistanceMoved += xMove;
+
+			yield return new WaitForFixedUpdate ();
 		}
 
 		//swoop back up
@@ -87,14 +100,38 @@ public class ElectricRazor : MonoBehaviour {
 		float yUp = 0;
 
 		while(yUp < amplitude) {
-			tempPosition.x += Mathf.Cos (amplitude * timeCount);
+			if (xDistance > 0) { //moving right
+				tempPosition.x += Mathf.Cos (amplitude * timeCount);
+			} else { //moving left
+				tempPosition.x -= Mathf.Cos (amplitude * timeCount);
+			}
+
 			tempPosition.y += Mathf.Sin (amplitude * timeCount);
 			transform.position = tempPosition;
 			yUp += Mathf.Sin (amplitude * timeCount);
 			timeCount += Time.fixedDeltaTime;
+			yield return new WaitForFixedUpdate ();
+		}
+
+		//hover for a second
+		timeCount = 0;
+		int upOrDown = 0;
+		while (timeCount < 1) {
+			upOrDown = Mathf.RoundToInt((timeCount * 8)) % 2;
+			if (upOrDown == 0) {
+				//move up
+				tempPosition.y += Time.fixedDeltaTime * speed;
+			} else {
+				//move down
+				tempPosition.y -= Time.fixedDeltaTime * speed;
+			}
+
+			transform.position = tempPosition;
+
+			timeCount += Time.fixedDeltaTime;
+			yield return new WaitForFixedUpdate ();
 		}
 
 		attacking = false;
-		return null;
 	} 
 }

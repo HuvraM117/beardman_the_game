@@ -9,41 +9,15 @@ public class Damagable : MonoBehaviour {
 	public bool alive = true;
     private bool isCollidingWithPlayer = false;
     public bool dropsPickUp = true;
-    private Animator animator;
-
-    private AudioClip hurtSound;
-    private AudioClip deathSound;
-
-    private AudioClip bossHurt;
-    private AudioClip bossDeath;
-
-    private AudioSource musicSource;
+    //private Animator animator;
 
 	// Use this for initialization
 	void Start () {
+		
 		alive = true; 
 		currentHealth = max_health;
-	    animator = GetComponent<Animator>();
-
-        //Audio things 
-        var beardman = GameObject.Find("Beard Man/MusicMaker");
-
-        musicSource = beardman.GetComponents<AudioSource>()[0];
-
-        AudioClip[] enemySounds = Resources.LoadAll<AudioClip>("Sound/EnemySounds");
-        AudioClip[] bossSounds = Resources.LoadAll<AudioClip>("Sound/BossSounds");
-
-        hurtSound = enemySounds[0];
-        deathSound = enemySounds[1];
-
-        bossHurt = bossSounds[0];
-        bossDeath = bossSounds[1];
-    }
-
-    private bool isBoss()
-    {
-        return gameObject.GetComponent<BarberController>();
-    }
+	    //animator = GetComponent<Animator>();
+	}
 
 	public void TakeDamage(int amount){
 		if (!alive){
@@ -53,23 +27,15 @@ public class Damagable : MonoBehaviour {
 		if (currentHealth <= 0){
 			currentHealth = 0; 
 
+			//enemyCounter = gameObject.GetComponent<FloodBehavior> ();
+			//enemyCounter.Respawn ();
+
 		    StartCoroutine(PlayDeathAnimation());
 
 			Debug.Log ("I am Dead");
 
 			/* despawn need to add in some kind of animation with it */
 		}
-
-        if (isBoss())
-        {
-            musicSource.PlayOneShot(bossHurt);
-        }
-        else
-        {
-            musicSource.PlayOneShot(hurtSound);
-        }
-        
-
 		currentHealth -= amount; 
 		Debug.Log ("I got hit!");
 	}
@@ -77,25 +43,18 @@ public class Damagable : MonoBehaviour {
     IEnumerator PlayDeathAnimation()
     {
         // If this has an animator (since enemies should will be damagable)
-        if (animator != null)
-        {
-            animator.SetBool("isDead", true);
-        }
-
-        if (isBoss())
-        {
-            musicSource.PlayOneShot(bossDeath);
-        }
-        else
-        {
-            musicSource.PlayOneShot(deathSound);
-        }
+       // if (animator != null)
+        //{
+         //   animator.SetBool("isDead", true);
+        //}
 
         // Figure out a more elegant way to disable movement
-        var movementController = GetComponent<AnimalMovement>();
-        movementController.speed = 0;
-        // Let the animation play
-        yield return new WaitForSeconds(1.0f);
+
+        //var movementController = GetComponent<AnimalMovement>();
+        //movementController.speed = 0;
+        // Let the animation play 
+        yield return new WaitForSeconds(0.2f);
+
         if(isCollidingWithPlayer)
             GameObject.FindWithTag("Player").BroadcastMessage("ManuallyDecrementTriggers");
         if (dropsPickUp) {
@@ -103,7 +62,6 @@ public class Damagable : MonoBehaviour {
         }
         Destroy(gameObject);
     }
-
     private void DropHealthPickup()
     {
         //create prefab programitically 

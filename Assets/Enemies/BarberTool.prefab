@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4052076160166732}
   - component: {fileID: 212497653425484656}
   - component: {fileID: 61759528357853502}
-  - component: {fileID: 50596925629952866}
   - component: {fileID: 114296115379994002}
   - component: {fileID: 114971999917169342}
   - component: {fileID: 114095115339219494}
+  - component: {fileID: 114079715875496350}
   m_Layer: 10
   m_Name: BarberTool
   m_TagString: Enemy
@@ -45,26 +45,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50596925629952866
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1826261881290422}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &61759528357853502
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -90,6 +70,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5196211, y: 1.3872511}
   m_EdgeRadius: 0
+--- !u!114 &114079715875496350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1826261881290422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b2acc384210447a922ade403096a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 10
+  followRange: 20
+  speed: 1
+  idleFloatRange: 10
+  player: {fileID: 0}
 --- !u!114 &114095115339219494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,13 +100,14 @@ MonoBehaviour:
   max_health: 1
   currentHealth: 1
   alive: 1
+  dropsPickUp: 1
 --- !u!114 &114296115379994002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1826261881290422}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24634840ab6fc9a4f9bfe94b773480c2, type: 3}
   m_Name: 
