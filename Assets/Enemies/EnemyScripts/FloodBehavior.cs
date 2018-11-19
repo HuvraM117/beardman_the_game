@@ -8,6 +8,7 @@ public class FloodBehavior : MonoBehaviour {
 	[SerializeField] private GameObject Squirrel;             // The enemy prefab to be spawned.
 	[SerializeField] private GameObject Bird;                 // The enemy prefab to be spawned.
 	[SerializeField] private GameObject StraightEdge;         // The enemy prefab to be spawned.
+	[SerializeField] private GameObject ElectricRazor;         // The enemy prefab to be spawned.
 	float timer; 
 	//[SerializeField] private float floodTime = 90000.0f; 			// How long the flood lasts 
 	[SerializeField] private float spawnTime = 0.2f;            // How long between each spawn.
@@ -24,8 +25,6 @@ public class FloodBehavior : MonoBehaviour {
 	private bool toRespawn; //Stop & Start Checkers
 	private bool toSpawn; 
 
-	List<GameObject> enemies = new List<GameObject>();
-
 	// Use this for initialization
 	void Start () {
 
@@ -34,13 +33,6 @@ public class FloodBehavior : MonoBehaviour {
 
 		playerHealth = player.GetComponent <PlayerState> (); 
 		Count = player.GetComponent <Damagable> (); 
-
-		enemies.Add(Squirrel);
-		enemies.Add(Bird);
-		//enemies.Add(Bear);
-		enemies.Add(StraightEdge);
-		//enemies.Add(ElectricRazor);
-		//enemies.Add(HairSpray);
 
 	}
 
@@ -109,6 +101,13 @@ public class FloodBehavior : MonoBehaviour {
 				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
 			Instantiate (Bird, whereToSpawn, spawnPoints[spawnPointIndex].rotation);
 			Debug.Log ("Bird");
+		} 
+		else if (spawnPointIndex == 3) {
+			float randX  = UnityEngine.Random.Range (-2f, 2f);
+			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
+				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
+			Instantiate (ElectricRazor, whereToSpawn, spawnPoints[spawnPointIndex].rotation);
+			Debug.Log ("Electric Razor");
 		} 
 		else {
 			float randX  = UnityEngine.Random.Range (-2f, 2f);
