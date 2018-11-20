@@ -9,11 +9,13 @@ public class FloodBehavior : MonoBehaviour {
 	[SerializeField] private GameObject Bird;                 // The enemy prefab to be spawned.
 	[SerializeField] private GameObject StraightEdge;         // The enemy prefab to be spawned.
 	[SerializeField] private GameObject ElectricRazor;         // The enemy prefab to be spawned.
+	[SerializeField] private GameObject[] pillars;
 	float timer; 
 	//[SerializeField] private float floodTime = 90000.0f; 			// How long the flood lasts 
 	[SerializeField] private float spawnTime = 0.2f;            // How long between each spawn.
 	[SerializeField] private float deathCounter = 0.2f; 
 	[SerializeField] private Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
+
 
 	private int enemyCounter; 
 	Damagable Count; 
@@ -34,6 +36,11 @@ public class FloodBehavior : MonoBehaviour {
 		playerHealth = player.GetComponent <PlayerState> (); 
 		Count = player.GetComponent <Damagable> (); 
 
+		//removes pillars
+		for(int i = 0; i < pillars.Length; i++) {
+			pillars[i].active = false;
+		}
+
 	}
 
 	// Update is called once per frame
@@ -45,6 +52,10 @@ public class FloodBehavior : MonoBehaviour {
 			timer = 0; 
 			Debug.Log ("toSpawn is False"); 
 			toSpawn = false;
+			//removes pillars
+			for(int i = 0; i < pillars.Length; i++) {
+				pillars[i].active = false;
+			}
 		}
 
 		//if (toRespawn){
@@ -58,9 +69,15 @@ public class FloodBehavior : MonoBehaviour {
 		if (other.gameObject == player) {
 			Debug.Log ("START FLOOD");
 			InvokeRepeating ("Spawn", spawnTime, deathCounter);
+
+			//Adds pillars
+			for(int i = 0; i < pillars.Length; i++) {
+				pillars[i].active = true;
+			}
 		}
 	}
 
+	/*
 	void OnTriggerExit2D (Collider2D other)
 	{
 
@@ -68,8 +85,13 @@ public class FloodBehavior : MonoBehaviour {
 			Debug.Log("STOP FLOOD");
 			toRespawn = false; 
 			toSpawn = false;
+
+			//removes pillars
+			for(int i = 0; i < pillars.Length; i++) {
+				pillars[i].active = false;
+			}
 		}
-	}
+	}*/
 
 	void Spawn ()
 	{
