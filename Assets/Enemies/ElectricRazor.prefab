@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114095115339219494}
   - component: {fileID: 114079715875496350}
   m_Layer: 10
-  m_Name: BarberTool
+  m_Name: ElectricRazor
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

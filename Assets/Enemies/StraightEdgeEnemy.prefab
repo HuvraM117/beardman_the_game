@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   timeBetweenAttacks: 2
-  followRange: 10
+  followRange: 5
   attackRange: 5
   player: {fileID: 0}
   projectile: {fileID: 0}
