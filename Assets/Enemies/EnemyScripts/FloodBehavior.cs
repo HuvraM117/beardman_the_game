@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FloodBehavior : MonoBehaviour {
 	[SerializeField] private GameObject player; 
-	public Transform startPoint; 
 	PlayerState playerHealth;        						  // Reference to the player's heatlh.
 	[SerializeField] private GameObject Squirrel;             // The enemy prefab to be spawned.
 	[SerializeField] private GameObject Bird;                 // The enemy prefab to be spawned.
@@ -48,12 +47,6 @@ public class FloodBehavior : MonoBehaviour {
 
 		p_distance = player.transform.position.x;
 
-		if (p_distance == startPoint.transform.position.x) 
-		{
-			Debug.Log ("Distance is the same."); 
-			startFlood ();
-		}
-
 		timer += Time.deltaTime;
 		var minutes = timer / 60;
 		if (minutes == 1) {
@@ -67,14 +60,16 @@ public class FloodBehavior : MonoBehaviour {
 		}
 	}
 
-	void startFlood()
+	void OnTriggerEnter2D (Collider2D other)
 	{
-		Debug.Log ("START FLOOD");
-		InvokeRepeating ("Spawn", spawnTime, deathCounter);
+		if (other.gameObject == player) {
+			Debug.Log ("START FLOOD");
+			InvokeRepeating ("Spawn", spawnTime, deathCounter);
 
-		//Adds pillars
-		for(int i = 0; i < pillars.Length; i++) {
-			pillars[i].active = true;
+			//Adds pillars
+			for (int i = 0; i < pillars.Length; i++) {
+				pillars [i].active = true;
+			}
 		}
 	}
 
