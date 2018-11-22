@@ -36,22 +36,18 @@ public class SceneController : MonoBehaviour {
 	//	Backgroud.transform.position = Player.transform.position+backgroundOffset+new Vector3(startOfLeel);
 
 		scrollBackgroud ();
-        if (sceneName.Equals("LeadUpToBoss"))
-        { 
-            if (LevelComplete())
-            {
-                SceneManager.LoadScene(3);
-            }
-        }else if (LevelComplete())
+ 
+		if (LevelComplete())
         {
-            SceneManager.LoadScene(0);
+
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         
 	}
     
     public void GoToMenu()
     {
-        SceneManager.LoadScene(0);
+		SceneManager.LoadScene(0);
     }
 
 
