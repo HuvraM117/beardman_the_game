@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class FloodBehavior : MonoBehaviour {
 	[SerializeField] private GameObject player; 
-	PlayerState playerHealth;        // Reference to the player's heatlh.
+	PlayerState playerHealth;        						  // Reference to the player's heatlh.
 	[SerializeField] private GameObject Squirrel;             // The enemy prefab to be spawned.
 	[SerializeField] private GameObject Bird;                 // The enemy prefab to be spawned.
 	[SerializeField] private GameObject StraightEdge;         // The enemy prefab to be spawned.
-	[SerializeField] private GameObject ElectricRazor;         // The enemy prefab to be spawned.
+	[SerializeField] private GameObject ElectricRazor;        // The enemy prefab to be spawned.
+	[SerializeField] private float spawnRadius = 5.0f; 
+	[SerializeField] private GameObject[] pillars;
 	float timer; 
-	//[SerializeField] private float floodTime = 90000.0f; 			// How long the flood lasts 
-	[SerializeField] private float spawnTime = 0.2f;            // How long between each spawn.
-	[SerializeField] private float deathCounter = 0.2f; 
+	[SerializeField] private float spawnTime;          // How long between each spawn.
+	[SerializeField] private float deathCounter; 
 	[SerializeField] private Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
-
 	private int enemyCounter; 
 	Damagable Count; 
 	private int maxEnemyCounter = 30;
 
-	private float spawnRadius = 5.0f; 
+	private float p_distance; 
+
 	Vector2 whereToSpawn; 
 
 	private bool toRespawn; //Stop & Start Checkers
@@ -28,16 +29,23 @@ public class FloodBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		toRespawn = false; 
 		toSpawn = true; 
 
 		playerHealth = player.GetComponent <PlayerState> (); 
 		Count = player.GetComponent <Damagable> (); 
 
+		//removes pillars
+		for(int i = 0; i < pillars.Length; i++) {
+			pillars[i].active = false;
+		}
+
 	}
+		
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
+
+		p_distance = player.transform.position.x;
 
 		timer += Time.deltaTime;
 		var minutes = timer / 60;
@@ -45,29 +53,23 @@ public class FloodBehavior : MonoBehaviour {
 			timer = 0; 
 			Debug.Log ("toSpawn is False"); 
 			toSpawn = false;
+			//removes pillars
+			for(int i = 0; i < pillars.Length; i++) {
+				pillars[i].active = false;
+			}
 		}
-
-		//if (toRespawn){
-		//	Respawn(); 
-		//}
 	}
 
 	void OnTriggerEnter2D (Collider2D other)
 	{
-
 		if (other.gameObject == player) {
 			Debug.Log ("START FLOOD");
 			InvokeRepeating ("Spawn", spawnTime, deathCounter);
-		}
-	}
 
-	void OnTriggerExit2D (Collider2D other)
-	{
-
-		if (other.gameObject == player) {
-			Debug.Log("STOP FLOOD");
-			toRespawn = false; 
-			toSpawn = false;
+			//Adds pillars
+			for (int i = 0; i < pillars.Length; i++) {
+				pillars [i].active = true;
+			}
 		}
 	}
 
@@ -77,12 +79,11 @@ public class FloodBehavior : MonoBehaviour {
 		// If the player has no health left, if the max enemies have generated, or we have left the trigger...
 		if (playerHealth.Health < 0 || enemyCounter == maxEnemyCounter || toSpawn == false)
 		{
-			toRespawn = true; 
-			// ...exit the function.
 			return;
 
 		}
 
+		//while (
 		// Find a random index between zero and one less than the number of spawn points.
 		int spawnPointIndex = UnityEngine.Random.Range (0, spawnPoints.Length);
 		Debug.Log ("spawnPoint is" + spawnPointIndex);
@@ -121,15 +122,4 @@ public class FloodBehavior : MonoBehaviour {
 		Debug.Log (enemyCounter); 
 
 	}
-
-	//public void Respawn()
-	//{
-	//	Debug.Log("Respawning");
-	//	if (timer >= deathCounter) {
-	//			timer = 0;
-				//call spawn to generate a new enemy
-	//			Spawn (); 
-
-	//	}
-	//}
 }
