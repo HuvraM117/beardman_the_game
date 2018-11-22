@@ -9,6 +9,7 @@ public class FloodBehavior : MonoBehaviour {
 	[SerializeField] private GameObject Bird;                 // The enemy prefab to be spawned.
 	[SerializeField] private GameObject StraightEdge;         // The enemy prefab to be spawned.
 	[SerializeField] private GameObject ElectricRazor;        // The enemy prefab to be spawned.
+	[SerializeField] private float spawnRadius = 5.0f; 
 	[SerializeField] private GameObject[] pillars;
 	float timer; 
 	[SerializeField] private float spawnTime;          // How long between each spawn.
@@ -20,7 +21,6 @@ public class FloodBehavior : MonoBehaviour {
 
 	private float p_distance; 
 
-	private float spawnRadius = 5.0f; 
 	Vector2 whereToSpawn; 
 
 	private bool toRespawn; //Stop & Start Checkers
@@ -83,6 +83,7 @@ public class FloodBehavior : MonoBehaviour {
 
 		}
 
+		//while (
 		// Find a random index between zero and one less than the number of spawn points.
 		int spawnPointIndex = UnityEngine.Random.Range (0, spawnPoints.Length);
 		Debug.Log ("spawnPoint is" + spawnPointIndex);
