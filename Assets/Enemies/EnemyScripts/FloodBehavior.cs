@@ -17,7 +17,7 @@ public class FloodBehavior : MonoBehaviour {
 	[SerializeField] private Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
 	private int enemyCounter; 
 	Damagable Count; 
-	private int maxEnemyCounter = 30;
+	private int maxEnemyCounter = 50;
 
 	private float p_distance; 
 
