@@ -59,9 +59,10 @@ public class SceneController : MonoBehaviour {
 
 	void scrollBackgroud(){
 		progress = (Player.transform.position.x-startOfLevel) * moveRatio;
-
 		Backgroud.transform.position = Player.transform.position+backgroundOffset+new Vector3(-progress,0,0);
-		MiddleLayerBackgroud.transform.position = new Vector3 (Player.transform.position.x + MiddleLayerBackgroudOffset.x - progress * 10, MiddleLayerBackgroud.transform.position.y, MiddleLayerBackgroud.transform.position.z);
+		if(MiddleLayerBackgroud!=null)
+			MiddleLayerBackgroud.transform.position = new Vector3 (Player.transform.position.x + MiddleLayerBackgroudOffset.x - progress * 10, Player.transform.position.y, MiddleLayerBackgroud.transform.position.z);
+
 	}
 
     
