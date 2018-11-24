@@ -7,6 +7,12 @@ public class MovementController : MonoBehaviour {
     private Rigidbody2D m_rigidbody;
     private Collider2D footCollider;
 	public Animator playerAnimator;
+    private AudioSource footSource;
+    private AudioSource musicSource;
+    private AudioClip steps;
+    private AudioClip sheildUp; //TODO
+    private AudioClip sheildDown; //TODO
+
     [SerializeField] private FootController groundedState;
 	[SerializeField] private GameObject shield;
     private bool IsGrounded {
@@ -15,6 +21,7 @@ public class MovementController : MonoBehaviour {
     private static bool isCrouching = false;
 	private bool canShield = false;
 	private static bool invincible = false;
+	private Vector3 raycastOrigin = new Vector2(0f, 0.9f);
 	private bool lastDir = false;//False is left, true is right
     [SerializeField] private float MOVESPEED = 5f;
     [SerializeField] private float JUMPFORCE = 12f;
@@ -23,6 +30,9 @@ public class MovementController : MonoBehaviour {
 	private Vector3 faceLeft;
 	private Vector3 faceRight;
 	private Vector3 crouchLeft;
+
+    private bool playedSheildUpSound = false;
+    private bool playedSheildDownSound = true;
 
 	// Use this for initialization
 	void Start () {
@@ -34,16 +44,70 @@ public class MovementController : MonoBehaviour {
 		crouchLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 0.5f, 1f));
 		faceLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 1f, 1f));
 		faceRight = Vector3.Scale (fullSize, new Vector3 (1f, 1f, 1f));
+
+        //Audio Things
+        var beardman = GameObject.Find("Beard Man/FootAudioSource");
+
+        footSource = beardman.GetComponents<AudioSource>()[0];
+
+        steps = Resources.LoadAll<AudioClip>("Sound/Steps")[0];
+
+        AudioClip[] beardManSounds = Resources.LoadAll<AudioClip>("Sound/BeardManSounds");
+
+        footSource.clip = steps;
+
+        var beardmanMusic = GameObject.Find("Beard Man/MusicMaker");
+
+        musicSource = beardmanMusic.GetComponents<AudioSource>()[0];
+
+        sheildUp = beardManSounds[2];
+        sheildDown = beardManSounds[3];
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        isCrouching = Input.GetButton("Crouch");
+		if (isCrouching && (Physics2D.Raycast (m_rigidbody.transform.position + raycastOrigin, Vector2.left, .5f).collider != null
+			|| Physics2D.Raycast (m_rigidbody.transform.position + raycastOrigin, Vector2.right, .5f).collider != null 
+			|| Physics2D.Raycast (m_rigidbody.transform.position + raycastOrigin, Vector2.up, .5f).collider != null))
+			isCrouching = true;
+		else
+			isCrouching = Input.GetButton("Crouch");
+
+        if(isCrouching && !playedSheildUpSound)
+        {
+            Debug.Log("play shield up");
+            musicSource.PlayOneShot(sheildUp);
+            playedSheildUpSound = true;
+            playedSheildDownSound = false;
+        }
+
+        if(!isCrouching && !playedSheildDownSound)
+        {
+            Debug.Log("play shield down");
+            musicSource.PlayOneShot(sheildDown);
+            playedSheildDownSound = true;
+            playedSheildUpSound = false;
+        }
+
         m_rigidbody.velocity = UpdateMovement();
 		playerAnimator.SetFloat("Speed",m_rigidbody.velocity.magnitude);
 		playerAnimator.SetBool ("Grounded", IsGrounded);
 
-	}
+        if( ( Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) && IsGrounded)
+        {
+            Debug.Log(footSource.isPlaying);
+            if (!footSource.isPlaying)
+            {
+                footSource.Play();
+            }
+            
+        }
+        else
+        {
+            footSource.Stop();
+        }
+
+    }
 
     private Vector2 UpdateMovement()
     {
@@ -73,7 +137,7 @@ public class MovementController : MonoBehaviour {
         }
         else if (IsGrounded)
         {
-			moveInput.x = Input.GetAxis("Horizontal") * MOVESPEED/1.5f;
+			moveInput.x = Input.GetAxis("Horizontal") * MOVESPEED;
 			if (moveInput.x > 0) {
 				m_rigidbody.transform.localScale = crouchRight;
 				lastDir = true;

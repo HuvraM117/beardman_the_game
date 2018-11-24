@@ -7,15 +7,16 @@ public class Damagable : MonoBehaviour {
 	public int max_health = 2; //one for squirrel + bird 
 	public int currentHealth = 0;
 	public bool alive = true;
+    private bool isCollidingWithPlayer = false;
     public bool dropsPickUp = true;
-
-    private Animator animator;
+    //private Animator animator;
 
 	// Use this for initialization
 	void Start () {
+		
 		alive = true; 
 		currentHealth = max_health;
-	    animator = GetComponent<Animator>();
+	    //animator = GetComponent<Animator>();
 	}
 
 	public void TakeDamage(int amount){
@@ -25,6 +26,9 @@ public class Damagable : MonoBehaviour {
 
 		if (currentHealth <= 0){
 			currentHealth = 0; 
+
+			//enemyCounter = gameObject.GetComponent<FloodBehavior> ();
+			//enemyCounter.Respawn ();
 
 		    StartCoroutine(PlayDeathAnimation());
 
@@ -39,22 +43,25 @@ public class Damagable : MonoBehaviour {
     IEnumerator PlayDeathAnimation()
     {
         // If this has an animator (since enemies should will be damagable)
-        if (animator != null)
-        {
-            animator.SetBool("isDead", true);
-        }
+       // if (animator != null)
+        //{
+         //   animator.SetBool("isDead", true);
+        //}
 
         // Figure out a more elegant way to disable movement
-        var movementController = GetComponent<AnimalMovement>();
-        movementController.speed = 0;
-        // Let the animation play
-        yield return new WaitForSeconds(1.0f);
+
+        //var movementController = GetComponent<AnimalMovement>();
+        //movementController.speed = 0;
+        // Let the animation play 
+        yield return new WaitForSeconds(0.2f);
+
+        if(isCollidingWithPlayer)
+            GameObject.FindWithTag("Player").BroadcastMessage("ManuallyDecrementTriggers");
         if (dropsPickUp) {
             DropHealthPickup();
         }
         Destroy(gameObject);
     }
-
     private void DropHealthPickup()
     {
         //create prefab programitically 
@@ -75,5 +82,17 @@ public class Damagable : MonoBehaviour {
     void Update () {
 
 	}
-		
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            isCollidingWithPlayer = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            isCollidingWithPlayer = false;
+    }
+
 }

@@ -21,7 +21,7 @@ public class DoesDamage : MonoBehaviour {
 		timer = timeBetweenAttacks; // makes so can immediatly attack without waiting cooldown period
 	}
 
-	void Update(){
+	void FixedUpdate(){
 		timer += Time.deltaTime;
 	}
 

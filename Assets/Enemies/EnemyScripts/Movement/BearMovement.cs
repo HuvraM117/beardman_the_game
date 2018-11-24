@@ -65,6 +65,9 @@ public class BearMovement : MonoBehaviour {
 		Vector2 movement = new Vector2(movingRight * amountToMove, amountUp);
 		m_rigidbody.AddForce(movement);
 		jumping = false;
+		movingRight = -movingRight;
+		spriteRenderer.flipX = !spriteRenderer.flipX;
+		Debug.Log ("Switched direction!");
 		return null;
 	} 
 	//behavior so far: It gets around the collider but I don't see it jump up? 
@@ -73,7 +76,7 @@ public class BearMovement : MonoBehaviour {
 	private IEnumerator jumpUp() {
 		jumping = true; 
 		yield return new WaitForSeconds (UnityEngine.Random.Range (2, 4)); 
-		float amountUp = UnityEngine.Random.Range (200f, 500f); //the upwards momentum. might be a little high.
+		float amountUp = UnityEngine.Random.Range (500f, 800f); //the upwards momentum. might be a little high.
 		m_rigidbody.AddForce(new Vector2(0f , amountUp));
 		yield return new WaitForSeconds (1.5f); // wait for a few seconds after jump 
 		StartCoroutine(jumpUp());
