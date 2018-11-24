@@ -10,6 +10,7 @@ public class FloodBehavior : MonoBehaviour {
 	[SerializeField] private GameObject StraightEdge;         // The enemy prefab to be spawned.
 	[SerializeField] private GameObject ElectricRazor;        // The enemy prefab to be spawned.
 	[SerializeField] private float spawnRadius = 5.0f; 
+	[SerializeField] private int maxEnemyCounter = 50;
 	[SerializeField] private GameObject[] pillars;
 	float timer; 
 	[SerializeField] private float spawnTime;          // How long between each spawn.
@@ -17,7 +18,6 @@ public class FloodBehavior : MonoBehaviour {
 	[SerializeField] private Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
 	private int enemyCounter; 
 	Damagable Count; 
-	private int maxEnemyCounter = 30;
 
 	private float p_distance; 
 
