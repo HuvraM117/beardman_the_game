@@ -14,6 +14,9 @@ public class BeardController : MonoBehaviour
 	[SerializeField] private Vector3 beardOriginOffset = Vector2.zero;
 	private Vector3 beardAimPoint;
 
+	public static bool retracting = false;
+	public static bool grappleLate = false;
+	public static RaycastHit2D targetLate;
 	public float grappleForce = 3f;
 	private float grappleStrength = 0f;
 	Camera mainCamera;
@@ -45,6 +48,12 @@ public class BeardController : MonoBehaviour
 		}
 		if (Input.GetKey (KeyCode.Mouse0))
 			UseBeard();
+		
+		if (retracting) {
+			GrappleBeard(targetLate.point);
+			grappleLate = false;
+			retracting = false;
+		}
 	}
 
 
@@ -58,7 +67,9 @@ public class BeardController : MonoBehaviour
 		if ((targetObject && targetObject.name == "Grapple Point") && !MovementController.Crouching())
 		{
 			beardAimPoint = this.transform.position;
-			GrappleBeard(targetHit.point);
+			grappleLate = true;
+			targetLate = targetHit;
+			beardAnimator.WhipBeard(targetHit.point);
 		}
 		else
 		{
@@ -78,8 +89,7 @@ public class BeardController : MonoBehaviour
 	// assuming the target is in range, not range-limited
 	private void GrappleBeard(Vector2 target)
 	{
-
-		beardAnimator.WhipBeard(target);
+		
 		var dir = (Vector2) target- beardman.position;
 		beardman.velocity = new Vector2 (beardman.velocity.x, 0);
 

@@ -1,0 +1,296 @@
+fileFormatVersion: 2
+guid: e102c11b667fe1947bf6f9c78913f41f
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: airrazor2.0_1
+    21300002: airrazor2.0_2
+    21300004: airrazor2.0_3
+    21300006: airrazor2.0_4
+    21300008: airrazor2.0_5
+    21300010: airrazor2.0_6
+    21300012: airrazor2.0_7
+    21300014: airrazor2.0_8
+    21300016: airrazor2.0_9
+    21300018: airrazor2.0_10
+    21300020: airrazor2.0_11
+    21300022: airrazor2.0_12
+    21300024: airrazor2.0_13
+    21300026: airrazor2.0_14
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: airrazor2.0_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 537
+        width: 96
+        height: 145
+      alignment: 9
+      pivot: {x: 0.716362, y: 0.89904404}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_2
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 534
+        width: 87
+        height: 151
+      alignment: 9
+      pivot: {x: 0.62789845, y: 0.89792615}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_3
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 531
+        width: 95
+        height: 157
+      alignment: 9
+      pivot: {x: 0.5390429, y: 0.8921684}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_4
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 529
+        width: 97
+        height: 159
+      alignment: 9
+      pivot: {x: 0.45411476, y: 0.88723546}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_5
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 357
+        width: 98
+        height: 161
+      alignment: 9
+      pivot: {x: 0.46215233, y: 0.8916404}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_6
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 358
+        width: 98
+        height: 161
+      alignment: 9
+      pivot: {x: 0.43944395, y: 0.88242525}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_7
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 359
+        width: 95
+        height: 161
+      alignment: 9
+      pivot: {x: 0.4609574, y: 0.8778177}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_8
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 359
+        width: 99
+        height: 159
+      alignment: 9
+      pivot: {x: 0.45504174, y: 0.88723564}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_9
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 175
+        width: 100
+        height: 159
+      alignment: 9
+      pivot: {x: 0.42430472, y: 0.8825699}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_10
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 194
+        width: 138
+        height: 126
+      alignment: 9
+      pivot: {x: 0.7902744, y: 0.8473566}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 111
+        height: 171
+      alignment: 9
+      pivot: {x: 0.4465361, y: 0.87307537}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_12
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 86
+        height: 166
+      alignment: 9
+      pivot: {x: 0.5086258, y: 0.9021876}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_13
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 10
+        width: 156
+        height: 136
+      alignment: 9
+      pivot: {x: 0.11007299, y: 0.7127259}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: airrazor2.0_14
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 0
+        width: 79
+        height: 157
+      alignment: 9
+      pivot: {x: 0.31219947, y: 0.07948217}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

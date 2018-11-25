@@ -30,6 +30,7 @@ public class BeardAnimationController : MonoBehaviour {
         {
 			lineRender.SetPosition (i, new Vector3 (0, 0));
         }
+		maxSegments = 10;
 	}
 
     public void WhipBeard(Vector2 target)
@@ -107,6 +108,8 @@ public class BeardAnimationController : MonoBehaviour {
         if (visibleSegments >= maxSegments)
         {
             PlayerState.CurrentBeardState = nextState;
+			if(BeardController.grappleLate)
+				BeardController.retracting = true;
         }
         else
         {
