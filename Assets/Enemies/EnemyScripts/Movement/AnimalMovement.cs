@@ -67,11 +67,11 @@ public class AnimalMovement : MonoBehaviour {
 	public void OnTriggerEnter2D(Collider2D collision) {
 		//Debug.Log ("Collider happened!");
 
-		/*if (collision.gameObject.CompareTag ("EnemyCollisionOnly") && !jumping) {
+		if (collision.gameObject.CompareTag ("EnemyCollisionOnly") && !jumping) {
 			movingRight = -movingRight;
 		    spriteRenderer.flipX = !spriteRenderer.flipX;
             //Debug.Log ("Switched direction!");
-		}*/
+		}
 
 		/*
 			double doIJump = Random.Range(0f, 1f);
