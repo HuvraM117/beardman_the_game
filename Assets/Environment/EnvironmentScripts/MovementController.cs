@@ -95,7 +95,7 @@ public class MovementController : MonoBehaviour {
 
         if( ( Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) && IsGrounded)
         {
-            Debug.Log(footSource.isPlaying);
+            //Debug.Log(footSource.isPlaying);
             if (!footSource.isPlaying)
             {
                 footSource.Play();
