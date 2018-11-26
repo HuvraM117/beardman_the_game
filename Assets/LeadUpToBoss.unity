@@ -1375,7 +1375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPlatform: {fileID: 339374093}
   destinationPlatform: {fileID: 1497208759}
-  speed: 110
+  speed: 60
   LEFTandRIGHT: 1
   UPandDown: 0
 --- !u!50 &339374095
