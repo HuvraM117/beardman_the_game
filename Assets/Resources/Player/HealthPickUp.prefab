@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4005482517734674}
   - component: {fileID: 212425447592473582}
   - component: {fileID: 58838552575321922}
-  - component: {fileID: 114417160230142106}
+  - component: {fileID: 114657980021131758}
   - component: {fileID: 95447118581149072}
   - component: {fileID: 50492923359386314}
   - component: {fileID: 70198255131972882}
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1882846287612712}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 117.86001, y: -14.570521, z: -0.6524556}
+  m_LocalPosition: {x: -23.763601, y: -1.3206582, z: 0}
   m_LocalScale: {x: 0.021939376, y: 0.019913165, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,7 +112,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114417160230142106
+--- !u!114 &114657980021131758
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1882846287612712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 976b1e4853279d140989fca2502a9ff6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d27a57d58a9dcf43aa905cfb7b133f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0
