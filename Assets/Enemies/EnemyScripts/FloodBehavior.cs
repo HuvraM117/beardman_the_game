@@ -48,7 +48,7 @@ public class FloodBehavior : MonoBehaviour {
 		p_distance = player.transform.position.x;
 
 		timer += Time.fixedDeltaTime;
-		var minutes = timer / 60;
+		int minutes = (int) timer / 60;
 		if (minutes == 1) {
 			timer = 180; 
 			Debug.Log ("toSpawn is False"); 
