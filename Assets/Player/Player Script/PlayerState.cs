@@ -59,7 +59,7 @@ public class PlayerState : MonoBehaviour
         beardLength = MAXVITALITY / 2;
 
         //getting health ui
-        var slider = GameObject.Find("Canvas4/HealthBarFrame/HealthAndBeardSlider");
+        var slider = GameObject.Find("Canvas6/HealthBarFrame/HealthAndBeardSlider");
         healthBeardUI = slider.GetComponent<SliderState>();
 
         healthBeardUI.UpdateSlider(health, beardLength);
