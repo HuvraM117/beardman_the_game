@@ -1037,7 +1037,7 @@ Prefab:
         type: 2}
       propertyPath: beardman
       value: 
-      objectReference: {fileID: 342378071}
+      objectReference: {fileID: 416338414}
     - target: {fileID: 114367455078438640, guid: 7ba65c03d268b624f8956e044c5bc80f,
         type: 2}
       propertyPath: grappleForce
@@ -1047,7 +1047,7 @@ Prefab:
         type: 2}
       propertyPath: playerState
       value: 
-      objectReference: {fileID: 342378067}
+      objectReference: {fileID: 416338410}
     - target: {fileID: 1318271255711178, guid: 7ba65c03d268b624f8956e044c5bc80f, type: 2}
       propertyPath: m_Name
       value: Beard Controller
@@ -1221,11 +1221,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1597035129}
   m_Script: {fileID: 11500000, guid: 14e71cf891b3c9b4d8853c19b9fc7247, type: 3}
---- !u!50 &342378071 stripped
-Rigidbody2D:
-  m_PrefabParentObject: {fileID: 50563369902431236, guid: 09fab8b165844064f9ea3f43b54a9871,
-    type: 2}
-  m_PrefabInternal: {fileID: 1597035129}
 --- !u!4 &342378073 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4363854553114170, guid: 09fab8b165844064f9ea3f43b54a9871,
@@ -1593,6 +1588,17 @@ Prefab:
 --- !u!1 &416338409 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1928924814123666, guid: c48030039feb0ec4eb04c2458f5082a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 416338408}
+--- !u!114 &416338410 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114767182347412238, guid: c48030039feb0ec4eb04c2458f5082a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 416338408}
+  m_Script: {fileID: 11500000, guid: 14e71cf891b3c9b4d8853c19b9fc7247, type: 3}
+--- !u!50 &416338414 stripped
+Rigidbody2D:
+  m_PrefabParentObject: {fileID: 50159234429417502, guid: c48030039feb0ec4eb04c2458f5082a2,
     type: 2}
   m_PrefabInternal: {fileID: 416338408}
 --- !u!1 &437804470
