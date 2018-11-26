@@ -9,7 +9,6 @@ public class SceneController : MonoBehaviour {
 	public GameObject Player;
 	public GameObject Backgroud;
 	public GameObject MiddleLayerBackgroud;
-    public GameObject SettingsPopUp;
 	public Vector3 MiddleLayerBackgroudOffset;
 	public float moveRatio;
 	public Vector3 backgroundOffset;
@@ -21,10 +20,7 @@ public class SceneController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //BossLevelCamera = this.gameObject.GetComponents<Camera>()[0];
-        //normalCamera = Player.GetComponents<Camera>()[0];
-		startOfLevel=Player.transform.position.x;
-        SettingsPopUp.SetActive(false);
+        startOfLevel =Player.transform.position.x;
 	}
 	
 	// Update is called once per frame
