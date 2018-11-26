@@ -11,8 +11,9 @@ public class PlayerState : MonoBehaviour
 {
 
     [SerializeField] private static float MAXVITALITY = 7f;
-    [SerializeField] private SliderState healthBeardUI;
-    
+    //[SerializeField] private SliderState healthBeardUI;
+    private SliderState healthBeardUI;
+
     private AudioClip beardGrow;
     private AudioClip beardShrink;
     private AudioClip beardManDeath;
@@ -56,6 +57,11 @@ public class PlayerState : MonoBehaviour
     {
         health = MAXVITALITY / 2;
         beardLength = MAXVITALITY / 2;
+
+        //getting health ui
+        var slider = GameObject.Find("Canvas6/HealthBarFrame/HealthAndBeardSlider");
+        healthBeardUI = slider.GetComponent<SliderState>();
+
         healthBeardUI.UpdateSlider(health, beardLength);
 
         animator = transform.GetComponentInChildren<Animator>();

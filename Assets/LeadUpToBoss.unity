@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &9254219
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -227,6 +227,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &123074448 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1671098439254316, guid: 7ba65c03d268b624f8956e044c5bc80f,
+    type: 2}
+  m_PrefabInternal: {fileID: 379452966}
 --- !u!1 &144492804
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &144492807
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -378,7 +383,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4944002392304034, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 1659342914578860, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_Name
@@ -448,7 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 100
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &222638326
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -562,7 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &223248478
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -676,7 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &224499444
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -790,7 +795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &226346178
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -931,7 +936,7 @@ Transform:
   m_LocalScale: {x: 1.45, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &249806668
 Prefab:
@@ -970,7 +975,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4944002392304034, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1659342914578860, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_Name
@@ -1023,7 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &307290876
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1137,7 +1142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &307922722
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1268,7 +1273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 100
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &313350710
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1512,7 +1517,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4192892613286652, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1314171303530192, guid: c484befcede4d42b5ad201485afa0ce0, type: 2}
       propertyPath: m_Name
@@ -1578,7 +1583,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4441799885423202, guid: 7ba65c03d268b624f8956e044c5bc80f, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114367455078438640, guid: 7ba65c03d268b624f8956e044c5bc80f,
         type: 2}
@@ -1647,7 +1652,7 @@ Transform:
   - {fileID: 1559571280}
   - {fileID: 1047485809}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &421916336
 GameObject:
@@ -1693,7 +1698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &421916339
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1800,7 +1805,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4944002392304034, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1659342914578860, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_Name
@@ -1846,7 +1851,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4944002392304034, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_RootOrder
-      value: 21
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 1659342914578860, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_Name
@@ -1916,7 +1921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 100
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &486948256
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2030,7 +2035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &487440595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2144,7 +2149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &500086215
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2259,7 +2264,7 @@ Transform:
   - {fileID: 1895631444}
   - {fileID: 1345175952}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526860238
 GameObject:
@@ -2289,7 +2294,7 @@ Transform:
   - {fileID: 677263249}
   - {fileID: 1644587554}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &533315430
 GameObject:
@@ -2335,7 +2340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &533315433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2466,7 +2471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 100
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &601857586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2580,7 +2585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &604691929
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2760,7 +2765,7 @@ Transform:
   - {fileID: 775184340}
   - {fileID: 307290874}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &632308721
 GameObject:
@@ -2806,7 +2811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &632308724
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2876,6 +2881,35 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &648384404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 951520797}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 648384405}
+  - component: {fileID: 951520799}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &648384405
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 951520797}
+  m_GameObject: {fileID: 648384404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1758886888}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &655664271
 GameObject:
   m_ObjectHideFlags: 0
@@ -2920,7 +2954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &655664274
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3159,7 +3193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &711555930
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3302,7 +3336,7 @@ Transform:
   m_Children:
   - {fileID: 1591132606}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &737623492
 GameObject:
@@ -3348,7 +3382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &737623495
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3462,7 +3496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &775184342
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3591,6 +3625,10 @@ Prefab:
       propertyPath: orthographic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1675699120980662, guid: 09fab8b165844064f9ea3f43b54a9871, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09fab8b165844064f9ea3f43b54a9871, type: 2}
   m_IsPrefabParent: 0
@@ -3712,7 +3750,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &784833594
 GameObject:
@@ -3758,7 +3796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &784833597
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3873,7 +3911,7 @@ Transform:
   - {fileID: 1065300607}
   - {fileID: 613661457}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &806306722
 GameObject:
@@ -3906,7 +3944,6 @@ MonoBehaviour:
   Player: {fileID: 782153836}
   Backgroud: {fileID: 226857723}
   MiddleLayerBackgroud: {fileID: 0}
-  SettingsPopUp: {fileID: 951520798}
   MiddleLayerBackgroudOffset: {x: 0, y: 0, z: 0}
   moveRatio: 0
   backgroundOffset: {x: 0, y: 0, z: 0}
@@ -3923,8 +3960,69 @@ Transform:
   m_Children:
   - {fileID: 1339272692}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &835273819
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -9.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.6524556
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114095766100318212, guid: c48030039feb0ec4eb04c2458f5082a2,
+        type: 2}
+      propertyPath: lineRender
+      value: 
+      objectReference: {fileID: 1972337880}
+    - target: {fileID: 114095766100318212, guid: c48030039feb0ec4eb04c2458f5082a2,
+        type: 2}
+      propertyPath: beardTip
+      value: 
+      objectReference: {fileID: 123074448}
+    - target: {fileID: 1928924814123666, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
+      propertyPath: m_Name
+      value: Beard Man
+      objectReference: {fileID: 0}
+    - target: {fileID: 82878407111645830, guid: c48030039feb0ec4eb04c2458f5082a2,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 24e30f775be7fb241869788a12ebb060, type: 3}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &872559432
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,7 +4084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 100
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &872559436
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4117,7 +4215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 100
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &910900909
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4231,7 +4329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &914581449
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4345,7 +4443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &917056028
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4550,17 +4648,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9198d1e864fafea44bc508b08f22a90a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &951520798 stripped
+--- !u!1 &951520798
 GameObject:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 1711579016060074, guid: 9198d1e864fafea44bc508b08f22a90a,
     type: 2}
   m_PrefabInternal: {fileID: 951520797}
---- !u!114 &951520799 stripped
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 951520800}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &951520799
 MonoBehaviour:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 114823161038592008, guid: 9198d1e864fafea44bc508b08f22a90a,
     type: 2}
   m_PrefabInternal: {fileID: 951520797}
+  m_GameObject: {fileID: 648384404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa14301852307f74c88e7df71a291620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+--- !u!4 &951520800
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 951520797}
+  m_GameObject: {fileID: 951520798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1758886888}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &956650695
 GameObject:
   m_ObjectHideFlags: 0
@@ -4622,7 +4751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 100
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &956650699
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4736,7 +4865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &978530926
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4850,7 +4979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &981022186
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4957,7 +5086,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4944002392304034, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1659342914578860, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_Name
@@ -5010,7 +5139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1020038462
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5137,7 +5266,7 @@ Transform:
   - {fileID: 981022184}
   - {fileID: 2073366545}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1047485804
 GameObject:
@@ -5320,7 +5449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1060144033
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5533,7 +5662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1069101900
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5647,7 +5776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1070245442
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5754,7 +5883,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4944002392304034, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1659342914578860, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_Name
@@ -5807,7 +5936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1202998516
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5938,7 +6067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 100
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1214461518
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6052,7 +6181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1231539752
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6233,7 +6362,7 @@ Transform:
   m_LocalScale: {x: 0.41375, y: 0.41375, z: 0.41375}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1275499312
 GameObject:
@@ -6296,7 +6425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 100
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1275499316
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6410,7 +6539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1314525980
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6689,7 +6818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1347902790
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6759,6 +6888,121 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1001 &1400282270
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224630483950353258, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224687215476454220, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224678380352507620, guid: 144dc168db11b9a4ba0f6a1411b5639e,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 144dc168db11b9a4ba0f6a1411b5639e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1475515079
 GameObject:
   m_ObjectHideFlags: 0
@@ -6803,7 +7047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1475515082
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6910,7 +7154,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4944002392304034, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 1659342914578860, guid: 48b4bc4fdee8e47bf93b027217253f31, type: 2}
       propertyPath: m_Name
@@ -7062,7 +7306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1500007880
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7193,7 +7437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 100
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1503027805
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7307,7 +7551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1525161343
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7421,7 +7665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1539467568
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7552,7 +7796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 100
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1540612337
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7666,7 +7910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1547233061
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7879,7 +8123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1560471824
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7993,7 +8237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1577718009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8107,7 +8351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1586596024
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131393,7 +131637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1600611275
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131507,7 +131751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1635737281
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131950,6 +132194,11 @@ Transform:
   m_Father: {fileID: 1966805239}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1705576566 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1928924814123666, guid: c48030039feb0ec4eb04c2458f5082a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 835273819}
 --- !u!1 &1748211912
 GameObject:
   m_ObjectHideFlags: 0
@@ -131994,7 +132243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1748211915
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132064,6 +132313,36 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1758886887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 951520797}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1758886888}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1758886888
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 951520797}
+  m_GameObject: {fileID: 1758886887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 951520800}
+  - {fileID: 648384405}
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1778916992
 GameObject:
   m_ObjectHideFlags: 0
@@ -132124,7 +132403,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1812382295
 GameObject:
@@ -132187,7 +132466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 100
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &1812382299
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132500,8 +132779,13 @@ Transform:
   - {fileID: 1901201210}
   - {fileID: 1669157793}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!120 &1972337880 stripped
+LineRenderer:
+  m_PrefabParentObject: {fileID: 120457496031510008, guid: 7ba65c03d268b624f8956e044c5bc80f,
+    type: 2}
+  m_PrefabInternal: {fileID: 379452966}
 --- !u!1 &2071995895
 GameObject:
   m_ObjectHideFlags: 0
@@ -132546,7 +132830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &2071995898
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132660,7 +132944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0
   damage: 1
-  player: {fileID: 782153836}
+  player: {fileID: 1705576566}
 --- !u!61 &2073366547
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132775,5 +133059,5 @@ Transform:
   - {fileID: 1497208762}
   - {fileID: 339374098}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
