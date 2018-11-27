@@ -47,10 +47,10 @@ public class FloodBehavior : MonoBehaviour {
 
 		p_distance = player.transform.position.x;
 
-		timer += Time.deltaTime;
-		var minutes = timer / 60;
+		timer += Time.fixedDeltaTime;
+		int minutes = (int) timer / 60;
 		if (minutes == 1) {
-			timer = 0; 
+			timer = 180; 
 			Debug.Log ("toSpawn is False"); 
 			toSpawn = false;
 			//removes pillars
@@ -63,6 +63,7 @@ public class FloodBehavior : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other)
 	{
 		if (other.gameObject == player) {
+			timer = 0.0f;
 			Debug.Log ("START FLOOD");
 			InvokeRepeating ("Spawn", spawnTime, deathCounter);
 
