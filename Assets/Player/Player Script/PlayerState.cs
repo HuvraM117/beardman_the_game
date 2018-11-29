@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -75,7 +75,7 @@ public class PlayerState : MonoBehaviour
         AudioClip[] beardSounds = Resources.LoadAll<AudioClip>("Sound/BeardNoise");
         AudioClip[] beardManSounds = Resources.LoadAll<AudioClip>("Sound/BeardManSounds");
 
-        beardGrow = beardSounds[2];
+        beardGrow = beardSounds[4];
         beardShrink = beardSounds[3];
 
         beardManDeath = beardManSounds[1];
