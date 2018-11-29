@@ -162,9 +162,9 @@ public class PlayerState : MonoBehaviour
     private void FixedUpdate()
     {
         if (Input.GetKey("q"))
-            beardKeyPressTime += .1f;
+            beardKeyPressTime += .2f;
         else if (Input.GetKey("e"))
-            beardKeyPressTime -= .1f;
+            beardKeyPressTime -= .2f;
         else
             beardKeyPressTime = 0f;
         if (beardKeyPressTime > 1f)
