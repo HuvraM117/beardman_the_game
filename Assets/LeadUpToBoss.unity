@@ -3425,6 +3425,22 @@ Prefab:
       propertyPath: m_TileSpriteArray.Array.data[6].m_RefCount
       value: 110
       objectReference: {fileID: 0}
+    - target: {fileID: 4229797291426616, guid: c75aacc84914142738368459da2b0179, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229797291426616, guid: c75aacc84914142738368459da2b0179, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229797291426616, guid: c75aacc84914142738368459da2b0179, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836577758524934, guid: c75aacc84914142738368459da2b0179, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c75aacc84914142738368459da2b0179, type: 2}
   m_IsPrefabParent: 0
@@ -4155,7 +4171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &802078215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4245,11 +4261,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 110.8
+      value: -8.6
       objectReference: {fileID: 0}
     - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 34.8
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
       propertyPath: m_LocalPosition.z
