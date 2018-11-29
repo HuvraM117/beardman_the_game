@@ -17,6 +17,23 @@ public class SliderState : MonoBehaviour {
 
     private void Start()
     {
+        // destroy any preexisting children
+        if(transform.childCount != 0)
+        {
+            int i = 0;
+            GameObject[] children = new GameObject[transform.childCount];
+            foreach (Transform child in transform)
+            {
+                children[i] = child.gameObject;
+                i += 1;
+            }
+            foreach (GameObject child in children)
+            {
+                DestroyImmediate(child.gameObject);
+            }
+
+        }
+
         beardSegmentOrigin = new Vector2(-1.313f, -0.149f);
         healthSegmentOrigin = new Vector2(1.313f, -0.149f);
         for (int i = 0; i < healthSegments.Length; i++)
