@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4944002392304034}
   - component: {fileID: 212353275987978310}
   - component: {fileID: 58545987498165352}
+  - component: {fileID: 95681236549089290}
   m_Layer: 0
   m_Name: Grapple Point
   m_TagString: Untagged
@@ -56,6 +57,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &95681236549089290
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1659342914578860}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5b22667d7a0fb0498f6f2ff6c042040, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &212353275987978310
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -90,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 81963918d312e4fe7b40af758c4fcde2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 709483f299c27e94a9fe22bc1f0f45f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
