@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,8 +11,9 @@ public class PlayerState : MonoBehaviour
 {
 
     [SerializeField] private static float MAXVITALITY = 7f;
-    [SerializeField] private SliderState healthBeardUI;
-    
+    //[SerializeField] private SliderState healthBeardUI;
+    private SliderState healthBeardUI;
+
     private AudioClip beardGrow;
     private AudioClip beardShrink;
     private AudioClip beardManDeath;
@@ -21,12 +22,13 @@ public class PlayerState : MonoBehaviour
     private static BeardState _currentBeardState = BeardState.IDLE;
     public static BeardState CurrentBeardState { get; set; }
     private AudioSource musicSource;
+    private float beardKeyPressTime = 0f;
 
 
     private Animator animator;
     // setting up health and beard length as properties this way automatically ensures that increasing one decreases the other and vice versa
-    private float health;
-    public float Health
+    private int health;
+    public int Health
     {
         get { return health; }
         private set
@@ -37,8 +39,8 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    private float beardLength;
-    public float BeardLength
+    private int beardLength;
+    public int BeardLength
     {
         get { return beardLength; }
         private set
@@ -49,13 +51,18 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    private const float BEARDGROWTHRATE = .02f;
+    private const int BEARDGROWTHRATE = 1;
 
 
     private void Start()
     {
-        health = MAXVITALITY / 2;
-        beardLength = MAXVITALITY / 2;
+        health = (int)(MAXVITALITY / 2);
+        beardLength = (int)(MAXVITALITY / 2);
+
+        //getting health ui
+        var slider = GameObject.Find("Canvas/HealthBar");
+        healthBeardUI = slider.GetComponent<SliderState>();
+
         healthBeardUI.UpdateSlider(health, beardLength);
 
         animator = transform.GetComponentInChildren<Animator>();
@@ -69,7 +76,7 @@ public class PlayerState : MonoBehaviour
         AudioClip[] beardSounds = Resources.LoadAll<AudioClip>("Sound/BeardNoise");
         AudioClip[] beardManSounds = Resources.LoadAll<AudioClip>("Sound/BeardManSounds");
 
-        beardGrow = beardSounds[2];
+        beardGrow = beardSounds[4];
         beardShrink = beardSounds[3];
 
         beardManDeath = beardManSounds[1];
@@ -99,7 +106,7 @@ public class PlayerState : MonoBehaviour
     //Shrinks the maximum attack range
     public void shrinkBeard()
     {
-        if (BeardLength > 1f)
+        if (BeardLength > 1)
         {
             musicSource.PlayOneShot(beardShrink);
             BeardLength = BeardLength - BEARDGROWTHRATE;
@@ -108,6 +115,7 @@ public class PlayerState : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        animator.SetTrigger("Damage");
         if (MovementController.Shielding())
             ;//Take no damage if shielding
         else if (health - amount <= 0)
@@ -140,14 +148,34 @@ public class PlayerState : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
         //Controls beard length
-        if (Input.GetKey("q")) 
+        if (Input.GetKeyDown("q")) 
             growBeard();
-        if (Input.GetKey("e"))
+        if (Input.GetKeyDown("e"))
             shrinkBeard();
-        if (Input.GetKey(KeyCode.F10))
+        if (Input.GetKeyDown(KeyCode.F10))
             TakeDamage(10);
+    }
+
+    private void FixedUpdate()
+    {
+        if (Input.GetKey("q"))
+            beardKeyPressTime += .2f;
+        else if (Input.GetKey("e"))
+            beardKeyPressTime -= .2f;
+        else
+            beardKeyPressTime = 0f;
+        if (beardKeyPressTime > 1f)
+        {
+            growBeard();
+            beardKeyPressTime = 0f;
+        }
+        else if (beardKeyPressTime < -1f)
+        {
+            shrinkBeard();
+            beardKeyPressTime = 0f;
+        }
     }
 }

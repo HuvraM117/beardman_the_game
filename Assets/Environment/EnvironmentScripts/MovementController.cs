@@ -40,8 +40,8 @@ public class MovementController : MonoBehaviour {
         footCollider = GetComponent<CircleCollider2D>();
 		fullSize = new Vector3 (m_rigidbody.transform.localScale.x, 
 			m_rigidbody.transform.localScale.y, m_rigidbody.transform.localScale.z);
-		crouchRight = Vector3.Scale (fullSize, new Vector3 (1f, 0.5f, 1f));
-		crouchLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 0.5f, 1f));
+		crouchRight = Vector3.Scale (fullSize, new Vector3 (1f, .5f, 1f));
+		crouchLeft = Vector3.Scale (fullSize, new Vector3 (-1f, .5f, 1f));
 		faceLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 1f, 1f));
 		faceRight = Vector3.Scale (fullSize, new Vector3 (1f, 1f, 1f));
 
@@ -66,12 +66,14 @@ public class MovementController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (isCrouching && (Physics2D.Raycast (m_rigidbody.transform.position + raycastOrigin, Vector2.left, .5f).collider != null
-			|| Physics2D.Raycast (m_rigidbody.transform.position + raycastOrigin, Vector2.right, .5f).collider != null 
-			|| Physics2D.Raycast (m_rigidbody.transform.position + raycastOrigin, Vector2.up, .5f).collider != null))
-			isCrouching = true;
-		else
-			isCrouching = Input.GetButton("Crouch");
+        if (isCrouching && (Physics2D.Raycast(m_rigidbody.transform.position + raycastOrigin, Vector2.left, .5f).collider != null
+            || Physics2D.Raycast(m_rigidbody.transform.position + raycastOrigin, Vector2.right, .5f).collider != null
+            || Physics2D.Raycast(m_rigidbody.transform.position + raycastOrigin, Vector2.up, .5f).collider != null))
+        {
+            isCrouching = true;
+        }
+        else
+            isCrouching = Input.GetButton("Crouch");
 
         if(isCrouching && !playedSheildUpSound)
         {
@@ -137,6 +139,7 @@ public class MovementController : MonoBehaviour {
         }
         else if (IsGrounded)
         {
+            
 			moveInput.x = Input.GetAxis("Horizontal") * MOVESPEED;
 			if (moveInput.x > 0) {
 				m_rigidbody.transform.localScale = crouchRight;
@@ -158,10 +161,12 @@ public class MovementController : MonoBehaviour {
 
         if(IsGrounded && Input.GetButtonDown("Jump")) {
             moveInput.y = JUMPFORCE;
+            playerAnimator.SetTrigger("Jump");
             // isGrounded = false;
         }
 		PlayerCrouch ();
 
+        //playerAnimator.ResetTrigger("Jump");
         return moveInput;
     }
 
@@ -174,11 +179,15 @@ public class MovementController : MonoBehaviour {
 		if (canShield && IsGrounded) {
 			shield.SetActive (true);
 			invincible = true;
-		} else {
+            playerAnimator.SetBool("Shielded", true);
+        } else {
 			shield.SetActive (false);
 			invincible = false;
-		}
-	}
+            playerAnimator.SetBool("Shielded", false);
+        }
+
+        playerAnimator.SetBool("Crouching", isCrouching);
+    }
 
 	public static bool Crouching() {
 		return isCrouching;
