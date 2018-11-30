@@ -18,6 +18,7 @@ public class ElectricRazor : MonoBehaviour {
 
 	public int attackRange = 5;
 	public int followRange = 10;
+	public int attackAbove = 5;
 	public int speed = 2;
 	public int idleFloatRange = 15; //how far it will float before turning around
 	public GameObject player;
@@ -70,6 +71,8 @@ public class ElectricRazor : MonoBehaviour {
 	private IEnumerator AttackPlayer() {
 		attacking = true;
 
+		Vector2 tempPosition = transform.position;
+
 		float xDistance = player.transform.position.x - this.transform.position.x;
 		float yDistance = player.transform.position.y - this.transform.position.y;
 
@@ -82,11 +85,24 @@ public class ElectricRazor : MonoBehaviour {
 			xMove = - Mathf.Abs(xDistance / yDistance) * 2.0f * speed * Time.fixedDeltaTime;
 		}
 
-		if(yDistance > 0) { //moving right
+		if (yDistance > 0) { //moving up
+			//If it needs to move up, it moves to be above the player 
 			yMove = speed * 2.0f * Time.fixedDeltaTime;
-		} else { // moving left
-			yMove = - speed * 2.0f * Time.fixedDeltaTime;
+			float yTarget = player.transform.position.y + attackAbove;
+			while (this.transform.position.y < yTarget) {
+				tempPosition.y += yMove;
+				m_rigidbody.MovePosition(tempPosition);
+				yield return new WaitForFixedUpdate ();
+			}
+			yDistance = player.transform.position.y - this.transform.position.y;
+			if (yDistance > 0) {
+				Debug.Log ("ERROR -- YOU SHOULD NOT BE GETTING THIS. CHECK THE ELECTRIC RAZOR MOVEMENT");
+			}
 		}
+
+		//moving down
+		yMove = - speed * 2.0f * Time.fixedDeltaTime;
+		
 
 		Vector2 direction = new Vector2 (xMove, yMove);
 		float startX = transform.position.x;
@@ -96,7 +112,7 @@ public class ElectricRazor : MonoBehaviour {
 		//B line down
 		while (xDistanceMoved <= xDistance) { 	//NOTE: only takes x distance into account
 			//for easier/faster calculation
-			Vector2 tempPosition = transform.position;
+			tempPosition = transform.position;
 			m_rigidbody.MovePosition(tempPosition + direction);
 			xDistanceMoved += Mathf.Abs(direction.x);
 
@@ -117,7 +133,7 @@ public class ElectricRazor : MonoBehaviour {
 		Vector2 diagonal = new Vector2 (xMove, yMove);
 
 		while(yDistanceMoved < amplitude) {
-			Vector2 tempPosition = transform.position;
+			tempPosition = transform.position;
 			m_rigidbody.MovePosition(tempPosition + diagonal);
 
 			yDistanceMoved += Mathf.Abs (yMove);
