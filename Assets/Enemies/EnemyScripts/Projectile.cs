@@ -25,10 +25,11 @@ public class Projectile : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
 	    //rigidbody.velocity = velocity;
         //DestroyObjectDelayed();
+        DestroyObject(gameObject, 4.0f);
 	}
 
     //TODO: Not working as expected..?
-    public void DestroyObjectDelayed()
+    void DestroyObjectDelayed()
     {
         Destroy(gameObject);
     }
