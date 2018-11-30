@@ -19,6 +19,7 @@ public class FloodBehavior : MonoBehaviour {
 	[SerializeField] private Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
 
 	private int enemyCounter;
+	private int spawnPointIndex; 
 
 	private Transform playerPos;
 	private float playerposition; 
@@ -63,18 +64,40 @@ public class FloodBehavior : MonoBehaviour {
 
 		playerposition = player.transform.position.x;
 
-		if (playerposition - spawn0 < 15){
-			spawn0active = true;	
+		if (playerposition - spawn0 > -10) {
+			spawnPointIndex = 0; 
+			spawn0active = true;
+			Debug.Log ("Spawn0 active");
+		} else {
+			spawn0active = false;
+			Debug.Log ("Spawn0 off");
 		}
-		if (playerposition - spawn1 < 15){
-			spawn1active = true;	
+		if (playerposition - spawn1 > -10){
+			spawnPointIndex = 1; 
+			spawn1active = true;
+			Debug.Log ("Spawn1 active");
+		} else {
+			spawn1active = false;
+			Debug.Log ("Spawn1 off");
 		}
-		if (playerposition - spawn2 < 15){
-			spawn2active = true;	
+		if (playerposition - spawn2 > -10){
+			spawnPointIndex = 2; 
+			spawn2active = true;
+			Debug.Log ("Spawn2 active");
+		} else {
+			spawn2active = false;
+			Debug.Log ("Spawn2 off");
 		}
-		if (playerposition - spawn3 < 15){
-			spawn3active = true;	
+		if (playerposition - spawn3 > -10){
+			spawnPointIndex = 3; 
+			spawn3active = true;
+			Debug.Log ("Spawn3 active");
+		} else {
+			spawn3active = false;
+			Debug.Log ("Spawn3 off");
 		}
+
+
 
 		timer += Time.fixedDeltaTime;
 		int minutes = (int) timer / 60;
@@ -113,11 +136,6 @@ public class FloodBehavior : MonoBehaviour {
 
 		}
 
-		//while (
-		// Find a random index between zero and one less than the number of spawn points.
-		int spawnPointIndex = UnityEngine.Random.Range (0, spawnPoints.Length);
-		Debug.Log ("spawnPoint is" + spawnPointIndex);
-
 
 		if (spawnPointIndex == 0 && spawn0active) {
 			float randX = UnityEngine.Random.Range (-2f, 2f);
@@ -148,7 +166,6 @@ public class FloodBehavior : MonoBehaviour {
 		}
 
 		enemyCounter++; 
-		Debug.Log (enemyCounter); 
 
 	}
 }
