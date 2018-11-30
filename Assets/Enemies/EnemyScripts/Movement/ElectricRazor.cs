@@ -30,13 +30,13 @@ public class ElectricRazor : MonoBehaviour {
 	void Start () {
 		movingRight = 1.0f;
 		attacking = false;
-<<<<<<< HEAD
+
 		m_rigidbody = GetComponent<Rigidbody2D>();
 		initialPosition = transform.position;
 		currentFloated = 0.0f;
-=======
+
 	    animator = gameObject.GetComponent<Animator>();
->>>>>>> EnemyArtAnimation
+
 	}
 
 	// Update is called once per frame
