@@ -63,6 +63,7 @@ public class PlayerState : MonoBehaviour
         var slider = GameObject.Find("Canvas/HealthBar");
         healthBeardUI = slider.GetComponent<SliderState>();
 
+        healthBeardUI.InitializeSegments();
         healthBeardUI.UpdateSlider(health, beardLength);
 
         animator = transform.GetComponentInChildren<Animator>();
