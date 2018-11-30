@@ -17,8 +17,15 @@ public class SliderState : MonoBehaviour {
 
     private void Start()
     {
+        //InitializeSegments();
+        //slider = gameObject.GetComponent("Slider") as Slider;
+        //Debug.Log("Slider Found = " + slider == null);
+    }
+
+    public void InitializeSegments()
+    {
         // destroy any preexisting children
-        if(transform.childCount != 0)
+        if (transform.childCount != 0)
         {
             int i = 0;
             GameObject[] children = new GameObject[transform.childCount];
@@ -49,8 +56,6 @@ public class SliderState : MonoBehaviour {
             beardSegments[i].GetComponent<RectTransform>().anchoredPosition = anchoredPos + beardSegmentOrigin + new Vector2(segmentSpacing * -i, 0f);
 
         }
-        //slider = gameObject.GetComponent("Slider") as Slider;
-        //Debug.Log("Slider Found = " + slider == null);
     }
 
     public void UpdateSlider(int health, int beardLength)

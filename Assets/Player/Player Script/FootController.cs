@@ -34,13 +34,13 @@ public class FootController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name != "Grapple Point")
+        if(collision.gameObject.name != "Grapple Point" && collision.gameObject.GetComponent<HealthConsumable>() == null)
             triggeredTriggers++;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name != "Grapple Point")
+        if (collision.gameObject.name != "Grapple Point" && collision.gameObject.GetComponent<HealthConsumable>() == null)
             triggeredTriggers--;
     }
 
