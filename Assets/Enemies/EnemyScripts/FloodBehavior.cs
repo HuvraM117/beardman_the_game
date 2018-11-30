@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FloodBehavior : MonoBehaviour {
-	[SerializeField] private GameObject player; 
 	PlayerState playerHealth;        						  // Reference to the player's heatlh.
+	[SerializeField] private GameObject player; 
 	[SerializeField] private GameObject Squirrel;             // The enemy prefab to be spawned.
 	[SerializeField] private GameObject Bird;                 // The enemy prefab to be spawned.
 	[SerializeField] private GameObject StraightEdge;         // The enemy prefab to be spawned.
@@ -13,13 +13,18 @@ public class FloodBehavior : MonoBehaviour {
 	[SerializeField] private int maxEnemyCounter = 50;
 	[SerializeField] private GameObject[] pillars;
 	float timer; 
+
 	[SerializeField] private float spawnTime;          // How long between each spawn.
 	[SerializeField] private float deathCounter; 
 	[SerializeField] private Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
-	private int enemyCounter; 
-	Damagable Count; 
 
-	private float p_distance; 
+	private int enemyCounter;
+
+	private Transform playerPos;
+	private float playerposition; 
+	private float spawn0, spawn1, spawn2, spawn3; 
+	private bool spawn0active, spawn1active, spawn2active, spawn3active; 
+
 
 	Vector2 whereToSpawn; 
 
@@ -31,8 +36,19 @@ public class FloodBehavior : MonoBehaviour {
 
 		toSpawn = true; 
 
+		spawn0 = spawnPoints [0].transform.position.x;
+		spawn1 = spawnPoints [1].transform.position.x;
+		spawn2 = spawnPoints [2].transform.position.x;
+		spawn3 = spawnPoints [3].transform.position.x;
+
+		playerPos = GameObject.FindGameObjectWithTag ("Player").transform;
+
+		spawn0active = false;
+		spawn1active = false;
+		spawn2active = false; 
+		spawn3active = false;
+		 
 		playerHealth = player.GetComponent <PlayerState> (); 
-		Count = player.GetComponent <Damagable> (); 
 
 		//removes pillars
 		for(int i = 0; i < pillars.Length; i++) {
@@ -40,12 +56,25 @@ public class FloodBehavior : MonoBehaviour {
 		}
 
 	}
-		
+
 
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		p_distance = player.transform.position.x;
+		playerposition = player.transform.position.x;
+
+		if (playerposition - spawn0 < 15){
+			spawn0active = true;	
+		}
+		if (playerposition - spawn1 < 15){
+			spawn1active = true;	
+		}
+		if (playerposition - spawn2 < 15){
+			spawn2active = true;	
+		}
+		if (playerposition - spawn3 < 15){
+			spawn3active = true;	
+		}
 
 		timer += Time.fixedDeltaTime;
 		int minutes = (int) timer / 60;
@@ -90,33 +119,32 @@ public class FloodBehavior : MonoBehaviour {
 		Debug.Log ("spawnPoint is" + spawnPointIndex);
 
 
-		if (spawnPointIndex == 0) {
-			float randX  = UnityEngine.Random.Range (-2f, 2f);
+		if (spawnPointIndex == 0 && spawn0active) {
+			float randX = UnityEngine.Random.Range (-2f, 2f);
 			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
 				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
-			Instantiate (Squirrel, whereToSpawn, spawnPoints[spawnPointIndex].rotation);
+			Instantiate (Squirrel, whereToSpawn, spawnPoints [spawnPointIndex].rotation);
 			Debug.Log ("Squirrel");
-		}  
-		else if (spawnPointIndex == 1) {
-			float randX  = UnityEngine.Random.Range (-2f, 2f);
+		} else if (spawnPointIndex == 1 && spawn1active) {
+			float randX = UnityEngine.Random.Range (-2f, 2f);
 			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
 				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
-			Instantiate (Bird, whereToSpawn, spawnPoints[spawnPointIndex].rotation);
+			Instantiate (Bird, whereToSpawn, spawnPoints [spawnPointIndex].rotation);
 			Debug.Log ("Bird");
-		} 
-		else if (spawnPointIndex == 3) {
-			float randX  = UnityEngine.Random.Range (-2f, 2f);
+		} else if (spawnPointIndex == 3 && spawn3active) {
+			float randX = UnityEngine.Random.Range (-2f, 2f);
 			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
 				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
-			Instantiate (ElectricRazor, whereToSpawn, spawnPoints[spawnPointIndex].rotation);
+			Instantiate (ElectricRazor, whereToSpawn, spawnPoints [spawnPointIndex].rotation);
 			Debug.Log ("Electric Razor");
-		} 
-		else {
-			float randX  = UnityEngine.Random.Range (-2f, 2f);
+		} else if (spawn2active) {
+			float randX = UnityEngine.Random.Range (-2f, 2f);
 			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
 				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
-			Instantiate (StraightEdge, whereToSpawn, spawnPoints[spawnPointIndex].rotation);
+			Instantiate (StraightEdge, whereToSpawn, spawnPoints [spawnPointIndex].rotation);
 			Debug.Log ("StraightEdge");
+		} else {
+			Debug.Log ("Out of Bounds."); 
 		}
 
 		enemyCounter++; 
