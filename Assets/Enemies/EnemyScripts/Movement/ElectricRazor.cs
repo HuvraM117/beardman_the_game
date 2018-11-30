@@ -25,13 +25,19 @@ public class ElectricRazor : MonoBehaviour {
 	private Rigidbody2D m_rigidbody;
 	private Vector2 initialPosition;
 
+    private Animator animator;
+
 	// Use this for initialization
 	void Start () {
 		movingRight = 1.0f;
 		attacking = false;
+
 		m_rigidbody = GetComponent<Rigidbody2D>();
 		initialPosition = transform.position;
 		currentFloated = 0.0f;
+
+	    animator = gameObject.GetComponent<Animator>();
+
 	}
 
 	// Update is called once per frame
@@ -70,6 +76,7 @@ public class ElectricRazor : MonoBehaviour {
 	}
 	private IEnumerator AttackPlayer() {
 		attacking = true;
+        animator.SetBool("attacking", true);
 
 		Vector2 tempPosition = transform.position;
 
@@ -163,5 +170,11 @@ public class ElectricRazor : MonoBehaviour {
 		initialPosition = transform.position;
 
 		attacking = false;
-	} 
+        animator.SetBool("attacking", false);
+	}
+
+    public void Die()
+    {
+
+    }
 }
