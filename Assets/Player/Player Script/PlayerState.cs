@@ -10,7 +10,9 @@ public enum BeardState { IDLE, EXTENDING, RETRACTING, PULLING };
 public class PlayerState : MonoBehaviour
 {
 
-    [SerializeField] private static float MAXVITALITY = 7f;
+    [SerializeField] private static int INITIALVITALITY = 6;
+    private static int MAXIMUMVITALITY = 10;
+    
     //[SerializeField] private SliderState healthBeardUI;
     private SliderState healthBeardUI;
 
@@ -56,8 +58,8 @@ public class PlayerState : MonoBehaviour
 
     private void Start()
     {
-        health = (int)(MAXVITALITY / 2);
-        beardLength = (int)(MAXVITALITY / 2);
+        health = INITIALVITALITY / 2;
+        beardLength = INITIALVITALITY / 2;
 
         //getting health ui
         var slider = GameObject.Find("Canvas/HealthBar");
@@ -86,7 +88,7 @@ public class PlayerState : MonoBehaviour
     }
 
     // beard length + health, the total resource, I can't think of what else to call it so hopefully someone else can
-    public float vitality
+    public int vitality
     {
         get
         {
@@ -133,8 +135,25 @@ public class PlayerState : MonoBehaviour
                 musicSource.PlayOneShot(beardManHurt);
         }
            
-        healthBeardUI.UpdateSlider(health, beardLength);
         animator.SetFloat("Health", health);
+        // the only time vitality increases is here, so cap it at the max vitality
+        if(vitality > MAXIMUMVITALITY)
+        {
+            Debug.Log(vitality);
+            // if we can take the extra off beard length, do it, otherwise just undo the additional health
+            if(beardLength > 1)
+            {
+                beardLength += MAXIMUMVITALITY - vitality;
+                Debug.Log("capping beard length");
+            }
+            else
+            {
+                health += MAXIMUMVITALITY - vitality;
+                Debug.Log("capping health");
+            }
+        }
+        healthBeardUI.UpdateSlider(health, beardLength);
+
     }
 
     IEnumerator playerDie()
@@ -157,7 +176,9 @@ public class PlayerState : MonoBehaviour
         if (Input.GetKeyDown("e"))
             shrinkBeard();
         if (Input.GetKeyDown(KeyCode.F10))
-            TakeDamage(10);
+            TakeDamage(1);
+        if (Input.GetKeyDown(KeyCode.F11))
+            TakeDamage(-1);
     }
 
     private void FixedUpdate()
