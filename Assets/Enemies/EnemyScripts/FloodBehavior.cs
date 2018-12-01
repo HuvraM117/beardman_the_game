@@ -65,7 +65,6 @@ public class FloodBehavior : MonoBehaviour {
 		playerposition = player.transform.position.x;
 
 		if (playerposition - spawn0 > -10) {
-			spawnPointIndex = 0; 
 			spawn0active = true;
 			Debug.Log ("Spawn0 active");
 		} else {
@@ -73,7 +72,6 @@ public class FloodBehavior : MonoBehaviour {
 			Debug.Log ("Spawn0 off");
 		}
 		if (playerposition - spawn1 > -10){
-			spawnPointIndex = 1; 
 			spawn1active = true;
 			Debug.Log ("Spawn1 active");
 		} else {
@@ -81,7 +79,6 @@ public class FloodBehavior : MonoBehaviour {
 			Debug.Log ("Spawn1 off");
 		}
 		if (playerposition - spawn2 > -10){
-			spawnPointIndex = 2; 
 			spawn2active = true;
 			Debug.Log ("Spawn2 active");
 		} else {
@@ -89,7 +86,6 @@ public class FloodBehavior : MonoBehaviour {
 			Debug.Log ("Spawn2 off");
 		}
 		if (playerposition - spawn3 > -10){
-			spawnPointIndex = 3; 
 			spawn3active = true;
 			Debug.Log ("Spawn3 active");
 		} else {
@@ -136,7 +132,9 @@ public class FloodBehavior : MonoBehaviour {
 
 		}
 
+		spawnPointIndex = UnityEngine.Random.Range (0, 4); 
 
+		Debug.Log (spawnPointIndex); 
 		if (spawnPointIndex == 0 && spawn0active) {
 			float randX = UnityEngine.Random.Range (-2f, 2f);
 			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),

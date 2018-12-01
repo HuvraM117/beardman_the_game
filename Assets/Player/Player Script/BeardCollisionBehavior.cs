@@ -21,6 +21,11 @@ public class BeardCollisionBehavior : MonoBehaviour {
 			enemyhealth.TakeDamage (damage);
 			hitSwitch = false;
 		}
+
+		if (other.gameObject.CompareTag("Boss")){
+			enemyhealth.TakeDamage (damage);
+			hitSwitch = false;
+		}
 	}
 
 	// unregister any currently colliding objects that have exited the collider
