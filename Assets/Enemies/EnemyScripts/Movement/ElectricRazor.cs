@@ -9,31 +9,43 @@ using UnityEngine;
 
 /* 
  * Will move horizontally back and forth, and follow player if in range
- * 
- * TODO: take platforms into account or something
-*/
+ */
 public class ElectricRazor : MonoBehaviour {
 
-	private int movingRight; // 1 if moving right, -1 if moving left
+	private float movingRight; // 1 if moving right, -1 if moving left
 	private float currentFloated; //amount of idleFloatRange that has floated
 	private bool attacking;
 
 	public int attackRange = 5;
 	public int followRange = 10;
+	public int attackAbove = 5;
 	public int speed = 2;
 	public int idleFloatRange = 15; //how far it will float before turning around
 	public GameObject player;
+	private Rigidbody2D m_rigidbody;
+	private Vector2 initialPosition;
+
+    private Animator animator;
 
 	// Use this for initialization
 	void Start () {
-		movingRight = 1;
+		movingRight = 1.0f;
 		attacking = false;
+
+		m_rigidbody = GetComponent<Rigidbody2D>();
+		initialPosition = transform.position;
+		currentFloated = 0.0f;
+
+	    animator = gameObject.GetComponent<Animator>();
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (!attacking) {
-			Vector2 direction = new Vector2 (1 * movingRight, 0.0f);
+			Vector2 tempPosition = transform.position;
+			Vector2 direction = new Vector2 (1.0f * movingRight, 0.0f);
+
 			float xDistance = player.transform.position.x - this.transform.position.x;
 			float yDistance = player.transform.position.y - this.transform.position.y;
 			float distanceToPlayer = Mathf.Sqrt ((Mathf.Pow(xDistance, 2.0f)) + Mathf.Pow(yDistance, 2.0f));
@@ -44,14 +56,19 @@ public class ElectricRazor : MonoBehaviour {
 				//every frame b/c player moves
 				//follow
 				direction = new Vector2(xDistance, yDistance);
-				transform.Translate(direction * speed * .5f * Time.fixedDeltaTime);
+				//transform.Translate(direction * speed * .5f * Time.fixedDeltaTime);
+				m_rigidbody.MovePosition(tempPosition + Time.fixedDeltaTime * speed * direction);
+				initialPosition = transform.position;
 				currentFloated = 0; // resets floating distance 
 			} else {
-				transform.Translate(direction * speed * Time.fixedDeltaTime);
-				currentFloated = currentFloated + Mathf.Sqrt(Vector2.SqrMagnitude(direction * speed * Time.fixedDeltaTime));
+				tempPosition.x = tempPosition.x + (speed * Time.fixedDeltaTime * movingRight);
+
+				m_rigidbody.MovePosition(tempPosition);
+				currentFloated += Mathf.Abs(speed * Time.fixedDeltaTime * movingRight);
 
 				if (currentFloated >= idleFloatRange) {
 					currentFloated = 0;
+					initialPosition = transform.position;
 					movingRight = -movingRight;
 				}
 			}
@@ -59,11 +76,12 @@ public class ElectricRazor : MonoBehaviour {
 	}
 	private IEnumerator AttackPlayer() {
 		attacking = true;
+        animator.SetBool("attacking", true);
+
+		Vector2 tempPosition = transform.position;
 
 		float xDistance = player.transform.position.x - this.transform.position.x;
 		float yDistance = player.transform.position.y - this.transform.position.y;
-
-		Vector2 tempPosition = transform.position;
 
 		float xMove = 0;
 		float yMove = 0; 
@@ -74,21 +92,36 @@ public class ElectricRazor : MonoBehaviour {
 			xMove = - Mathf.Abs(xDistance / yDistance) * 2.0f * speed * Time.fixedDeltaTime;
 		}
 
-		if(yDistance > 0) { //moving right
+		if (yDistance > 0) { //moving up
+			//If it needs to move up, it moves to be above the player 
 			yMove = speed * 2.0f * Time.fixedDeltaTime;
-		} else { // moving left
-			yMove = - speed * 2.0f * Time.fixedDeltaTime;
+			float yTarget = player.transform.position.y + attackAbove;
+			while (this.transform.position.y < yTarget) {
+				tempPosition.y += yMove;
+				m_rigidbody.MovePosition(tempPosition);
+				yield return new WaitForFixedUpdate ();
+			}
+			yDistance = player.transform.position.y - this.transform.position.y;
+			if (yDistance > 0) {
+				Debug.Log ("ERROR -- YOU SHOULD NOT BE GETTING THIS. CHECK THE ELECTRIC RAZOR MOVEMENT");
+			}
 		}
+
+		//moving down
+		yMove = - speed * 2.0f * Time.fixedDeltaTime;
+		
+
+		Vector2 direction = new Vector2 (xMove, yMove);
+		float startX = transform.position.x;
 
 		float xDistanceMoved = 0.0f;
 		Debug.Log ("Goal: " + xDistance);
 		//B line down
 		while (xDistanceMoved <= xDistance) { 	//NOTE: only takes x distance into account
-												//for easier/faster calculation
-			tempPosition.x += xMove;
-			tempPosition.y += yMove;
-			transform.position = tempPosition;
-			xDistanceMoved += xMove;
+			//for easier/faster calculation
+			tempPosition = transform.position;
+			m_rigidbody.MovePosition(tempPosition + direction);
+			xDistanceMoved += Mathf.Abs(direction.x);
 
 			yield return new WaitForFixedUpdate ();
 		}
@@ -97,41 +130,51 @@ public class ElectricRazor : MonoBehaviour {
 
 		int amplitude = 2;
 		float timeCount = 0;
-		float yUp = 0;
+		float yDistanceMoved = 0;
+		float yInitial = transform.position.y;
+		if (xDistance < 0) {
+			xMove = - 1.0f * speed * Time.fixedDeltaTime;
+		}
+		xMove = 1.0f * speed * Time.fixedDeltaTime;
+		yMove = 1.0f * speed * Time.fixedDeltaTime;
+		Vector2 diagonal = new Vector2 (xMove, yMove);
 
-		while(yUp < amplitude) {
-			if (xDistance > 0) { //moving right
-				tempPosition.x += Mathf.Cos (amplitude * timeCount);
-			} else { //moving left
-				tempPosition.x -= Mathf.Cos (amplitude * timeCount);
-			}
+		while(yDistanceMoved < amplitude) {
+			tempPosition = transform.position;
+			m_rigidbody.MovePosition(tempPosition + diagonal);
 
-			tempPosition.y += Mathf.Sin (amplitude * timeCount);
-			transform.position = tempPosition;
-			yUp += Mathf.Sin (amplitude * timeCount);
-			timeCount += Time.fixedDeltaTime;
+			yDistanceMoved += Mathf.Abs (yMove);
+
 			yield return new WaitForFixedUpdate ();
 		}
 
 		//hover for a second
 		timeCount = 0;
 		int upOrDown = 0;
+		Vector2 up = new Vector2 (0.0f, 1.0f);
+		Vector2 down = new Vector2 (0.0f, -1.0f);
 		while (timeCount < 1) {
 			upOrDown = Mathf.RoundToInt((timeCount * 8)) % 2;
 			if (upOrDown == 0) {
 				//move up
-				tempPosition.y += Time.fixedDeltaTime * speed;
+				m_rigidbody.AddForce(up);
 			} else {
 				//move down
-				tempPosition.y -= Time.fixedDeltaTime * speed;
+				m_rigidbody.AddForce(down);
 			}
-
-			transform.position = tempPosition;
 
 			timeCount += Time.fixedDeltaTime;
 			yield return new WaitForFixedUpdate ();
 		}
 
+		initialPosition = transform.position;
+
 		attacking = false;
-	} 
+        animator.SetBool("attacking", false);
+	}
+
+    public void Die()
+    {
+
+    }
 }

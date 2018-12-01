@@ -86,7 +86,8 @@ public class ShavingCreamMovement : MonoBehaviour {
 
 		yield return new WaitForSeconds(timeBetweenAttacks);
 
-		projectileGameObject.DestroyObjectDelayed();
+		//projectileGameObject.DestroyObjectDelayed();
+        DestroyObject(projectileGameObject);
 
 		attacking = false;
 	}

@@ -7,16 +7,16 @@ public class Damagable : MonoBehaviour {
 	public int max_health = 2; //one for squirrel + bird 
 	public int currentHealth = 0;
 	public bool alive = true;
-    	private bool isCollidingWithPlayer = false;
-    	public bool dropsPickUp = true;
+    private bool isCollidingWithPlayer = false;
+    public bool dropsPickUp = true;
 
 	private AudioClip hurtSound;
-    	private AudioClip deathSound;
+    private AudioClip deathSound;
 
-    	private AudioClip bossHurt;
-    	private AudioClip bossDeath;
+    private AudioClip bossHurt;
+    private AudioClip bossDeath;
 
-    	private AudioSource musicSource;
+    private AudioSource musicSource;
 
     //private Animator animator;
 
@@ -66,21 +66,22 @@ public class Damagable : MonoBehaviour {
 			/* despawn need to add in some kind of animation with it */
 		}
 
-	if (isBoss())
-    	{
-            musicSource.PlayOneShot(bossHurt);
-        }
-        else
-        {
-            musicSource.PlayOneShot(hurtSound);
-        }
+		if (isBoss())
+	    	{
+	            musicSource.PlayOneShot(bossHurt);
+	        }
+	        else
+	        {
+	            musicSource.PlayOneShot(hurtSound);
+	        }
 
-		currentHealth -= amount; 
-		Debug.Log ("I got hit!");
+			currentHealth -= amount; 
+			Debug.Log ("I got hit!");
 	}
 
     IEnumerator PlayDeathAnimation()
     {
+		int Damageprob = UnityEngine.Random.Range (0, 20);
         // If this has an animator (since enemies should will be damagable)
        // if (animator != null)
         //{
@@ -106,7 +107,7 @@ public class Damagable : MonoBehaviour {
 
         if(isCollidingWithPlayer)
             GameObject.FindWithTag("Player").BroadcastMessage("ManuallyDecrementTriggers");
-        if (dropsPickUp) {
+		if (dropsPickUp && Damageprob < 15) {
             DropHealthPickup();
         }
         Destroy(gameObject);

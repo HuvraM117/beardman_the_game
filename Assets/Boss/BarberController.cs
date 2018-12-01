@@ -16,10 +16,24 @@ public class BarberController : MonoBehaviour {
     [SerializeField] private float timePerTrap = 2f; // the time a given trap stays active before cycling to the next one
     private float trapCyclePeriod; // the total time it takes to cycle between all traps
 
+	private bool spawn0active, spawn1active, spawn2active;
+	[SerializeField] private float spawnTime;          // How long between each spawn.
+	[SerializeField] private float deathCounter; 
+	[SerializeField] private Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
+	Vector2 whereToSpawn; 
+	PlayerState playerHealth;        						  // Reference to the player's heatlh.
+	[SerializeField] private GameObject player; 
+	[SerializeField] private GameObject StraightEdge;         // The enemy prefab to be spawned.
+	[SerializeField] private GameObject ElectricRazor;        // The enemy prefab to be spawned.
+	[SerializeField] private float spawnRadius = 5.0f; 
+	[SerializeField] private int maxEnemyCounter = 50;
+	private int enemyCounter;
+
     private void Start()
     {
         trapCyclePeriod = traps.Length * timePerTrap;
         movement.MoveTo(waypoints[currentWaypoint]);
+		InvokeRepeating ("Spawn", spawnTime, deathCounter);
     }
 
     private void FixedUpdate()
@@ -30,10 +44,14 @@ public class BarberController : MonoBehaviour {
         {
             movement.SetSpeedIncreased();
             stage = 1;
+			spawn0active = true;
+
         }
         else if(damageable.currentHealth == 3)
         {
             stage = 2;
+			spawn1active = true;
+			spawn2active = true;
         }
 
         // behave according to which stage
@@ -94,4 +112,52 @@ public class BarberController : MonoBehaviour {
         CycleWaypoints();
         CycleTraps();
     }
+
+	void Spawn ()
+	{
+		Debug.Log("Spawning");
+		// If the player has no health left, if the max enemies have generated, or we have left the trigger...
+		if (enemyCounter == maxEnemyCounter)
+		{
+			return;
+
+		}
+
+		if (enemyCounter > 5 && spawn1active == false && spawn2active == false) {
+			spawn0active = false; 
+		}
+
+		if (enemyCounter > 10 && spawn1active == true && spawn2active == false) {
+			spawn0active = false; 
+			spawn1active = false; 
+		}
+
+		int spawnPointIndex = UnityEngine.Random.Range (0, 3); 
+		Debug.Log ("Spawn Point is " + spawnPointIndex); 
+
+		if (spawnPointIndex == 0 && spawn0active) {
+			float randX = UnityEngine.Random.Range (-2f, 2f);
+			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
+				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
+			Instantiate (ElectricRazor, whereToSpawn, spawnPoints [spawnPointIndex].rotation);
+
+		} else if (spawnPointIndex == 1 && spawn1active) {
+			float randX = UnityEngine.Random.Range (-2f, 2f);
+			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
+				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
+			Instantiate (ElectricRazor, whereToSpawn, spawnPoints [spawnPointIndex].rotation);
+
+		} else if (spawn2active) {
+			float randX = UnityEngine.Random.Range (-2f, 2f);
+			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
+				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
+			Instantiate (StraightEdge, whereToSpawn, spawnPoints [spawnPointIndex].rotation);
+
+		} else {
+			spawnPointIndex = UnityEngine.Random.Range (0, 3);
+		}
+
+		enemyCounter++; 
+
+	}
 }
