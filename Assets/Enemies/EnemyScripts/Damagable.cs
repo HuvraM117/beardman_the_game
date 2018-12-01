@@ -81,7 +81,7 @@ public class Damagable : MonoBehaviour {
 
     IEnumerator PlayDeathAnimation()
     {
-		int Damageprob = UnityEngine.Random.Range (0, 4);
+		int Damageprob = UnityEngine.Random.Range (0, 20);
         // If this has an animator (since enemies should will be damagable)
        // if (animator != null)
         //{
@@ -107,7 +107,7 @@ public class Damagable : MonoBehaviour {
 
         if(isCollidingWithPlayer)
             GameObject.FindWithTag("Player").BroadcastMessage("ManuallyDecrementTriggers");
-		if (dropsPickUp && Damageprob < 1) {
+		if (dropsPickUp && Damageprob < 15) {
             DropHealthPickup();
         }
         Destroy(gameObject);
