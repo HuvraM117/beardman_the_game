@@ -2373,7 +2373,7 @@ MonoBehaviour:
   StraightEdge: {fileID: 72913356}
   ElectricRazor: {fileID: 1974398196}
   spawnRadius: 2
-  maxEnemyCounter: 10
+  maxEnemyCounter: 15
 --- !u!1 &631152103
 GameObject:
   m_ObjectHideFlags: 0
