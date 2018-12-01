@@ -45,14 +45,11 @@ public class BarberController : MonoBehaviour {
             movement.SetSpeedIncreased();
             stage = 1;
 			spawn0active = true;
-			SpawnArray [0] = 0;
 
         }
         else if(damageable.currentHealth == 3)
         {
             stage = 2;
-			SpawnArray[1] = 1;
-			SpawnArray[2] = 2;
 			spawn1active = true;
 			spawn2active = true;
         }
@@ -127,12 +124,12 @@ public class BarberController : MonoBehaviour {
 		}
 
 		if (enemyCounter > 5 && spawn1active == false && spawn2active == false) {
-			spawn0active == false; 
+			spawn0active = false; 
 		}
 
 		if (enemyCounter > 10 && spawn1active == true && spawn2active == false) {
-			spawn0active == false; 
-			spawn1active == false; 
+			spawn0active = false; 
+			spawn1active = false; 
 		}
 
 		int spawnPointIndex = UnityEngine.Random.Range (0, 3); 
