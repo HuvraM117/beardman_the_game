@@ -10,6 +10,7 @@ public class ChangeVolume : MonoBehaviour {
 
     private AudioSource musicSource;
     private AudioSource soundFXSource;
+    private AudioSource footSource;
 
     // Use this for initialization
     void Start () {
@@ -28,6 +29,10 @@ public class ChangeVolume : MonoBehaviour {
         var soundFX = GameObject.Find("Beard Man/MusicMaker");
         soundFXSource = soundFX.GetComponents<AudioSource>()[0];
 
+        //need to get the audio source for the runnin sound effects
+        var runningSFX = GameObject.Find("Beard Man/FootAudioSource");
+        footSource = runningSFX.GetComponents<AudioSource>()[0];
+
         musicBar.value = musicSource.volume;
         soundFXBar.value = soundFXSource.volume;
     }
@@ -38,6 +43,7 @@ public class ChangeVolume : MonoBehaviour {
         //to change the volume, just use musicSource.volume 
         musicSource.volume = musicBar.value;
         soundFXSource.volume = soundFXBar.value;
+        footSource.volume = soundFXBar.value;
 
 	}
 
