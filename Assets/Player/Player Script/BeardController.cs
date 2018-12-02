@@ -40,7 +40,7 @@ public class BeardController : MonoBehaviour
 		{
 			Vector2 mousePos = Input.mousePosition;
 			Vector2 followVector = (Vector2)mainCamera.ScreenToWorldPoint(mousePos) - beardman.position;
-			this.transform.position = Vector2.ClampMagnitude(followVector, playerState.BeardLength) + beardman.position;
+			this.transform.position = Vector2.ClampMagnitude(followVector, playerState.BeardLength + 1) + beardman.position;
 			this.transform.rotation = Quaternion.Euler (0, 0, Mathf.Atan2((beardAimPoint.y - beardman.transform.position.y)
 				, (beardAimPoint.x - beardman.transform.position.x)) * 180 / Mathf.PI);
 			beardLine.transform.position = beardman.transform.position + beardOriginOffset;
@@ -95,10 +95,14 @@ public class BeardController : MonoBehaviour
 
 		beardman.AddForce(new Vector2(dir.x*2f, 0) * grappleForce , ForceMode2D.Impulse);
 		beardman.AddForce(dir * grappleForce, ForceMode2D.Impulse);
-		if (beardman.velocity.x > 20f)
-			beardman.velocity = new Vector2(20f, beardman.velocity.y);
-		if (beardman.velocity.y > 20f)
-			beardman.velocity = new Vector2(beardman.velocity.x, 20f);
+		if (beardman.velocity.x > 25f)
+			beardman.velocity = new Vector2(25f, beardman.velocity.y);
+		else if (beardman.velocity.x < 10f && beardman.velocity.x > 0)
+			beardman.velocity = new Vector2(10f, beardman.velocity.y);
+		if (beardman.velocity.y > 25f)
+			beardman.velocity = new Vector2(beardman.velocity.x, 25f);
+		else if (beardman.velocity.y < 10f && beardman.velocity.y > 0)
+			beardman.velocity = new Vector2(beardman.velocity.x, 10f);
 		Debug.Log("grapple");
 	}
 }//end beard controller
