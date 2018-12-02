@@ -3451,6 +3451,10 @@ Prefab:
       propertyPath: m_Tiles.Array.data[609].second.m_TileSpriteIndex
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1139350019616352, guid: c75aacc84914142738368459da2b0179, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c75aacc84914142738368459da2b0179, type: 2}
   m_IsPrefabParent: 0
