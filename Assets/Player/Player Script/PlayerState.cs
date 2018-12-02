@@ -20,7 +20,7 @@ public class PlayerState : MonoBehaviour
     private AudioClip beardShrink;
     private AudioClip beardManDeath;
     private AudioClip beardManHurt;
-
+	public GameObject death_UI;
     private static BeardState _currentBeardState = BeardState.IDLE;
     public static BeardState CurrentBeardState { get; set; }
     private AudioSource musicSource;
@@ -160,10 +160,10 @@ public class PlayerState : MonoBehaviour
     {
         gameObject.GetComponent<MovementController>().enabled = false;
         animator.SetFloat("Health", health);
-
+		death_UI.SetActive (true);
         musicSource.PlayOneShot(beardManDeath);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
