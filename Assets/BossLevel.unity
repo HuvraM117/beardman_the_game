@@ -2462,6 +2462,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212776423237537396, guid: 5682129c33b88fd41b70797e0fa9b875,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bc3cf712daae6144e8f6bd0f7b04f3e6,
+        type: 3}
+    - target: {fileID: 4371708986486198, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2.228115
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371708986486198, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2.228113
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371708986486198, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 2.228113
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5682129c33b88fd41b70797e0fa9b875, type: 2}
   m_IsPrefabParent: 0
@@ -7026,6 +7044,28 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e162826482e687442810d85d07de158c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1922267638 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1631518439207392, guid: 5682129c33b88fd41b70797e0fa9b875,
+    type: 2}
+  m_PrefabInternal: {fileID: 633965547}
+--- !u!95 &1922267642
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1922267638}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 78a83dd1e383c034e93999a1738d3a16, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!4 &1953358163 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4664498657686534, guid: e162826482e687442810d85d07de158c,

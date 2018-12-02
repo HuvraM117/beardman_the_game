@@ -5,6 +5,8 @@ using UnityEngine;
 public class BarberMovement : MonoBehaviour {
 
     private Vector3 _waypoint;
+    private Animator animator;
+
     public Vector3 Waypoint // the current waypoint we're moving to
     {
         get { return _waypoint; }
@@ -41,6 +43,8 @@ public class BarberMovement : MonoBehaviour {
         Waypoint = transform.position;
         initialHeight = transform.position.y;
 
+        animator = gameObject.GetComponentInChildren<Animator>();
+
         // TODO: for testing, when done remove the below: move towards the target
         //Waypoint = new Vector3(16f, Waypoint.y, Waypoint.z);
     }
@@ -70,6 +74,8 @@ public class BarberMovement : MonoBehaviour {
         initialHeight = transform.position.y;
         currentMoveSpeed = MOVESPEED * SWOOPSPEEDMULTIPLIER;
         isSwooping = true;
+
+        animator.SetTrigger("attacking");
     }
 
     public void SetSpeedIncreased()
