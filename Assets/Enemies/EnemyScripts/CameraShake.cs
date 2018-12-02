@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour {
 
 	private float duration = 1.0f;
-	private float magnitude = 0.05f;
+	private float magnitude = 0.03f;
 	[SerializeField] GameObject m_camera;
 
 	// Use this for initialization
