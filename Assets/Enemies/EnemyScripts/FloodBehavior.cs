@@ -95,9 +95,15 @@ public class FloodBehavior : MonoBehaviour {
 
 		timer += Time.fixedDeltaTime;
 		int minutes = (int) timer / 60;
-		if (minutes == 1) {
+		if (minutes == 1) { //check if done spawning
+			//FLOOD OVER
 			timer = 180; 
 			toSpawn = false;
+
+			//Camera Shake
+			CameraShake cameraShakeScript = cameraShakeController.GetComponent<CameraShake>();
+			cameraShakeScript.StartCoroutine(cameraShakeScript.ShakeCamera());
+
 			//removes pillars
 			for(int i = 0; i < pillars.Length; i++) {
 				pillars[i].active = false;
