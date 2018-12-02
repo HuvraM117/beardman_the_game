@@ -175,10 +175,10 @@ public class PlayerState : MonoBehaviour
             growBeard();
         if (Input.GetKeyDown("e"))
             shrinkBeard();
-        if (Input.GetKeyDown(KeyCode.F10))
-            TakeDamage(1);
-        if (Input.GetKeyDown(KeyCode.F11))
-            TakeDamage(-1);
+        //if (Input.GetKeyDown(KeyCode.F10))
+        //    TakeDamage(1);
+        //if (Input.GetKeyDown(KeyCode.F11))
+        //    TakeDamage(-1);
     }
 
     private void FixedUpdate()
