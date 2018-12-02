@@ -29,15 +29,24 @@ public class BarberController : MonoBehaviour {
 	[SerializeField] private int maxEnemyCounter = 50;
 	private int enemyCounter;
 
+    private Animator animator;
+
     private void Start()
     {
         trapCyclePeriod = traps.Length * timePerTrap;
         movement.MoveTo(waypoints[currentWaypoint]);
 		InvokeRepeating ("Spawn", spawnTime, deathCounter);
+
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     private void FixedUpdate()
     {
+        
+        if (damageable.IsInvoking("TakeDamage"))
+        {
+            animator.SetTrigger("damaged");
+        }
 
         //update stage
         if (damageable.currentHealth == 7)
