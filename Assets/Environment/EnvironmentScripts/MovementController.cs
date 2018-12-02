@@ -21,7 +21,8 @@ public class MovementController : MonoBehaviour {
     private static bool isCrouching = false;
 	private bool canShield = false;
 	private static bool invincible = false;
-	private Vector3 raycastOrigin = new Vector2(0f, 0.9f);
+	private Vector3 raycastOrigin = new Vector2(0f, 0.5f);
+	private Vector3 raycastOrigin2 = new Vector2 (0f, 0.9f);
 	private bool lastDir = false;//False is left, true is right
     [SerializeField] private float MOVESPEED = 5f;
     [SerializeField] private float JUMPFORCE = 12f;
@@ -66,9 +67,9 @@ public class MovementController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isCrouching && (Physics2D.Raycast(m_rigidbody.transform.position + raycastOrigin, Vector2.left, .5f).collider != null
-            || Physics2D.Raycast(m_rigidbody.transform.position + raycastOrigin, Vector2.right, .5f).collider != null
-            || Physics2D.Raycast(m_rigidbody.transform.position + raycastOrigin, Vector2.up, .5f).collider != null))
+        if (isCrouching && (Physics2D.Raycast(m_rigidbody.transform.position + raycastOrigin2, Vector2.left, 0.5f).collider != null
+            || Physics2D.Raycast(m_rigidbody.transform.position + raycastOrigin2, Vector2.right, 0.5f).collider != null
+            || Physics2D.Raycast(m_rigidbody.transform.position + raycastOrigin, Vector2.up, 1f).collider != null))
         {
             isCrouching = true;
         }
