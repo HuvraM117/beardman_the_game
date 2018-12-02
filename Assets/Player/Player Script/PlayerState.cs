@@ -119,7 +119,7 @@ public class PlayerState : MonoBehaviour
     public void TakeDamage(int amount)
     {
         animator.SetTrigger("Damage");
-        if (MovementController.Shielding())
+        if (MovementController.Shielding() && amount < 1000)
             ;//Take no damage if shielding
         else if (health - amount <= 0)
         {
