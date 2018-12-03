@@ -25,11 +25,14 @@ public class BarberController : MonoBehaviour {
 	[SerializeField] private GameObject player; 
 	[SerializeField] private GameObject StraightEdge;         // The enemy prefab to be spawned.
 	[SerializeField] private GameObject ElectricRazor;        // The enemy prefab to be spawned.
+	[SerializeField] private GameObject Heart;
 	[SerializeField] private float spawnRadius = 5.0f; 
 	[SerializeField] private int maxEnemyCounter = 50;
 	private int enemyCounter;
-
+	[SerializeField] private GameObject cameraShakeController; // controlls camera shake
     private Animator animator;
+
+	int spawnPointIndex = 1; 
 
     private void Start()
     {
@@ -54,6 +57,11 @@ public class BarberController : MonoBehaviour {
             movement.SetSpeedIncreased();
             stage = 1;
 			spawn0active = true;
+			spawnPointIndex = UnityEngine.Random.Range (0, 1);
+			Debug.Log ("Stage 1"); 
+			//Camera Shake
+			CameraShake cameraShakeScript = cameraShakeController.GetComponent<CameraShake>();
+			cameraShakeScript.StartCoroutine(cameraShakeScript.ShakeCamera());
 
         }
         else if(damageable.currentHealth == 3)
@@ -61,6 +69,10 @@ public class BarberController : MonoBehaviour {
             stage = 2;
 			spawn1active = true;
 			spawn2active = true;
+			spawnPointIndex = UnityEngine.Random.Range (0, 4);
+			//Camera Shake
+			CameraShake cameraShakeScript = cameraShakeController.GetComponent<CameraShake>();
+			cameraShakeScript.StartCoroutine(cameraShakeScript.ShakeCamera());
         }
 
         // behave according to which stage
@@ -125,48 +137,39 @@ public class BarberController : MonoBehaviour {
 	void Spawn ()
 	{
 		Debug.Log("Spawning");
-		// If the player has no health left, if the max enemies have generated, or we have left the trigger...
-		if (enemyCounter == maxEnemyCounter)
-		{
-			return;
-
-		}
-
-		if (enemyCounter > 5 && spawn1active == false && spawn2active == false) {
-			spawn0active = false; 
-		}
-
-		if (enemyCounter > 10 && spawn1active == true && spawn2active == false) {
-			spawn0active = false; 
-			spawn1active = false; 
-		}
-
-		int spawnPointIndex = UnityEngine.Random.Range (0, 3); 
+			 
 		Debug.Log ("Spawn Point is " + spawnPointIndex); 
+		int heart = UnityEngine.Random.Range (0, 30); 
 
 		if (spawnPointIndex == 0 && spawn0active) {
 			float randX = UnityEngine.Random.Range (-2f, 2f);
 			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
 				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
 			Instantiate (ElectricRazor, whereToSpawn, spawnPoints [spawnPointIndex].rotation);
+			enemyCounter++; 
 
-		} else if (spawnPointIndex == 1 && spawn1active) {
+		} else if (spawnPointIndex == 2 && spawn1active) {
 			float randX = UnityEngine.Random.Range (-2f, 2f);
 			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
 				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
 			Instantiate (ElectricRazor, whereToSpawn, spawnPoints [spawnPointIndex].rotation);
+			enemyCounter++; 
 
-		} else if (spawn2active) {
+		} else if (spawnPointIndex == 3 && spawn2active) {
 			float randX = UnityEngine.Random.Range (-2f, 2f);
 			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
 				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
 			Instantiate (StraightEdge, whereToSpawn, spawnPoints [spawnPointIndex].rotation);
+			enemyCounter++; 
 
 		} else {
-			spawnPointIndex = UnityEngine.Random.Range (0, 3);
+			if (heart < 20){
+			float randX = UnityEngine.Random.Range (-2f, 2f);
+			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
+				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
+			Instantiate (Heart, whereToSpawn, spawnPoints [spawnPointIndex].rotation);
+			}
 		}
-
-		enemyCounter++; 
 
 	}
 }
