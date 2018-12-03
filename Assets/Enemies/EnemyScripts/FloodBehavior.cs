@@ -97,22 +97,25 @@ public class FloodBehavior : MonoBehaviour {
 
 		if (playerposition - spawn0 > -10) {
 			spawn0active = true;
+			Debug.Log ("active 0");
 		} else {
 			spawn0active = false;
 		}
 		if (playerposition - spawn1 > -10){
 			spawn1active = true;
-			Debug.Log ("active");
+			Debug.Log ("active 1");
 		} else {
 			spawn1active = false;
 		}
 		if (playerposition - spawn2 > -10){
 			spawn2active = true;
+			Debug.Log ("active 2");
 		} else {
 			spawn2active = false;
 		}
 		if (playerposition - spawn3 > -10){
-			spawn3active = true;;
+			spawn3active = true;
+			Debug.Log ("active 3");
 		} else {
 			spawn3active = false;
 		}
@@ -181,8 +184,8 @@ public class FloodBehavior : MonoBehaviour {
 		}
 
 		spawnPointIndex = UnityEngine.Random.Range (0, 4);
+		Debug.Log ("spawnPointIndex " + spawnPointIndex); 
 
-		Debug.Log (spawnPointIndex);
 		if (spawnPointIndex == 0 && spawn0active) {
 			float randX = UnityEngine.Random.Range (-2f, 2f);
 			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
