@@ -41,10 +41,10 @@ public class MovementController : MonoBehaviour {
         footCollider = GetComponent<CircleCollider2D>();
 		fullSize = new Vector3 (m_rigidbody.transform.localScale.x, 
 			m_rigidbody.transform.localScale.y, m_rigidbody.transform.localScale.z);
-		crouchRight = Vector3.Scale (fullSize, new Vector3 (1f, 1f, 1f));
-		crouchLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 1f, 1f));
-		faceLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 1f, 1f));
-		faceRight = Vector3.Scale (fullSize, new Vector3 (1f, 1f, 1f));
+		crouchRight = Vector3.Scale (fullSize, new Vector3 (.9f, .75f, 1f));
+		crouchLeft = Vector3.Scale (fullSize, new Vector3 (-.9f, .75f, 1f));
+		faceLeft = Vector3.Scale (fullSize, new Vector3 (-.8f, .85f, 1f));
+		faceRight = Vector3.Scale (fullSize, new Vector3 (.8f, .85f, 1f));
 
         //Audio Things
         var beardman = GameObject.Find("Beard Man/FootAudioSource");
