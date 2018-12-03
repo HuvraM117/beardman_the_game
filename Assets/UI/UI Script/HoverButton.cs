@@ -38,11 +38,16 @@ public class HoverButton : MonoBehaviour {
 
     public void exitHover()
     {
+		Debug.Log ("Exit Hover");
         image.color = initialImageColor;
     }
 
     // Update is called once per frame
     void Update () {
+		if (Input.GetMouseButton (0)) {
+			image.color = initialImageColor;
+		}
+		
 		
 	}
 }
