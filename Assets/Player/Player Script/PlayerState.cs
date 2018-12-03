@@ -24,6 +24,7 @@ public class PlayerState : MonoBehaviour
     private static BeardState _currentBeardState = BeardState.IDLE;
     public static BeardState CurrentBeardState { get; set; }
     private AudioSource musicSource;
+    private AudioSource backgroundSource;
     private float beardKeyPressTime = 0f;
 
     public static bool hasDied;
@@ -75,7 +76,11 @@ public class PlayerState : MonoBehaviour
         //Audio things 
         var beardman = GameObject.Find("Beard Man/MusicMaker");
 
+        var b2 = GameObject.Find("Beard Man/BackgroundMusicSource");
+
         musicSource = beardman.GetComponents<AudioSource>()[0];
+        backgroundSource = b2.GetComponents<AudioSource>()[0];
+
 
         AudioClip[] beardSounds = Resources.LoadAll<AudioClip>("Sound/BeardNoise");
         AudioClip[] beardManSounds = Resources.LoadAll<AudioClip>("Sound/BeardManSounds");
@@ -162,6 +167,7 @@ public class PlayerState : MonoBehaviour
         gameObject.GetComponent<MovementController>().enabled = false;
         animator.SetFloat("Health", health);
 		death_UI.SetActive (true);
+        backgroundSource.Stop();
         musicSource.PlayOneShot(beardManDeath);
         hasDied = true;
         yield return new WaitForSeconds(3f);
