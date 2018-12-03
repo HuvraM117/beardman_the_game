@@ -24,6 +24,7 @@ public class ElectricRazor : MonoBehaviour {
 	public GameObject player;
 	private Rigidbody2D m_rigidbody;
 	private Vector2 initialPosition;
+	private float attackSpeedModifier = 4.0f; // makes so attacks are faster
 
     private Animator animator;
 
@@ -87,14 +88,14 @@ public class ElectricRazor : MonoBehaviour {
 		float yMove = 0; 
 
 		if(xDistance > 0) { //moving right
-			xMove = Mathf.Abs(xDistance / yDistance) * 2.0f * speed * Time.fixedDeltaTime;
+			xMove = Mathf.Abs(xDistance / yDistance) * attackSpeedModifier * speed * Time.fixedDeltaTime;
 		} else { // moving left
-			xMove = - Mathf.Abs(xDistance / yDistance) * 2.0f * speed * Time.fixedDeltaTime;
+			xMove = - Mathf.Abs(xDistance / yDistance) * attackSpeedModifier * speed * Time.fixedDeltaTime;
 		}
 
 		if (yDistance > 0) { //moving up
 			//If it needs to move up, it moves to be above the player 
-			yMove = speed * 2.0f * Time.fixedDeltaTime;
+			yMove = speed * 2.0f * attackSpeedModifier * Time.fixedDeltaTime;
 			float yTarget = player.transform.position.y + attackAbove;
 			while (this.transform.position.y < yTarget) {
 				tempPosition.y += yMove;
@@ -108,7 +109,7 @@ public class ElectricRazor : MonoBehaviour {
 		}
 
 		//moving down
-		yMove = - speed * 2.0f * Time.fixedDeltaTime;
+		yMove = - speed * attackSpeedModifier * Time.fixedDeltaTime;
 		
 
 		Vector2 direction = new Vector2 (xMove, yMove);
@@ -135,8 +136,8 @@ public class ElectricRazor : MonoBehaviour {
 		if (xDistance < 0) {
 			xMove = - 1.0f * speed * Time.fixedDeltaTime;
 		}
-		xMove = 1.0f * speed * Time.fixedDeltaTime;
-		yMove = 1.0f * speed * Time.fixedDeltaTime;
+		xMove = attackSpeedModifier * speed * Time.fixedDeltaTime;
+		yMove = attackSpeedModifier * speed * Time.fixedDeltaTime;
 		Vector2 diagonal = new Vector2 (xMove, yMove);
 
 		while(yDistanceMoved < amplitude) {

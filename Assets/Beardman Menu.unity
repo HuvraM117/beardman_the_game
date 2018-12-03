@@ -2178,6 +2178,7 @@ GameObject:
   - component: {fileID: 1298029088}
   - component: {fileID: 1298029087}
   - component: {fileID: 1298029090}
+  - component: {fileID: 1298029091}
   - component: {fileID: 1298029086}
   - component: {fileID: 1298029089}
   m_Layer: 5
@@ -2244,8 +2245,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1211641636}
-        m_MethodName: onClick
+      - m_Target: {fileID: 1298029091}
+        m_MethodName: loadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2348,6 +2349,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f946959df42fc46bf6d00b00cac062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1298029091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1298029084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55348010391046ec802570052946cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: controlsScene
 --- !u!1 &1424706206
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,6 +3025,7 @@ GameObject:
   - component: {fileID: 1745291361}
   - component: {fileID: 1745291365}
   - component: {fileID: 1745291364}
+  - component: {fileID: 1745291366}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -3076,8 +3090,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2053427075}
-        m_MethodName: onClick
+      - m_Target: {fileID: 1745291366}
+        m_MethodName: loadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3180,6 +3194,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f946959df42fc46bf6d00b00cac062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1745291366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1745291359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55348010391046ec802570052946cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: creditsScene1
 --- !u!1 &1774739437
 GameObject:
   m_ObjectHideFlags: 0
