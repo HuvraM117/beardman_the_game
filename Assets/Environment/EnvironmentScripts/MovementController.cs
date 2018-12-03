@@ -41,10 +41,10 @@ public class MovementController : MonoBehaviour {
         footCollider = GetComponent<CircleCollider2D>();
 		fullSize = new Vector3 (m_rigidbody.transform.localScale.x, 
 			m_rigidbody.transform.localScale.y, m_rigidbody.transform.localScale.z);
-		crouchRight = Vector3.Scale (fullSize, new Vector3 (1f, .5f, 1f));
-		crouchLeft = Vector3.Scale (fullSize, new Vector3 (-1f, .5f, 1f));
-		faceLeft = Vector3.Scale (fullSize, new Vector3 (-1f, 1f, 1f));
-		faceRight = Vector3.Scale (fullSize, new Vector3 (1f, 1f, 1f));
+		crouchRight = Vector3.Scale (fullSize, new Vector3 (.9f, .75f, 1f));
+		crouchLeft = Vector3.Scale (fullSize, new Vector3 (-.9f, .75f, 1f));
+		faceLeft = Vector3.Scale (fullSize, new Vector3 (-.8f, .85f, 1f));
+		faceRight = Vector3.Scale (fullSize, new Vector3 (.8f, .85f, 1f));
 
         //Audio Things
         var beardman = GameObject.Find("Beard Man/FootAudioSource");
@@ -78,7 +78,7 @@ public class MovementController : MonoBehaviour {
 
         if(isCrouching && !playedSheildUpSound)
         {
-            Debug.Log("play shield up");
+            //Debug.Log("play shield up");
             musicSource.PlayOneShot(sheildUp);
             playedSheildUpSound = true;
             playedSheildDownSound = false;
@@ -86,19 +86,20 @@ public class MovementController : MonoBehaviour {
 
         if(!isCrouching && !playedSheildDownSound)
         {
-            Debug.Log("play shield down");
+            //Debug.Log("play shield down");
             musicSource.PlayOneShot(sheildDown);
             playedSheildDownSound = true;
             playedSheildUpSound = false;
         }
 
         m_rigidbody.velocity = UpdateMovement();
-		playerAnimator.SetFloat("Speed",m_rigidbody.velocity.magnitude);
+		playerAnimator.SetFloat("Speed", System.Math.Abs(m_rigidbody.velocity.x));
+        
 		playerAnimator.SetBool ("Grounded", IsGrounded);
 
         if( ( Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) && IsGrounded)
         {
-            Debug.Log(footSource.isPlaying);
+            //Debug.Log(footSource.isPlaying);
             if (!footSource.isPlaying)
             {
                 footSource.Play();
@@ -147,27 +148,27 @@ public class MovementController : MonoBehaviour {
 				lastDir = true;
 				canShield = false;
 			} else if (moveInput.x < 0) {
-				m_rigidbody.transform.localScale = crouchLeft;
-				lastDir = false;
+                m_rigidbody.transform.localScale = crouchLeft;
+                lastDir = false;
 				canShield = false;
 			} else if (moveInput.x == 0) {
 				canShield = true;
-				if (lastDir)
-					m_rigidbody.transform.localScale = crouchRight;
-				else
-					m_rigidbody.transform.localScale = crouchLeft;
-			} else
+                if (lastDir)
+                    m_rigidbody.transform.localScale = crouchRight;
+                else
+                    m_rigidbody.transform.localScale = crouchLeft;
+            }
+            else
 				canShield = false;
         }
-
-        if(IsGrounded && Input.GetButtonDown("Jump")) {
-            moveInput.y = JUMPFORCE;
+        if(IsGrounded && Input.GetButtonDown("Jump"))
+        {
+            playerAnimator.SetBool("Grounded", false);
             playerAnimator.SetTrigger("Jump");
-            // isGrounded = false;
+            moveInput.y = JUMPFORCE;
         }
 		PlayerCrouch ();
 
-        //playerAnimator.ResetTrigger("Jump");
         return moveInput;
     }
 
@@ -178,11 +179,11 @@ public class MovementController : MonoBehaviour {
 
 	private void PlayerCrouch() {
 		if (canShield && IsGrounded) {
-			shield.SetActive (true);
+			//shield.SetActive (true);
 			invincible = true;
             playerAnimator.SetBool("Shielded", true);
         } else {
-			shield.SetActive (false);
+			//shield.SetActive (false);
 			invincible = false;
             playerAnimator.SetBool("Shielded", false);
         }

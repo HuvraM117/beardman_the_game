@@ -19,7 +19,7 @@ TextureImporter:
     21300028: BeardMan_CrouchWalk_14
     21300030: BeardMan_CrouchWalk_15
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -37,8 +37,6 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
-  streamingMipmaps: 0
-  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -69,13 +67,11 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
-  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - serializedVersion: 2
-    buildTarget: DefaultTexturePlatform
+  - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -85,8 +81,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Standalone
+  - buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -106,19 +101,13 @@ TextureImporter:
         x: 0
         y: 1603
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 766682d9d09dfb54a90e54a2048ee47d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_1
       rect:
@@ -126,19 +115,13 @@ TextureImporter:
         x: 354
         y: 1603
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: f3767fd0d05d31e4ba02aa07ee04516d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_2
       rect:
@@ -146,19 +129,13 @@ TextureImporter:
         x: 708
         y: 1603
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 6dbb1574e2c9ad3409f7c668f5f9e8c7
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_3
       rect:
@@ -166,19 +143,13 @@ TextureImporter:
         x: 1062
         y: 1603
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: e5d7b0445ee4d73449e5c2cb59d52c69
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_4
       rect:
@@ -186,19 +157,13 @@ TextureImporter:
         x: 1416
         y: 1603
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: a67bcaf80c5f53c42b17f203dc303f69
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_5
       rect:
@@ -206,19 +171,13 @@ TextureImporter:
         x: 0
         y: 1158
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 349dc3fed6b33354fb6c0020649b2412
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_6
       rect:
@@ -226,19 +185,13 @@ TextureImporter:
         x: 354
         y: 1158
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: c9d62b3efb0c1954484cefa869984bf4
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_7
       rect:
@@ -246,19 +199,13 @@ TextureImporter:
         x: 708
         y: 1158
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 790119106e0cbe544b2a9e8f36fa6369
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_8
       rect:
@@ -266,19 +213,13 @@ TextureImporter:
         x: 1062
         y: 1158
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: a4e7206c307d20445b686ff8e15f3fa1
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_9
       rect:
@@ -286,19 +227,13 @@ TextureImporter:
         x: 1416
         y: 1158
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: bc8a6a967e1130343b820dd4102bd79e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_10
       rect:
@@ -306,19 +241,13 @@ TextureImporter:
         x: 0
         y: 713
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 146b3d04188789545ad67662166ac8eb
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_11
       rect:
@@ -326,19 +255,13 @@ TextureImporter:
         x: 354
         y: 713
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 436c6350074e9da4cbf149e2a7791134
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_12
       rect:
@@ -346,19 +269,13 @@ TextureImporter:
         x: 708
         y: 713
         width: 354
-        height: 445
+        height: 385
       alignment: 9
       pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 94afe0c3c02c7df4cb4e947937925e7e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_13
       rect:
@@ -373,12 +290,6 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: b866b6a4cb1823f44bad6df7e793ea8e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_14
       rect:
@@ -393,12 +304,6 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: ab2cdfdb7262ebf42a01988305be9ee4
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: BeardMan_CrouchWalk_15
       rect:
@@ -413,23 +318,9 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 37503509aaed9714191c2d7b4f292444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
-    bones: []
-    spriteID: f057eb092d436694b9df426dc5a2bcf3
-    vertices: []
-    indices: 
-    edges: []
-    weights: []
   spritePackingTag: 
-  pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
