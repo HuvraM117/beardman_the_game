@@ -137,6 +137,10 @@ public class BarberController : MonoBehaviour {
 	void Spawn ()
 	{
 		Debug.Log("Spawning");
+
+		if (enemyCounter == maxEnemyCounter) {
+			return; 
+		}
 			 
 		Debug.Log ("Spawn Point is " + spawnPointIndex); 
 		int heart = UnityEngine.Random.Range (0, 30); 
