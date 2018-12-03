@@ -12,7 +12,7 @@ public class PlayerState : MonoBehaviour
 
     [SerializeField] private static int INITIALVITALITY = 6;
     private static int MAXIMUMVITALITY = 10;
-    
+
     //[SerializeField] private SliderState healthBeardUI;
     private SliderState healthBeardUI;
 
@@ -73,7 +73,7 @@ public class PlayerState : MonoBehaviour
         animator = transform.GetComponentInChildren<Animator>();
         animator.SetFloat("Health", health);
 
-        //Audio things 
+        //Audio things
         var beardman = GameObject.Find("Beard Man/MusicMaker");
 
         var b2 = GameObject.Find("Beard Man/BackgroundMusicSource");
@@ -109,7 +109,7 @@ public class PlayerState : MonoBehaviour
         {
             musicSource.PlayOneShot(beardGrow);
             BeardLength = BeardLength + BEARDGROWTHRATE;
-        }  
+        }
     }
 
     //Shrinks the maximum attack range
@@ -119,12 +119,14 @@ public class PlayerState : MonoBehaviour
         {
             musicSource.PlayOneShot(beardShrink);
             BeardLength = BeardLength - BEARDGROWTHRATE;
-        }  
+        }
     }
 
     public void TakeDamage(int amount)
     {
-        animator.SetTrigger("Damage");
+        if(amount > 0)
+          animator.SetTrigger("Damage");
+
         if (MovementController.Shielding() && amount < 1000)
             ;//Take no damage if shielding
         else if (health - amount <= 0)
@@ -140,7 +142,7 @@ public class PlayerState : MonoBehaviour
             if(amount > 0)
                 musicSource.PlayOneShot(beardManHurt);
         }
-           
+
         animator.SetFloat("Health", health);
         // the only time vitality increases is here, so cap it at the max vitality
         if(vitality > MAXIMUMVITALITY)
@@ -178,7 +180,7 @@ public class PlayerState : MonoBehaviour
     private void Update()
     {
         //Controls beard length
-        if (Input.GetKeyDown("q")) 
+        if (Input.GetKeyDown("q"))
             growBeard();
         if (Input.GetKeyDown("e"))
             shrinkBeard();

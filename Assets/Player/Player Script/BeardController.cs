@@ -21,6 +21,8 @@ public class BeardController : MonoBehaviour
 	private float grappleStrength = 0f;
 	Camera mainCamera;
 	private bool lsdaf = false;
+
+    private Animator playerAnimator;
 	// Use this for initialization
 	void Start()
 	{
@@ -31,6 +33,7 @@ public class BeardController : MonoBehaviour
 		mainCamera = Camera.main;
 		movementController = beardman.GetComponent<MovementController>();
 		beardAnimator = beardman.GetComponentInChildren<BeardAnimationController>();
+        playerAnimator = beardman.GetComponentInChildren<Animator>();
 	}
 
 	// Update is called once per frame
@@ -89,8 +92,10 @@ public class BeardController : MonoBehaviour
 	// assuming the target is in range, not range-limited
 	private void GrappleBeard(Vector2 target)
 	{
-		
-		var dir = (Vector2) target- beardman.position;
+        if(playerAnimator.GetBool("Grounded") == true)
+            playerAnimator.SetTrigger("Jump");
+
+        var dir = (Vector2) target- beardman.position;
 		beardman.velocity = new Vector2 (beardman.velocity.x, 0);
 
 		beardman.AddForce(new Vector2(dir.x*2f, 0) * grappleForce , ForceMode2D.Impulse);
@@ -104,5 +109,5 @@ public class BeardController : MonoBehaviour
 		else if (beardman.velocity.y < 10f && beardman.velocity.y > 0)
 			beardman.velocity = new Vector2(beardman.velocity.x, 10f);
 		Debug.Log("grapple");
-	}
+    }
 }//end beard controller

@@ -4,30 +4,34 @@ using UnityEngine;
 
 public class FloodBehavior : MonoBehaviour {
 	PlayerState playerHealth;        						  // Reference to the player's heatlh.
-	[SerializeField] private GameObject player; 
+	[SerializeField] private GameObject player;
 	[SerializeField] private GameObject Squirrel;             // The enemy prefab to be spawned.
 	[SerializeField] private GameObject Bird;                 // The enemy prefab to be spawned.
 	[SerializeField] private GameObject StraightEdge;         // The enemy prefab to be spawned.
 	[SerializeField] private GameObject ElectricRazor;        // The enemy prefab to be spawned.
-	[SerializeField] private float spawnRadius = 5.0f; 
+	[SerializeField] private float spawnRadius = 5.0f;
 	[SerializeField] private int maxEnemyCounter = 50;
 	[SerializeField] private GameObject[] pillars;
-	float timer; 
+	float timer;
 
 	[SerializeField] private float spawnTime;          // How long between each spawn.
-	[SerializeField] private float deathCounter; 
+	[SerializeField] private float deathCounter;
 	[SerializeField] private Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
 
+	[SerializeField] private GameObject cameraShakeController; // controlls camera shake
+
 	private int enemyCounter;
-	private int spawnPointIndex; 
+	private int spawnPointIndex;
 
 	private Transform playerPos;
-	private float playerposition; 
-	private float spawn0, spawn1, spawn2, spawn3; 
-	private bool spawn0active, spawn1active, spawn2active, spawn3active; 
+	private float playerposition;
+	private float spawn0, spawn1, spawn2, spawn3;
+	private bool spawn0active, spawn1active, spawn2active, spawn3active;
+
+	private bool currentlySpawning;
 
 
-	Vector2 whereToSpawn; 
+	Vector2 whereToSpawn;
 
 	private bool toRespawn; //Stop & Start Checkers
 	private bool toSpawn;
@@ -42,7 +46,8 @@ public class FloodBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		toSpawn = true; 
+		currentlySpawning = false;
+		toSpawn = true;
 
 		spawn0 = spawnPoints [0].transform.position.x;
 		spawn1 = spawnPoints [1].transform.position.x;
@@ -53,10 +58,10 @@ public class FloodBehavior : MonoBehaviour {
 
 		spawn0active = false;
 		spawn1active = false;
-		spawn2active = false; 
+		spawn2active = false;
 		spawn3active = false;
-		 
-		playerHealth = player.GetComponent <PlayerState> (); 
+
+		playerHealth = player.GetComponent <PlayerState> ();
 
 		//removes pillars
 		for(int i = 0; i < pillars.Length; i++) {
@@ -64,7 +69,7 @@ public class FloodBehavior : MonoBehaviour {
 		}
 
 
-        //Audio Things 
+        //Audio Things
 
         var beardman = GameObject.Find("Beard Man/BackgroundMuisicSource");
 
@@ -116,22 +121,17 @@ public class FloodBehavior : MonoBehaviour {
 
 		timer += Time.fixedDeltaTime;
 		int minutes = (int) timer / 60;
-		if (minutes == 1) {
-			timer = 180; 
+		if (minutes == 1) { //check if done spawning
+			//FLOOD OVER
+			timer = 180;
 			toSpawn = false;
 
-            Debug.Log("Flood Over bitch");
-            //stop fast music 
-            //backgroundMusic.clip = initalSound;
-            //backgroundMusic.Play();
+			//Camera Shake
+			CameraShake cameraShakeScript = cameraShakeController.GetComponent<CameraShake>();
+			cameraShakeScript.StartCoroutine(cameraShakeScript.ShakeCamera());
 
-            //back to original music
-
-            //play rumble
-            sfxSource.PlayOneShot(rumbleSound);
-
-            //removes pillars
-            for (int i = 0; i < pillars.Length; i++) {
+			//removes pillars
+			for(int i = 0; i < pillars.Length; i++) {
 				pillars[i].active = false;
 			}
 		}
@@ -141,17 +141,22 @@ public class FloodBehavior : MonoBehaviour {
 	{
 		if (other.gameObject == player) {
 			timer = 0.0f;
-
+			if (!currentlySpawning) {
+				//camera shake
+				CameraShake cameraShakeScript = cameraShakeController.GetComponent<CameraShake>();
+				cameraShakeScript.StartCoroutine(cameraShakeScript.ShakeCamera());
+			}
+			currentlySpawning = true;
 			InvokeRepeating ("Spawn", spawnTime, deathCounter);
 
             Debug.Log("Enterd the flood bitch");
 
-            //start fast music 
+            //start fast music
             //backgroundMusic.clip = battleSound;
             //backgroundMusic.Play();
 
             //stop original music
-            
+
 
             //play rumble
             sfxSource.PlayOneShot(rumbleSound);
@@ -173,9 +178,9 @@ public class FloodBehavior : MonoBehaviour {
 
 		}
 
-		spawnPointIndex = UnityEngine.Random.Range (0, 4); 
+		spawnPointIndex = UnityEngine.Random.Range (0, 4);
 
-		Debug.Log (spawnPointIndex); 
+		Debug.Log (spawnPointIndex);
 		if (spawnPointIndex == 0 && spawn0active) {
 			float randX = UnityEngine.Random.Range (-2f, 2f);
 			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
@@ -204,7 +209,7 @@ public class FloodBehavior : MonoBehaviour {
 			spawnPointIndex = UnityEngine.Random.Range (0, 4);
 		}
 
-		enemyCounter++; 
+		enemyCounter++;
 
 	}
 }
