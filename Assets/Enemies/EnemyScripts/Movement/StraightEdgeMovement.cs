@@ -21,6 +21,8 @@ public class StraightEdgeMovement : MonoBehaviour {
 	private float myXscale;
 	private float myYscale;
 
+    private Animator animator;
+
 	// Use this for initialization
 	void Start () {
 		movingRight = 1;
@@ -29,6 +31,8 @@ public class StraightEdgeMovement : MonoBehaviour {
 		m_rigidbody = GetComponent<Rigidbody2D>();
 		myXscale = transform.localScale.x;
 		myYscale = transform.localScale.y;
+
+	    animator = gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -77,6 +81,8 @@ public class StraightEdgeMovement : MonoBehaviour {
 	private IEnumerator attack() {
 		attacking = true;
         
+        animator.SetTrigger("attack");
+
 		var projectileGameObject = Instantiate (
 			projectile,
 			transform.position,
