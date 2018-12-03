@@ -3314,6 +3314,28 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1269718646455724, guid: 770edfdc61ddd2a4fb76ca779b90d39c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114032214488864764, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_text
+      value: "Character Controls :\nUse the WASD keys to move your characters. You
+        can also use space to jump.\nBeard Controls : \nThe mouse controls where your
+        beard moves\nClick to attack\nClick on grappling point to grapple\nPress 'Q'
+        to grow your beard and 'E' to shrink"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114032214488864764, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114032214488864764, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 770edfdc61ddd2a4fb76ca779b90d39c, type: 2}
   m_IsPrefabParent: 0

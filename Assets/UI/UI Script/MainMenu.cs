@@ -7,7 +7,10 @@ public class MainMenu : MonoBehaviour {
 
 
     public void PlayGame(){
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+        PlayerState.hasDied = false;
+        Debug.Log("player state = "+ PlayerState.hasDied);
+        SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+
 	}
 
 	public void PlayBoss(){
