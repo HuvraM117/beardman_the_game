@@ -153,7 +153,7 @@ public class ElectricRazor : MonoBehaviour {
 		int upOrDown = 0;
 		Vector2 up = new Vector2 (0.0f, 1.0f);
 		Vector2 down = new Vector2 (0.0f, -1.0f);
-		while (timeCount < 1) {
+		while (timeCount < .75) {
 			upOrDown = Mathf.RoundToInt((timeCount * 8)) % 2;
 			if (upOrDown == 0) {
 				//move up
