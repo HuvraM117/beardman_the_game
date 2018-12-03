@@ -71,9 +71,9 @@ public class FloodBehavior : MonoBehaviour {
 
         //Audio Things
 
-        var beardman = GameObject.Find("Beard Man/BackgroundMuisicSource");
+        var beardman = GameObject.Find("Beard Man/BackgroundMusicSource");
 
-        var b2 = GameObject.Find("Beard Man/MuisicMaker");
+        var b2 = GameObject.Find("Beard Man/MusicMaker");
 
         backgroundMusic = beardman.GetComponents<AudioSource>()[0];
 
@@ -129,9 +129,16 @@ public class FloodBehavior : MonoBehaviour {
 			//Camera Shake
 			CameraShake cameraShakeScript = cameraShakeController.GetComponent<CameraShake>();
 			cameraShakeScript.StartCoroutine(cameraShakeScript.ShakeCamera());
+            
+            //stop fast music
+            backgroundMusic.clip = initalSound;
+            backgroundMusic.Play();
 
-			//removes pillars
-			for(int i = 0; i < pillars.Length; i++) {
+            //play rumble
+            sfxSource.PlayOneShot(rumbleSound);
+
+            //removes pillars
+            for (int i = 0; i < pillars.Length; i++) {
 				pillars[i].active = false;
 			}
 		}
@@ -146,20 +153,15 @@ public class FloodBehavior : MonoBehaviour {
 				CameraShake cameraShakeScript = cameraShakeController.GetComponent<CameraShake>();
 				cameraShakeScript.StartCoroutine(cameraShakeScript.ShakeCamera());
 			}
-			currentlySpawning = true;
+            //play rumble
+            backgroundMusic.PlayOneShot(rumbleSound);
+
+            currentlySpawning = true;
 			InvokeRepeating ("Spawn", spawnTime, deathCounter);
 
-            Debug.Log("Enterd the flood bitch");
-
             //start fast music
-            //backgroundMusic.clip = battleSound;
-            //backgroundMusic.Play();
-
-            //stop original music
-
-
-            //play rumble
-            sfxSource.PlayOneShot(rumbleSound);
+            backgroundMusic.clip = battleSound;
+            backgroundMusic.Play();
 
             //Adds pillars
             for (int i = 0; i < pillars.Length; i++) {
