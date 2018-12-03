@@ -2157,7 +2157,7 @@ MonoBehaviour:
   MiddleLayerBackgroudOffset: {x: 130, y: 0, z: 0}
   moveRatio: 0.01
   backgroundOffset: {x: 0, y: 0, z: 0}
-  Range: 3
+  Range: 50
 --- !u!4 &806306724
 Transform:
   m_ObjectHideFlags: 0
@@ -2294,7 +2294,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4901320714981246, guid: c48030039feb0ec4eb04c2458f5082a2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3312,7 +3312,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1339272691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 127.84, y: -1.4, z: 0}
+  m_LocalPosition: {x: 159.2, y: -127.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 806306724}
