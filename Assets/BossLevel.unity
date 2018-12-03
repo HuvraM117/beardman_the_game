@@ -5156,6 +5156,12 @@ Prefab:
       propertyPath: m_textInfo.spaceCount
       value: 47
       objectReference: {fileID: 0}
+    - target: {fileID: 114592295887775232, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c1ed360a64172450abfd20df124317e4,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 770edfdc61ddd2a4fb76ca779b90d39c, type: 2}
   m_IsPrefabParent: 0
