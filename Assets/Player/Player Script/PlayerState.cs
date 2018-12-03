@@ -20,7 +20,7 @@ public class PlayerState : MonoBehaviour
     private AudioClip beardShrink;
     private AudioClip beardManDeath;
     private AudioClip beardManHurt;
-
+	public GameObject death_UI;
     private static BeardState _currentBeardState = BeardState.IDLE;
     public static BeardState CurrentBeardState { get; set; }
     private AudioSource musicSource;
@@ -119,7 +119,7 @@ public class PlayerState : MonoBehaviour
     public void TakeDamage(int amount)
     {
         animator.SetTrigger("Damage");
-        if (MovementController.Shielding())
+        if (MovementController.Shielding() && amount < 1000)
             ;//Take no damage if shielding
         else if (health - amount <= 0)
         {
@@ -160,10 +160,10 @@ public class PlayerState : MonoBehaviour
     {
         gameObject.GetComponent<MovementController>().enabled = false;
         animator.SetFloat("Health", health);
-
+		death_UI.SetActive (true);
         musicSource.PlayOneShot(beardManDeath);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -175,10 +175,10 @@ public class PlayerState : MonoBehaviour
             growBeard();
         if (Input.GetKeyDown("e"))
             shrinkBeard();
-        if (Input.GetKeyDown(KeyCode.F10))
-            TakeDamage(1);
-        if (Input.GetKeyDown(KeyCode.F11))
-            TakeDamage(-1);
+        //if (Input.GetKeyDown(KeyCode.F10))
+        //    TakeDamage(1);
+        //if (Input.GetKeyDown(KeyCode.F11))
+        //    TakeDamage(-1);
     }
 
     private void FixedUpdate()
