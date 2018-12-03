@@ -6,11 +6,18 @@ public class StartPopUp : MonoBehaviour {
 
     private SceneController sc;
 
-	// Use this for initialization
-	void Start () {
 
-        sc = new SceneController();
-        sc.PauseGame();
+    // Use this for initialization
+    void Start() {
+
+        if (!PlayerState.hasDied) { 
+            sc = new SceneController();
+            sc.PauseGame();
+        }
+        else
+        {
+            this.gameObject.SetActive(false);
+        }
 
 	}
 	

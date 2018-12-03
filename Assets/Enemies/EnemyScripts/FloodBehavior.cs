@@ -30,7 +30,14 @@ public class FloodBehavior : MonoBehaviour {
 	Vector2 whereToSpawn; 
 
 	private bool toRespawn; //Stop & Start Checkers
-	private bool toSpawn; 
+	private bool toSpawn;
+
+    private AudioSource backgroundMusic;
+    private AudioSource sfxSource;
+
+    private AudioClip initalSound;
+    private AudioClip rumbleSound;
+    private AudioClip battleSound;
 
 	// Use this for initialization
 	void Start () {
@@ -56,7 +63,26 @@ public class FloodBehavior : MonoBehaviour {
 			pillars[i].active = false;
 		}
 
-	}
+
+        //Audio Things 
+
+        var beardman = GameObject.Find("Beard Man/BackgroundMuisicSource");
+
+        var b2 = GameObject.Find("Beard Man/MuisicMaker");
+
+        backgroundMusic = beardman.GetComponents<AudioSource>()[0];
+
+        sfxSource = b2.GetComponents<AudioSource>()[0];
+
+        initalSound = backgroundMusic.clip;
+
+        AudioClip[] sounds = Resources.LoadAll<AudioClip>("Sound/FloodSounds");
+
+        battleSound = sounds[0];
+
+        rumbleSound = sounds[1];
+
+    }
 
 
 	// Update is called once per frame
@@ -93,8 +119,18 @@ public class FloodBehavior : MonoBehaviour {
 		if (minutes == 1) {
 			timer = 180; 
 			toSpawn = false;
-			//removes pillars
-			for(int i = 0; i < pillars.Length; i++) {
+
+            //stop fast music 
+            //backgroundMusic.clip = initalSound;
+            //backgroundMusic.Play();
+
+            //back to original music
+
+            //play rumble
+            sfxSource.PlayOneShot(rumbleSound);
+
+            //removes pillars
+            for (int i = 0; i < pillars.Length; i++) {
 				pillars[i].active = false;
 			}
 		}
@@ -107,8 +143,17 @@ public class FloodBehavior : MonoBehaviour {
 
 			InvokeRepeating ("Spawn", spawnTime, deathCounter);
 
-			//Adds pillars
-			for (int i = 0; i < pillars.Length; i++) {
+            //start fast music 
+            //backgroundMusic.clip = battleSound;
+            //backgroundMusic.Play();
+
+            //stop original music
+
+            //play rumble
+            sfxSource.PlayOneShot(rumbleSound);
+
+            //Adds pillars
+            for (int i = 0; i < pillars.Length; i++) {
 				pillars [i].active = true;
 			}
 		}

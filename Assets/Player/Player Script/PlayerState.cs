@@ -26,6 +26,7 @@ public class PlayerState : MonoBehaviour
     private AudioSource musicSource;
     private float beardKeyPressTime = 0f;
 
+    public static bool hasDied;
 
     private Animator animator;
     // setting up health and beard length as properties this way automatically ensures that increasing one decreases the other and vice versa
@@ -162,7 +163,7 @@ public class PlayerState : MonoBehaviour
         animator.SetFloat("Health", health);
 		death_UI.SetActive (true);
         musicSource.PlayOneShot(beardManDeath);
-
+        hasDied = true;
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
