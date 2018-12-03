@@ -120,6 +120,7 @@ public class FloodBehavior : MonoBehaviour {
 			timer = 180; 
 			toSpawn = false;
 
+            Debug.Log("Flood Over bitch");
             //stop fast music 
             //backgroundMusic.clip = initalSound;
             //backgroundMusic.Play();
@@ -143,11 +144,14 @@ public class FloodBehavior : MonoBehaviour {
 
 			InvokeRepeating ("Spawn", spawnTime, deathCounter);
 
+            Debug.Log("Enterd the flood bitch");
+
             //start fast music 
             //backgroundMusic.clip = battleSound;
             //backgroundMusic.Play();
 
             //stop original music
+            
 
             //play rumble
             sfxSource.PlayOneShot(rumbleSound);
