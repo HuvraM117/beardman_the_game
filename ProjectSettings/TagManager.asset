@@ -8,6 +8,7 @@ TagManager:
   - Tilemap
   - EnemyCollisionOnly
   - MovingPlatform
+  - Flood
   layers:
   - Default
   - TransparentFX
