@@ -17,12 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BossLevel.unity
     guid: fe9698152356a41c18fce3848ef6affa
-  - enabled: 0
-    path: Assets/Level 1.unity
-    guid: 5846fbcbc856348baaa4a42af55846c9
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Victory Scene.unity
+    guid: 32317c9fe6db640bca538a7ce51440de
   - enabled: 1
     path: Assets/creditsScene2.unity
     guid: 466ef985004b64a34ad3ddc79230cfda
