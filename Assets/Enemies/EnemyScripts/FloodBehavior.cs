@@ -20,9 +20,12 @@ public class FloodBehavior : MonoBehaviour {
 
 	[SerializeField] private GameObject cameraShakeController; // controlls camera shake
 
+
+
 	private int enemyCounter;
 	private int spawnPointIndex;
-
+	private Transform floodPos;
+	private float floodposition; 
 	private Transform playerPos;
 	private float playerposition;
 	private float spawn0, spawn1, spawn2, spawn3;
@@ -36,12 +39,12 @@ public class FloodBehavior : MonoBehaviour {
 	private bool toRespawn; //Stop & Start Checkers
 	private bool toSpawn;
 
-    private AudioSource backgroundMusic;
-    private AudioSource sfxSource;
+	private AudioSource backgroundMusic;
+	private AudioSource sfxSource;
 
-    private AudioClip initalSound;
-    private AudioClip rumbleSound;
-    private AudioClip battleSound;
+	private AudioClip initalSound;
+	private AudioClip rumbleSound;
+	private AudioClip battleSound;
 
 	// Use this for initialization
 	void Start () {
@@ -55,6 +58,7 @@ public class FloodBehavior : MonoBehaviour {
 		spawn3 = spawnPoints [3].transform.position.x;
 
 		playerPos = GameObject.FindGameObjectWithTag ("Player").transform;
+		floodPos = GameObject.FindGameObjectWithTag ("Flood").transform;
 
 		spawn0active = false;
 		spawn1active = false;
@@ -69,31 +73,38 @@ public class FloodBehavior : MonoBehaviour {
 		}
 
 
-        //Audio Things
+		//Audio Things
 
-        var beardman = GameObject.Find("Beard Man/BackgroundMusicSource");
+		var beardman = GameObject.Find("Beard Man/BackgroundMusicSource");
 
-        var b2 = GameObject.Find("Beard Man/MusicMaker");
+		var b2 = GameObject.Find("Beard Man/MusicMaker");
 
-        backgroundMusic = beardman.GetComponents<AudioSource>()[0];
+		backgroundMusic = beardman.GetComponents<AudioSource>()[0];
 
-        sfxSource = b2.GetComponents<AudioSource>()[0];
+		sfxSource = b2.GetComponents<AudioSource>()[0];
 
-        initalSound = backgroundMusic.clip;
+		initalSound = backgroundMusic.clip;
 
-        AudioClip[] sounds = Resources.LoadAll<AudioClip>("Sound/FloodSounds");
+		AudioClip[] sounds = Resources.LoadAll<AudioClip>("Sound/FloodSounds");
 
-        battleSound = sounds[0];
+		battleSound = sounds[0];
 
-        rumbleSound = sounds[1];
+		rumbleSound = sounds[1];
 
-    }
+	}
 
 
 	// Update is called once per frame
 	void FixedUpdate () {
 
 		playerposition = playerPos.transform.position.x;
+		floodposition = floodPos.transform.position.x; 
+
+		if (playerposition - floodposition > -2) {
+			if (!currentlySpawning) {
+				startSpawning (); 
+			}
+		}
 
 		if (playerposition - spawn0 > -10) {
 			spawn0active = true;
@@ -132,44 +143,42 @@ public class FloodBehavior : MonoBehaviour {
 			//Camera Shake
 			CameraShake cameraShakeScript = cameraShakeController.GetComponent<CameraShake>();
 			cameraShakeScript.StartCoroutine(cameraShakeScript.ShakeCamera());
-            
-            //stop fast music
-            backgroundMusic.clip = initalSound;
-            backgroundMusic.Play();
 
-            //play rumble
-            sfxSource.PlayOneShot(rumbleSound);
+			//stop fast music
+			backgroundMusic.clip = initalSound;
+			backgroundMusic.Play();
 
-            //removes pillars
-            for (int i = 0; i < pillars.Length; i++) {
+			//play rumble
+			sfxSource.PlayOneShot(rumbleSound);
+
+			//removes pillars
+			for (int i = 0; i < pillars.Length; i++) {
 				pillars[i].active = false;
 			}
 		}
 	}
 
-	void OnTriggerEnter2D (Collider2D other)
+	void startSpawning ()
 	{
-		if (other.gameObject == player) {
-			timer = 0.0f;
-			if (!currentlySpawning) {
-				//camera shake
-				CameraShake cameraShakeScript = cameraShakeController.GetComponent<CameraShake>();
-				cameraShakeScript.StartCoroutine(cameraShakeScript.ShakeCamera());
-			}
-            //play rumble
-            backgroundMusic.PlayOneShot(rumbleSound);
+		timer = 0.0f;
+		if (!currentlySpawning) {
+			//camera shake
+			CameraShake cameraShakeScript = cameraShakeController.GetComponent<CameraShake>();
+			cameraShakeScript.StartCoroutine(cameraShakeScript.ShakeCamera());
+		}
+		//play rumble
+		backgroundMusic.PlayOneShot(rumbleSound);
 
-            currentlySpawning = true;
-			InvokeRepeating ("Spawn", spawnTime, deathCounter);
+		currentlySpawning = true;
+		InvokeRepeating ("Spawn", spawnTime, deathCounter);
 
-            //start fast music
-            backgroundMusic.clip = battleSound;
-            backgroundMusic.Play();
+		//start fast music
+		backgroundMusic.clip = battleSound;
+		backgroundMusic.Play();
 
-            //Adds pillars
-            for (int i = 0; i < pillars.Length; i++) {
-				pillars [i].active = true;
-			}
+		//Adds pillars
+		for (int i = 0; i < pillars.Length; i++) {
+			pillars [i].active = true;
 		}
 	}
 
