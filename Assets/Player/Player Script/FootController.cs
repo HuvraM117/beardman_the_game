@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FootController : MonoBehaviour {
 
-    private Vector3 raycastOrigin = new Vector2(0f, -.9f);
+    private Vector3 raycastOrigin = new Vector2(0f, -.5f);
     private RaycastHit2D downHit, rightHit, leftHit;
     private GameObject movingPlatform = null; // the moving platform the player is on if any
 
