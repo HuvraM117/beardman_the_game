@@ -5219,10 +5219,7 @@ Prefab:
     - target: {fileID: 114032214488864764, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
         type: 2}
       propertyPath: m_text
-      value: "Character Controls :\nUse the WASD keys to move your characters. You
-        can also use space to jump.\nBeard Controls : \nThe mouse controls where your
-        beard moves\nClick to attack\nClick on grappling point to grapple\nPress 'Q'
-        to grow your beard and 'E' to shrink"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114032214488864764, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
         type: 2}
@@ -5255,6 +5252,68 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: c1ed360a64172450abfd20df124317e4,
         type: 3}
+    - target: {fileID: 114311043945990152, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114311043945990152, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114311043945990152, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114212075861461846, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 495c7eee9d0294a51a884818d8dc197d,
+        type: 3}
+    - target: {fileID: 224247133815170558, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114665658929557428, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 29830db421dee496d8bf1fcf20eaaccd,
+        type: 3}
+    - target: {fileID: 114691705544943176, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114691705544943176, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114946803141679224, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114946803141679224, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114072993455842362, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114072993455842362, guid: 770edfdc61ddd2a4fb76ca779b90d39c,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 770edfdc61ddd2a4fb76ca779b90d39c, type: 2}
   m_IsPrefabParent: 0
