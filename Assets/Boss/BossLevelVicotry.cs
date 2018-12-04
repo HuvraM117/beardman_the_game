@@ -13,8 +13,13 @@ public class BossLevelVicotry : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(boss==null)
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		if (boss == null)
+			StartCoroutine (Wait ()); 
 		
+	}
+
+	IEnumerator Wait(){
+		yield return new WaitForSeconds (3f);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 }
