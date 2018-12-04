@@ -124,7 +124,7 @@ public class PlayerState : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if(amount > 0)
+		if(amount > 0 && !animator.GetBool("Shielded"))
           animator.SetTrigger("Damage");
 
         if (MovementController.Shielding() && amount < 1000)
