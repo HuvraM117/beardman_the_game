@@ -167,7 +167,7 @@ public class BarberController : MonoBehaviour {
 			enemyCounter++; 
 
 		} else {
-			if (heart < 20){
+			if (heart < 10){
 			float randX = UnityEngine.Random.Range (-2f, 2f);
 			whereToSpawn = new Vector2 ((spawnPoints [spawnPointIndex].position.x + (randX * spawnRadius)),
 				(spawnPoints [spawnPointIndex].position.y + (randX * spawnRadius)));
