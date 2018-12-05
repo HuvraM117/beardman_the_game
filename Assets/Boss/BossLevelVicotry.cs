@@ -19,7 +19,7 @@ public class BossLevelVicotry : MonoBehaviour {
 	}
 
 	IEnumerator Wait(){
-		yield return new WaitForSeconds (3f);
+		yield return new WaitForSeconds (2f);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 }

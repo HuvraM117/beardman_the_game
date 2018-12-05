@@ -100,7 +100,7 @@ public class FloodBehavior : MonoBehaviour {
 		playerposition = playerPos.transform.position.x;
 		floodposition = floodPos.transform.position.x; 
 
-		if (playerposition - floodposition > -2) {
+		if (playerposition - floodposition > -1) {
 			if (!currentlySpawning) {
 				startSpawning (); 
 			}
