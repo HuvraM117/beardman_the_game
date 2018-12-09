@@ -121,7 +121,7 @@ public class BeardAnimationController : MonoBehaviour {
     private void RemoveBeardSegment()
     {
         // if we've retracted fully, transition to idle state, otherwize, shorten the beard
-        if(visibleSegments == 0)
+        if(visibleSegments <= 0)
         {
             beardTip.GetComponent<Collider2D>().enabled = false;
             PlayerState.CurrentBeardState = BeardState.IDLE;
